@@ -1,0 +1,15 @@
+lannguage: python
+python:
+- '2.6'
+- '2.7'
+- '3.2'
+- '3.3'
+- '3.4'
+- '3.5'
+deploy:
+  provider: heroku
+  api_key:
+    secure: G+yGAd99ULJ/VcmbKR53WZMPuCiuSrRcB+Qv7rzIql4MSCouYwShsl/uq5s7PYlfIgmHE7SZy3232u+i+vGaruvsu2AFIfsxGAVlGBW6n8nbqpStNIB9iRKOLEaMx78FMEjniHOTdZjf27hz9cADyErz4dySxbxoJ1WYJmAGDsoJmRJSBS+VY+VSfG4/c3tvNj+t3sJEon8owjqKRgXRKGXbG18cQ8+WZXbCNqK6QZQLhlvHt5VKHviF9hCuSGsmSe1c/uOZhYxqY7Nt3IuZ8v01ANzNOYz7gZYzjQgJqrLLzDjfaio7+jUQa1uTdAZ3z774QKSzqlCTmuXfdbE7WBBbrLCRwdbfD15Rb1blepAc+98JMgVui9OacZTQgZfsdb0laz1vFCcM4mQ3Ctc96OPtCLujICp5fdKHu89kxihI9tY6kDWDuWhA45m6fiFAr8kC3hdA4yUwvXWeYAfd9Nn1Cp0AP44RcxPKiHY5GJH0b2+j7yoIG2pzgrqDyS858TU7asNUI2Yzlrz0eWKHOJEVfpTGS52xuEzf6VhSh31CAqW+qTESN73q/kf0KdNg86J6vi1LuUrvOmFDUeXIAZUyq2SCUrj4nKuIGbRUH+SgoyuLh5Y47w3QmtmkwaZoasHeapRUtU+4WfaSZidlTUhF9575Ek3F9gANROWcSsU=
+  app: binghamtontabletennis
+  on:
+    repo: BinghamtonTableTennis/rating-system
