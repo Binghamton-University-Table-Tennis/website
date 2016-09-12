@@ -6,8 +6,12 @@ from .models import Players
 
 # Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
+   
+    # Store this visit to front page in the database
+    greeting = Greeting()
+    greeting.save()
     
+    # Grab all players in database
     players = Players.objects.all()
     
     return render(request, 'index.html', {'players': players})
@@ -15,9 +19,7 @@ def index(request):
 
 def db(request):
 
-    greeting = Greeting()
-    greeting.save()
-
+    # Grab all visits to front page
     greetings = Greeting.objects.all()
 
     return render(request, 'db.html', {'greetings': greetings})
