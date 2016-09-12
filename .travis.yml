@@ -1,10 +1,15 @@
 lannguage: python
 python:
 - '2.7'
+# install Java 8 as required by vnu.jar
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install oracle-java8-installer
+ - sudo update-java-alternatives -s java-8-oracle
 # command to install dependencies
 install: "pip install --user -r requirements.txt"
 # command to run tests
-script: nosetests
+script: html5validator --root _build/
 deploy:
   provider: heroku
   api_key:
