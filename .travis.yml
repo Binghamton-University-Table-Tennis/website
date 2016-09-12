@@ -9,7 +9,7 @@ before_install:
 # command to install dependencies
 install: "pip install --user -r requirements.txt"
 # command to run tests
-script: html5validator --root _build/
+script: html5validator --root hello/templates/
 deploy:
   provider: heroku
   api_key:
