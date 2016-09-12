@@ -5,10 +5,9 @@ Web application displaying the ratings for Binghamton Table Tennis Club members
 https://binghamtontabletennis.herokuapp.com/
 
 ## To run
-$ git clone https://github.com/BinghamtonTableTennis/rating-system
-$ cd rating-system/
-$ pip install -r requirements.txt
-$ python manage.py migrate
-$ heroku local
-
-Typically, enter "localhost:3000" into your browser to view the app locally.
+- $ git clone https://github.com/BinghamtonTableTennis/rating-system
+- $ cd rating-system/
+- $ pip install -r requirements.txt
+- $ python manage.py migrate
+- $ heroku local
+- Enter "localhost:3000" in your browser to view the app locally (May vary depending on environment)
