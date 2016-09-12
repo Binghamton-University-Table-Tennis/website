@@ -8,8 +8,8 @@ from .models import Players
 def index(request):
    
     # Store this visit to front page in the database
-    greeting = Greeting()
-    greeting.save()
+    visit = Greeting()
+    visit.save()
     
     # Grab all players in database
     players = Players.objects.all()
@@ -20,7 +20,7 @@ def index(request):
 def db(request):
 
     # Grab all visits to front page
-    greetings = Greeting.objects.all()
+    visits = Greeting.objects.all()
 
-    return render(request, 'db.html', {'greetings': greetings})
+    return render(request, 'db.html', {'visits': visits})
 
