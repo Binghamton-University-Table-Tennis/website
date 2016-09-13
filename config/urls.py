@@ -11,6 +11,7 @@ import src.views
 
 urlpatterns = [
     url(r'^$', src.views.index, name='index'),
-    url(r'^db', src.views.db, name='db'),
+    url(r'^log', src.views.log, name='log'),
+    url(r'^stats', src.views.stats, name='stats'),
     url(r'^admin/', include(admin.site.urls)),
 ]

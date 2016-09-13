@@ -17,10 +17,17 @@ def index(request):
     return render(request, 'index.html', {'players': players})
 
 
-def db(request):
+def log(request):
 
     # Grab all visits to front page
     visits = Greeting.objects.all()
     
-    return render(request, 'db.html', {'visits': visits})
+    return render(request, 'log.html', {'visits': visits})
+    
+def stats(request):
+
+    # Grab all visits to front page
+    visits = Greeting.objects.all()
+    
+    return render(request, 'stats.html', {'visits': visits})
 
