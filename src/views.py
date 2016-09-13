@@ -12,7 +12,7 @@ def index(request):
     visit.save()
     
     # Grab all players in database
-    players = Players.objects.all()
+    players = Players.objects.all().order_by('-rating')
     
     return render(request, 'index.html', {'players': players})
 
@@ -21,6 +21,6 @@ def db(request):
 
     # Grab all visits to front page
     visits = Greeting.objects.all()
-
+    
     return render(request, 'db.html', {'visits': visits})
 
