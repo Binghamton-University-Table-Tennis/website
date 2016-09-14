@@ -23,6 +23,7 @@ class Matches(models.Model):
     winner_score = models.IntegerField()
     loser_score = models.IntegerField()
     day = models.DateField()
+    points = models.IntegerField()
     
     class Meta:
         db_table = "matches"

@@ -46,6 +46,7 @@ class Migration(migrations.Migration):
                 ('winner_score', models.IntegerField()),
                 ('loser_score', models.IntegerField()),
                 ('day', models.DateField()),
+                ('points', models.IntegerField()),
             ],
             options={
                 'db_table': 'matches',
