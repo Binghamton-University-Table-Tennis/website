@@ -27,6 +27,6 @@ def log(request):
 def stats(request, player):
     name = player.split('_')
     playerStats = Players.objects.filter(firstname = name[0], lastname = name[1])
-    
-    return render(request, 'stats.html', {'playerStats': playerStats})
+    visits = Greeting.objects.all()
+    return render(request, 'stats.html', {'playerStats': playerStats, 'visits': visits})
 
