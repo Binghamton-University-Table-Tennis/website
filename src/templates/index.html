@@ -16,16 +16,14 @@
     
     <tr>
       <th>Rank</th>
-      <th>Last Name</th> 
-      <th>First Name</th> 
+      <th>Name</th> 
       <th>Rating</th>
     </tr>
     
     {% for player in players %}
     <tr>
       <th>{{ forloop.counter }}</th>
-      <th>{{ player.lastname }}</th> 
-      <th>{{ player.firstname }}</th> 
+      <th>{{ player.firstname }} {{ player.lastname }}</th> 
       <th>{{ player.rating }}</th>
     </tr>
     {% endfor %}
