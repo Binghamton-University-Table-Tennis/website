@@ -24,10 +24,9 @@ def log(request):
     
     return render(request, 'log.html', {'visits': visits})
     
-def stats(request):
-
-    # Grab all visits to front page
-    visits = Greeting.objects.all()
+def stats(request, player):
+    name = player.split('_')
+    playerStats = Players.objects.filter(firstname = name[0], lastname = name[1])
     
-    return render(request, 'stats.html', {'visits': visits})
+    return render(request, 'stats.html', {'playerStats': playerStats})
 
