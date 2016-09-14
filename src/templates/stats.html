@@ -2,20 +2,127 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div class="container">
 
+<style>
+  .nametag {
+    font-size: 40px;
+  }
+  .info-bubble {
+    background-color: #DEF;
+    font-family: "Comic Sans MS";
+    font-size: 20px;
+  }
+  
+  .middleTile {
+    background-color: #46E851;
+    font-family: "Comic Sans MS";
+    font-size: 20px;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #5abc12;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .centerTable { margin: 0px auto; }
+  
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="well info-bubble">
+        <p class="text-center">Class Standing</p>
+        <p class="text-center">Freshmen Pic</p>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="well info-bubble">
+        <p class="text-center nametag">Quick Brown Fox</p>
+        <p class="text-center nametag">The Last Airbender</p>
+      </div>
+    </div>
+        <div class="col-xs-3">
+      <div class="well info-bubble">
+        <p class="text-center">Medal</p>
+        <p class="text-center">Bronze lol</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+   <div class="col-xs-1"></div>
+    <div class="col-xs-2">
+      <div class="well middleTile">
+        <p class="text-center">Win Rate</p>
+        <p class="text-center">100 %</p>
+      </div>
+    </div>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-2">
+      <div class="well middleTile">
+        <p class="text-center">Matches Played</p>
+        <p class="text-center">0</p>
+      </div>
+    </div>
+    <div class="col-xs-2"></div>
+        <div class="col-xs-2">
+      <div class="well middleTile">
+        <p class="text-center">Rating</p>
+        <p class="text-center">0</p>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  
+  <div class="row">
+    <h2 class="text-center">Match History</h2>
+    <table style="width:100%">
+      <tr class="text-center">
+        <th>Date</th>
+        <th>Opponent</th>
+        <th>Gain / Loss</th>
+        <th>Rating</th>
+      </tr>
+      <tr>
+        <td>9/12/16</td>
+        <td>Chris Brown</td>
+        <td>+9000</td>
+        <td>1337</td>
+      </tr>
+      <tr>
+        <td>9/12/16</td>
+        <td>Bruce Wayne</td>
+        <td>-100</td>
+        <td>1237</td>
+      </tr>
+      <tr>
+        <td>9/12/16</td>
+        <td>Rihanna</td>
+        <td>-350</td>
+        <td>887</td>
+      </tr>
+      <tr>
+        <td>9/12/16</td>
+        <td>Chris Brown</td>
+        <td>-887</td>
+        <td>0</td>
+      </tr>
+    </table>
+  </div>
 
-<h2>Player Statistics</h2>
-
-
-<ul>
-
-{% for stat in playerStats %}
-    <li>{{ stat.rating }}</li>
-{% endfor %}
-
-</ul>
-
+  <ul>
+  {% for stat in playerStats %}
+      <li>{{ stat.rating }}</li>
+  {% endfor %}
+  
+  </ul>
 </div>
 
 {% endblock %}
