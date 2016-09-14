@@ -114,19 +114,28 @@
         <td>-887</td>
         <td>0</td>
       </tr>
+      
+  {% for match in matchesWon %}
+      <tr>
+        <td>{{ match.day }}</td>
+        <td>{{ match.loser_fname}} {{ match.loser_lname }}</td>
+        <td>{{ match.winner_score }}</td>
+        <td>{{ match.loser_score }}</td>
+      </tr>
+  {% endfor %}
+  
+  {% for match in matchesLost %}
+      <tr>
+        <td>{{ match.day }}</td>
+        <td>{{ match.winner_fname}} {{ match.winner_lname }}</td>
+        <td>{{ match.winner_score }}</td>
+        <td>{{ match.loser_score }}</td>
+      </tr>
+  {% endfor %}
+      
+      
     </table>
   </div>
-
-  <ul>
-  {% for stat in playerStats %}
-      <li>{{ stat.rating }}</li>
-  {% endfor %}
-  
-  {% for stat in visits %}
-      <li>{{ stat.time }}</li>
-  {% endfor %}
-  
-  </ul>
 </div>
 
 {% endblock %}

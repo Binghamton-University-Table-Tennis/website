@@ -35,4 +35,20 @@ class Migration(migrations.Migration):
                 'db_table': 'players',
             },
         ),
+        migrations.CreateModel(
+            name='Matches',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('winner_fname', models.CharField(max_length=10)),
+                ('winner_lname', models.CharField(max_length=10)),
+                ('loser_fname', models.CharField(max_length=10)),
+                ('loser_lname', models.CharField(max_length=10)),
+                ('winner_score', models.IntegerField()),
+                ('loser_score', models.IntegerField()),
+                ('day', models.DateField()),
+            ],
+            options={
+                'db_table': 'matches',
+            },
+        ),
     ]

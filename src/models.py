@@ -14,4 +14,16 @@ class Players(models.Model):
     
     class Meta:
         db_table = "players"
+
+class Matches(models.Model):
+    winner_fname = models.CharField(max_length=10)
+    winner_lname = models.CharField(max_length=10)
+    loser_fname = models.CharField(max_length=10)
+    loser_lname = models.CharField(max_length=10)
+    winner_score = models.IntegerField()
+    loser_score = models.IntegerField()
+    day = models.DateField()
+    
+    class Meta:
+        db_table = "matches"
     
