@@ -24,6 +24,8 @@ class Matches(models.Model):
     loser_score = models.IntegerField()
     day = models.DateField()
     points = models.IntegerField()
+    winner_rating = models.IntegerField()
+    loser_rating = models.IntegerField()
     
     class Meta:
         db_table = "matches"

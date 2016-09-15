@@ -119,15 +119,15 @@
       <tr>
         <td>{{ match.day }}</td>
         
-        {% if match.winner_fname == fname %}
+        {% if match.winner_fname.strip == player.firstname.strip and match.winner_lname.strip == player.lastname.strip %}
           <td>{{ match.loser_fname}} {{ match.loser_lname }}</td>
           <td>+{{ match.points }}</td>
+          <td>{{ match.winner_rating }}</td>
         {% else %}
           <td>{{ match.winner_fname}} {{ match.winner_lname }}</td>
           <td>-{{ match.points }}</td>
+          <td>{{ match.loser_rating }}</td>
         {% endif %}
-
-        <td>{{ playerStats.rating }}</td>
       </tr>
   {% endfor %}
       
