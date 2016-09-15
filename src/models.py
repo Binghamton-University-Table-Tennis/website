@@ -2,49 +2,47 @@ from django.db import models
 
 # Create your models here.
 class Greeting(models.Model):
-    time = models.DateTimeField('date created', auto_now_add=True)
+    Time = models.DateTimeField('date created', auto_now_add=True)
     
     class Meta:
         db_table = "visits"
         verbose_name_plural = "Visits"
-        
+
     def __unicode__(self):
-       return self.time
+       return self.Time
 
 class Players(models.Model):
-    id = models.IntegerField(primary_key=True)
-    last_name = models.CharField(max_length=10)
-    first_name = models.CharField(max_length=10)
-    rating = models.IntegerField()
-    matches_won = models.IntegerField(editable=False, default=0)
-    matches_played = models.IntegerField(editable=False, default=0)
-    win_rate =models.IntegerField(editable=False, default=0)
-    standing = models.IntegerField()
+    First_Name = models.CharField(max_length=10)
+    Last_Name = models.CharField(max_length=10)
+    Rating = models.IntegerField()
+    Matches_Won = models.IntegerField(editable=False, default=0)
+    Matches_Played = models.IntegerField(editable=False, default=0)
+    Win_Rate =models.IntegerField(editable=False, default=0)
+    Standing = models.IntegerField()
     
     class Meta:
         db_table = "players"
         verbose_name_plural = "Players"
-        
+
     def __unicode__(self):
-       return (self.first_name + " " + self.last_name)
+       return (self.First_Name + " " + self.Last_Name)
 
 class Matches(models.Model):
-    id = models.IntegerField(primary_key=True)
-    winner_first_name = models.CharField(max_length=10)
-    winner_last_name = models.CharField(max_length=10)
-    loser_first_name = models.CharField(max_length=10)
-    loser_last_name = models.CharField(max_length=10)
-    winner_score = models.IntegerField()
-    loser_score = models.IntegerField()
-    day = models.DateField()
-    points = models.IntegerField(editable=False)
-    winner_rating = models.IntegerField(editable=False)
-    loser_rating = models.IntegerField(editable=False)
+    Winner_First_Name = models.CharField(max_length=10)
+    Winner_Last_Name = models.CharField(max_length=10)
+    Loser_First_Name = models.CharField(max_length=10)
+    Loser_Last_Name = models.CharField(max_length=10)
+    Winner_Score = models.IntegerField()
+    Loser_Score = models.IntegerField()
+    Day = models.DateField()
+    Points = models.IntegerField(editable=False, default=0)
+    Winner_Rating = models.IntegerField(editable=False, default=0)
+    Loser_Rating = models.IntegerField(editable=False, default=0)
     
     class Meta:
         db_table = "matches"
         verbose_name_plural = "Matches"
-        
+
     def __unicode__(self):
-       return (self.winner_last_name + " vs " + self.loser_last_name)
+       return (self.Winner_Last_Name + " vs " + self.Loser_Last_Name)
     

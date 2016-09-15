@@ -13,7 +13,7 @@ def index(request):
     visit.save()
     
     # Grab all players in database
-    players = Players.objects.all().order_by('-rating')
+    players = Players.objects.all().order_by('-Rating')
     
     return render(request, 'index.html', {'players': players})
 
@@ -27,13 +27,13 @@ def log(request):
     
 def stats(request, player):
     name = player.split('_')
-    player = Players.objects.all().filter(first_name = name[0], last_name = name[1])
+    player = Players.objects.all().filter(First_Name = name[0], Last_Name = name[1])
     
-    matchesWon = Matches.objects.all().filter(winner_first_name = name[0], winner_last_name = name[1])
-    matchesLost = Matches.objects.all().filter(loser_first_name = name[0], loser_last_name = name[1])
+    matchesWon = Matches.objects.all().filter(Winner_First_Name = name[0], Winner_Last_Name = name[1])
+    matchesLost = Matches.objects.all().filter(Loser_First_Name = name[0], Loser_Last_Name = name[1])
     
     matches = matchesWon | matchesLost
-    matches.order_by('-day')
+    matches.order_by('-Day')
     
     return render(request, 'stats.html', {'player': player[0], 'matches': matches})
 
