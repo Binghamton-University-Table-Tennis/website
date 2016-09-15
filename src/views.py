@@ -27,10 +27,10 @@ def log(request):
     
 def stats(request, player):
     name = player.split('_')
-    player = Players.objects.all().filter(firstname = name[0], lastname = name[1])
+    player = Players.objects.all().filter(first_name = name[0], last_name = name[1])
     
-    matchesWon = Matches.objects.all().filter(winner_fname = name[0], winner_lname = name[1])
-    matchesLost = Matches.objects.all().filter(loser_fname = name[0], loser_lname = name[1])
+    matchesWon = Matches.objects.all().filter(winner_first_name = name[0], winner_last_name = name[1])
+    matchesLost = Matches.objects.all().filter(loser_first_name = name[0], loser_last_name = name[1])
     
     matches = matchesWon | matchesLost
     matches.order_by('-day')

@@ -23,7 +23,7 @@
     {% for player in players %}
     <tr>
       <th>{{ forloop.counter }}</th>
-      <th><a href="/stats/{{player.firstname}}_{{player.lastname}}">{{ player.firstname }} {{ player.lastname }}</a></th> 
+      <th><a href="/stats/{{player.first_name}}_{{player.last_name}}">{{ player.first_name }} {{ player.last_name }}</a></th> 
       <th>{{ player.rating }}</th>
     </tr>
     {% endfor %}
