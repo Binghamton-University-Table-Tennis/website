@@ -35,6 +35,7 @@
     }
     .navBarItems {
         height: 10px;
+        float: right;
     }
     .navbar+.jumbotron {
         margin-top: -20px
@@ -51,6 +52,9 @@
     }
     .jumbotron .lang-logo img {
         max-width: 100%
+    }
+    .login{
+        float: left;
     }
   </style>
 </head>
@@ -79,7 +83,7 @@
         <a href="/admin"><span class="glyphicon glyphicon-user"></span> Log In</a>
       </li>
       <li>
-        <form action="/stats/Eric_Haberli" class ="navBarItems"> <!-- Later fix to actually search ppl -->
+        <form action="/stats/Eric_Haberli" class="navBarItems"> <!-- Later fix to actually search ppl -->
             <input type="text" placeholder="Search people">
             <input type="submit" value="Submit">
         </form>

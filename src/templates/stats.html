@@ -18,6 +18,10 @@
     font-family: "Comic Sans MS";
     font-size: 20px;
   }
+  .wrapper{
+    margin-top: 50px;
+    
+  }
   table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -35,81 +39,83 @@
   
 </style>
 <div class="container">
-  <div class="row">
-    <div class="col-xs-3">
-      <div class="well info-bubble">
-        <p class="text-center">Class Standing</p>
-        <p class="text-center">Freshmen Pic</p>
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="well info-bubble">
+          <p class="text-center">Class Standing</p>
+          <p class="text-center">Freshmen Pic</p>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="well info-bubble">
+          <p class="text-center nametag">Quick Brown Fox</p>
+          <p class="text-center nametag">The Last Airbender</p>
+        </div>
+      </div>
+          <div class="col-xs-3">
+        <div class="well info-bubble">
+          <p class="text-center">Medal</p>
+          <p class="text-center">Bronze lol</p>
+        </div>
       </div>
     </div>
-    <div class="col-xs-6">
-      <div class="well info-bubble">
-        <p class="text-center nametag">Quick Brown Fox</p>
-        <p class="text-center nametag">The Last Airbender</p>
+    <br>
+    <div class="row">
+     <div class="col-xs-1"></div>
+      <div class="col-xs-2">
+        <div class="well middleTile">
+          <p class="text-center">Win Rate</p>
+          <p class="text-center">100 %</p>
+        </div>
+      </div>
+      <div class="col-xs-2"></div>
+      <div class="col-xs-2">
+        <div class="well middleTile">
+          <p class="text-center">Matches Played</p>
+          <p class="text-center">0</p>
+        </div>
+      </div>
+      <div class="col-xs-2"></div>
+          <div class="col-xs-2">
+        <div class="well middleTile">
+          <p class="text-center">Rating</p>
+          <p class="text-center">0</p>
+        </div>
       </div>
     </div>
-        <div class="col-xs-3">
-      <div class="well info-bubble">
-        <p class="text-center">Medal</p>
-        <p class="text-center">Bronze lol</p>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-   <div class="col-xs-1"></div>
-    <div class="col-xs-2">
-      <div class="well middleTile">
-        <p class="text-center">Win Rate</p>
-        <p class="text-center">100 %</p>
-      </div>
-    </div>
-    <div class="col-xs-2"></div>
-    <div class="col-xs-2">
-      <div class="well middleTile">
-        <p class="text-center">Matches Played</p>
-        <p class="text-center">0</p>
-      </div>
-    </div>
-    <div class="col-xs-2"></div>
-        <div class="col-xs-2">
-      <div class="well middleTile">
-        <p class="text-center">Rating</p>
-        <p class="text-center">0</p>
-      </div>
-    </div>
-  </div>
-  <br><br>
-  
-  <div class="row">
-    <h2 class="text-center">Match History</h2>
-    <table style="width:100%">
-      <tr class="text-center">
-        <th>Date</th>
-        <th>Opponent</th>
-        <th>Gain / Loss</th>
-        <th>Rating</th>
-      </tr>
-      
-  
-  {% for match in matches %}
-      <tr>
-        <td>{{ match.Day }}</td>
+    <br><br>
+    
+    <div class="row">
+      <h2 class="text-center">Match History</h2>
+      <table style="width:100%">
+        <tr class="text-center">
+          <th>Date</th>
+          <th>Opponent</th>
+          <th>Gain / Loss</th>
+          <th>Rating</th>
+        </tr>
         
-        {% if match.Winner_First_Name.strip == player.First_Name.strip and match.Winner_Last_Name.strip == player.Last_Name.strip %}
-          <td>{{ match.Loser_First_Name.strip}} {{ match.Loser_Last_Name.strip }}</td>
-          <td>+{{ match.Points }}</td>
-          <td>{{ match.Winner_Rating }}</td>
-        {% else %}
-          <td>{{ match.Winner_First_Name.strip}} {{ match.Winner_Last_Name.strip }}</td>
-          <td>-{{ match.Points }}</td>
-          <td>{{ match.Loser_Rating }}</td>
-        {% endif %}
-      </tr>
-  {% endfor %}
-      
-      
-    </table>
+    
+    {% for match in matches %}
+        <tr>
+          <td>{{ match.Day }}</td>
+          
+          {% if match.Winner_First_Name.strip == player.First_Name.strip and match.Winner_Last_Name.strip == player.Last_Name.strip %}
+            <td>{{ match.Loser_First_Name.strip}} {{ match.Loser_Last_Name.strip }}</td>
+            <td>+{{ match.Points }}</td>
+            <td>{{ match.Winner_Rating }}</td>
+          {% else %}
+            <td>{{ match.Winner_First_Name.strip}} {{ match.Winner_Last_Name.strip }}</td>
+            <td>-{{ match.Points }}</td>
+            <td>{{ match.Loser_Rating }}</td>
+          {% endif %}
+        </tr>
+    {% endfor %}
+        
+        
+      </table>
+    </div>
   </div>
 </div>
 
