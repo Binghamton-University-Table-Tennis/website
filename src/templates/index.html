@@ -16,14 +16,20 @@
     
     <tr>
       <th>Rank</th>
-      <th>Name</th> 
+      <!--<th>Change</th>-->
+      <th>Name</th>
+      <th>Wins</th>
+      <th>Loses</th>
       <th>Rating</th>
     </tr>
     
     {% for player in players %}
     <tr>
       <th>{{ forloop.counter }}</th>
-      <th><a href="/stats/{{player.first_name}}_{{player.last_name}}">{{ player.first_name }} {{ player.last_name }}</a></th> 
+      <!--<th class="center">0</th>-->
+      <th><a href="/stats/{{player.first_name}}_{{player.last_name}}">{{ player.first_name }} {{ player.last_name }}</a></th>
+      <th>0</th>
+      <th>0</th>
       <th>{{ player.rating }}</th>
     </tr>
     {% endfor %}
