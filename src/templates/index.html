@@ -19,7 +19,7 @@
       <!--<th>Change</th>-->
       <th>Name</th>
       <th>Wins</th>
-      <th>Loses</th>
+      <th>Losses</th>
       <th>Rating</th>
     </tr>
     
@@ -28,8 +28,8 @@
       <th>{{ forloop.counter }}</th>
       <!--<th class="center">0</th>-->
       <th><a href="/stats/{{player.First_Name}}_{{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
-      <th>0</th>
-      <th>0</th>
+      <th> {{player.Matches_Won }} </th>
+      <th> {{player.Matches_Lost }}  </th>
       <th>{{ player.Rating }}</th>
     </tr>
     {% endfor %}

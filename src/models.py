@@ -16,6 +16,7 @@ class Players(models.Model):
     Last_Name = models.CharField(max_length=10)
     Rating = models.IntegerField()
     Matches_Won = models.IntegerField(editable=False, default=0)
+    Matches_Lost = models.IntegerField(editable=False, default=0)
     Matches_Played = models.IntegerField(editable=False, default=0)
     Win_Rate =models.IntegerField(editable=False, default=0)
     Standing = models.IntegerField()

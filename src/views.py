@@ -6,6 +6,7 @@ from .models import Players
 from .models import Matches
 from LogTest import * 
 
+#updates player's stats only if they haven't been updated, occurs before the page is rendered
 def checkForUpdates():
     notYetUpdated = Matches.objects.all().filter(Updated = 0).order_by('Day')
     for m in notYetUpdated:
@@ -28,8 +29,11 @@ def checkForUpdates():
             w.Rating = winPts[0]
             l.Rating = winPts[1]
             
+            w.Matches_Played += 1
             l.Matches_Played += 1
+            
             w.Matches_Won += 1
+            l.Matches_Lost += 1
             
             w.Win_Rate = winnerMatchesWon / winnerMatchesPlayed
             l.Win_Rate = loserMatchesWon / loserMatchesPlayed
@@ -49,7 +53,10 @@ def index(request):
     # Store this visit to front page in the database
     visit = Greeting()
     visit.save()
+    
+    # Check if there are matches to be processed
     checkForUpdates()
+    
     # Grab all players in database
     players = Players.objects.all().order_by('-Rating')
    
@@ -64,6 +71,10 @@ def log(request):
     return render(request, 'log.html', {'visits': visits})
     
 def stats(request, player):
+    
+    # Check if there are matches to be processed
+    checkForUpdates()
+    
     name = player.split('_')
     player = Players.objects.all().filter(First_Name = name[0], Last_Name = name[1])
     
