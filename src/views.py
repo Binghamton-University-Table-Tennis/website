@@ -23,7 +23,7 @@ def checkForUpdates():
 
             winnerMatchesPlayed = w.Matches_Played + 1
             loserMatchesPlayed = l.Matches_Played + 1
-            winnerMatchesWon = w.Matches_Won
+            winnerMatchesWon = w.Matches_Won + 1
             loserMatchesWon = l.Matches_Won
             
             w.Rating = winPts[0]
@@ -35,8 +35,9 @@ def checkForUpdates():
             w.Matches_Won += 1
             l.Matches_Lost += 1
             
-            w.Win_Rate = winnerMatchesWon / winnerMatchesPlayed
-            l.Win_Rate = loserMatchesWon / loserMatchesPlayed
+            # Calculate win rate - need to use floats to force floating point arithmetic
+            w.Win_Rate = int((float(winnerMatchesWon) / winnerMatchesPlayed)*100)
+            l.Win_Rate = int((float(loserMatchesWon) / loserMatchesPlayed)*100)
             
             w.save()
             l.save()
@@ -84,5 +85,25 @@ def stats(request, player):
     matches = matchesWon | matchesLost
     matches.order_by('-Day')
     
-    return render(request, 'stats.html', {'player': player[0], 'matches': matches})
+    medal = getMedal(player[0].Rating)
+    
+    return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal})
 
+def getMedal(rating):
+    medal = ""
+    if rating <= 1050:
+        medal = "Bronze"
+    elif rating <= 1100:
+        medal = "Silver"
+    elif rating <= 1150:
+        medal = "Gold"
+    elif rating <= 1200:
+        medal = "Platinum"
+    elif rating <= 1250:
+        medal = "Diamond"
+    elif rating <= 1300:
+        medal = "Crystal"
+    else:
+        medal = "Ruby"
+        
+    return medal

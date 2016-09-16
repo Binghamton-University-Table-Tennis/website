@@ -44,19 +44,19 @@
       <div class="col-xs-3">
         <div class="well info-bubble">
           <p class="text-center">Class Standing</p>
-          <p class="text-center">Freshmen Pic</p>
+          <p class="text-center">{{ player.Standing }}</p>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="well info-bubble">
-          <p class="text-center nametag">Quick Brown Fox</p>
-          <p class="text-center nametag">The Last Airbender</p>
+          <p class="text-center nametag">Name</p>
+          <p class="text-center nametag">{{ player.First_Name.strip }} {{player.Last_Name.strip }}</p>
         </div>
       </div>
           <div class="col-xs-3">
         <div class="well info-bubble">
           <p class="text-center">Medal</p>
-          <p class="text-center">Bronze lol</p>
+          <p class="text-center">{{ medal }}</p>
         </div>
       </div>
     </div>
@@ -66,21 +66,21 @@
       <div class="col-xs-2">
         <div class="well middleTile">
           <p class="text-center">Win Rate</p>
-          <p class="text-center">100 %</p>
+          <p class="text-center">{{ player.Win_Rate }}%</p>
         </div>
       </div>
       <div class="col-xs-2"></div>
       <div class="col-xs-2">
         <div class="well middleTile">
           <p class="text-center">Matches Played</p>
-          <p class="text-center">0</p>
+          <p class="text-center">{{ player.Matches_Played }}</p>
         </div>
       </div>
       <div class="col-xs-2"></div>
           <div class="col-xs-2">
         <div class="well middleTile">
           <p class="text-center">Rating</p>
-          <p class="text-center">0</p>
+          <p class="text-center">{{ player.Rating }}</p>
         </div>
       </div>
     </div>
