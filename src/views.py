@@ -11,35 +11,37 @@ def checkForUpdates():
     for m in notYetUpdated:
         winner = Players.objects.all().filter(First_Name = m.Winner_First_Name, Last_Name = m.Winner_Last_Name)
         loser = Players.objects.all().filter(First_Name = m.Loser_First_Name, Last_Name = m.Loser_Last_Name)
-        win = winner[0].Rating
-        lose = loser[0].Rating
-        winPts = logRating(win, lose)
+        win = 0
+        lose = 0
+        winPts = []
 
+        for w, l in zip(winner, loser):
+            win = w.Rating
+            lose = l.Rating
+            winPts = logRating(win, lose)
+
+            winnerMatchesPlayed = w.Matches_Played + 1
+            loserMatchesPlayed = l.Matches_Played + 1
+            winnerMatchesWon = w.Matches_Won
+            loserMatchesWon = l.Matches_Won
+            
+            w.Rating = winPts[0]
+            l.Rating = winPts[1]
+            
+            l.Matches_Played += 1
+            w.Matches_Won += 1
+            
+            w.Win_Rate = winnerMatchesWon / winnerMatchesPlayed
+            l.Win_Rate = loserMatchesWon / loserMatchesPlayed
+            
+            w.save()
+            l.save()
+        
         m.Points = winPts[2]
         m.Winner_Rating = winPts[0]
         m.Loser_Rating = winPts[1]
-        winnerMatchesPlayed = winner[0].Matches_Played + 1
-        loserMatchesPlayed = loser[0].Matches_Played + 1
-        winnerMatchesWon = winner[0].Matches_Won
-        loserMatchesWon = loser[0].Matches_Won
-
         m.Updated = 1
         m.save()
-
-        winner[0].Rating = winPts[0]
-        loser[0].Rating = winPts[1]
-        
-        loser[0].Matches_Played += 1
-        winner[0].Matches_Won += 1
-        
-        winner[0].Win_Rate = winnerMatchesWon / winnerMatchesPlayed
-        loser[0].Win_Rate = loserMatchesWon / loserMatchesPlayed
-        
-        for w in winner:
-            w.save(update_fields= ['Rating', 'Matches_Played']);
-        for l in loser:
-            l.save()
-        
 
 # Create your views here.
 def index(request):
