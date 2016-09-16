@@ -53,8 +53,9 @@
     .jumbotron .lang-logo img {
         max-width: 100%
     }
-    .login{
-        float: left;
+    a:hover{
+        color: red;
+        font-size: 20px;
     }
   </style>
 </head>
@@ -78,14 +79,14 @@
 <body onload="update()">
 <nav class="navigationBar">
   <div class="container">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
       <li>
-        <a href="/admin"><span class="glyphicon glyphicon-user"></span> Log In</a>
+        <a href="/admin"><span class="glyphicon glyphicon-user" style="margin-top: 10px"></span> Log In</a>
       </li>
       <li>
-        <form action="/stats/Eric_Haberli" class="navBarItems"> <!-- Later fix to actually search ppl -->
+        <form action="/stats/Eric_Haberli" class="navBarItems" style="top: 10px; right: 16px; position: absolute"> <!-- Later fix to actually search ppl -->
             <input type="text" placeholder="Search people">
-            <input type="submit" value="Submit">
+            <button class = "glyphicon glyphicon-search" style="color: #042033"></button>
         </form>
       </li>
     </ul>

@@ -38,6 +38,7 @@ class Matches(models.Model):
     Points = models.IntegerField(editable=False, default=0)
     Winner_Rating = models.IntegerField(editable=False, default=0)
     Loser_Rating = models.IntegerField(editable=False, default=0)
+    Updated = models.IntegerField(editable=False, default=0)
     
     class Meta:
         db_table = "matches"
