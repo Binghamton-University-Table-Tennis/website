@@ -79,6 +79,15 @@
         }
     }
 </script>
+
+// setup autocomplete function pulling from players
+  $('#autocomplete').autocomplete({
+    lookup: players,
+    onSelect: function (suggestion) {
+      var thehtml = '<strong>Player Name:</strong> ' + suggestion.value + ' <br> <strong>Symbol:</strong> ' + suggestion.data;
+      $('#outputcontent').html(thehtml);
+    }
+  });
 -->
 <body onload="update()">
 <nav class="navigationBar">
@@ -88,7 +97,7 @@
         <a href="/admin"><span class="glyphicon glyphicon-user" style="margin-top: 10px"></span> Log In</a>
       </li>
       <li>
-        <form action="/stats/Eric_Haberli" class="navBarItems" style="top: 10px; right: 16px; position: absolute"> <!-- Later fix to actually search ppl -->
+        <form action="/stats/Eric_Haberli" class="navBarItems" style="top: 10px; right: 16px; position: absolute" autocomplete = "on"> <!-- Later fix to actually search ppl -->
             <input type="text" placeholder="Search people">
             <button class = "glyphicon glyphicon-search" style="color: #042033"></button>
         </form>

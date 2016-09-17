@@ -3,7 +3,7 @@ import math
 # Actual table tennis rating system: http://www.teamusa.org/usa-table-tennis/ratings/how-does-the-usatt-rating-system-work
 
 #first paramater is always who won. we calculate the gap based of their difference after the fact
-def logRating(winRating, loseRating):
+def calculateRatings(winRating, loseRating):
     gap = winRating - loseRating
     oldWinRating = winRating
     #handle expected match turnouts
