@@ -82,7 +82,7 @@ def unitTest1(): # win vs same rating
     personB = 1000
     for i in range(100):
         temp1, temp2 = personA, personA
-        personA, personB = logRating(personA,personA)
+        personA, personB = calculateRatings(personA,personA)
         print temp1, temp2, personA, personB, personA-temp1, personB-temp2, personA-personB
         
 
@@ -93,7 +93,7 @@ def unitTest2(): # A wins all against same player
     for i in range(100):
         temp1 = personA
         temp2 = personB
-        personA, personB = logRating(personA, personB)
+        personA, personB = calculateRatings(personA, personB)
         print personA, personB, personA-temp1, personB-temp2, personA-personB
         
 
@@ -104,7 +104,7 @@ def unitTest3(): # A wins all against same player
     for i in range(100):
         temp1 = personA
         temp2 = personB
-        personA, personB = logRating(personA, personB)
+        personA, personB = calculateRatings(personA, personB)
         print personA, personB, personA-temp1, personB-temp2, personA-personB
     
 #unitTest3()
