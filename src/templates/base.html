@@ -23,30 +23,16 @@
         max-width: 75%;
         margin: 1em auto 2em
     }
-    .navigationBar {
-        background-color: #042033;
-        position: fixed;
-        width: 100%;
-        height: 40px;
-        opacity: 1;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-    .navBarItems {
-        height: 10px;
-        float: right;
-    }
-    .navbar+.jumbotron {
-        margin-top: -20px
+    .navbar {
+        background-color: #4FEF55;
     }
     .jumbotron .lang-logo {
         display: block;
         background: #b01302;
         border-radius: 50%;
         overflow: hidden;
-        width: 150px;
-        height: 150px;
+        width: 50px;
+        height: 50px;
         margin: auto;
         border: 2px solid white
     }
@@ -57,7 +43,6 @@
         color: black;
     }
     a:hover{
-        text-decoration:none;
         color: #0e7a9e;
         
     }
@@ -90,23 +75,30 @@
   });
 -->
 <body onload="update()">
-<nav class="navigationBar">
-  <div class="container">
-    <ul class="navbar-nav">
-      <li>
-        <a href="/admin"><span class="glyphicon glyphicon-user" style="margin-top: 10px"></span> Log In</a>
-      </li>
-      <li>
-        <form action="/stats/Eric_Haberli" class="navBarItems" style="top: 10px; right: 16px; position: absolute" autocomplete = "on"> <!-- Later fix to actually search ppl -->
-            <input type="text" placeholder="Search people">
-            <button class = "glyphicon glyphicon-search" style="color: #042033"></button>
-        </form>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand glyphicon glyphicon-leaf" href="/"></a></li>
+          <li><a href="/">Home</a></li>
+          <li><form action="/stats/Eric_Haberli" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
+              <div class="input-group">
+                <input type="text" class="form-control" id="srch-term" placeholder="Find person">
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default glyphicon glyphicon-search" style="background-color: #EEE"></button>
+                </div>
+              </div>
+            </form></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin">About Us</a></li>
+          <li><a href="/admin">Rules</a></li>
+          <li><a href="/admin">Contact</a></li>
+          <li class><a href="/admin"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 {% block content %}{% endblock %}
-
 </body>
 </html>
