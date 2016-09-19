@@ -97,19 +97,19 @@ def stats(request, player):
 
 def getMedal(rating):
     medal = ""
-    if rating <= 1050:
+    if rating < 1050:
         medal = "Bronze"
-    elif rating <= 1100:
+    elif rating < 1100:
         medal = "Silver"
-    elif rating <= 1150:
+    elif rating < 1150:
         medal = "Gold"
-    elif rating <= 1200:
+    elif rating < 1200:
+        medal = "Ruby"
+    elif rating < 1250:
         medal = "Platinum"
-    elif rating <= 1250:
-        medal = "Diamond"
-    elif rating <= 1300:
+    elif rating < 1300:
         medal = "Crystal"
     else:
-        medal = "Ruby"
+        medal = "Diamond"
         
     return medal
