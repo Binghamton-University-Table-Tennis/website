@@ -106,9 +106,28 @@ def stats(request, player):
     matches.order_by('-Day')
     
     medal = getMedal(player[0].Rating)
+    standing = getStanding(player[0].Standing)
     
-    return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal})
-
+    return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal, 'standing': standing})
+    
+def getStanding(standing):
+    classStanding = ""
+    
+    if standing == 1:
+        classStanding = "Freshman"
+    elif standing == 2:
+        classStanding = "Sophomore"   
+    elif standing == 3:
+        classStanding = "Junior"  
+    elif standing == 4:
+        classStanding = "Senior"  
+    elif standing == 5:
+        classStanding = "Grad"
+    else:
+        classStanding = "Unknown"
+    
+    return classStanding
+        
 def getMedal(rating):
     medal = ""
     if rating < 1050:
