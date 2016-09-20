@@ -55,8 +55,15 @@ def checkForUpdates():
         m.save()
 
 # Create your views here.
-def index(request):
-   
+
+def about(request):
+    return render(request, 'about.html', {})
+    
+def rules(request):
+    return render(request, 'rules.html', {})
+
+def ladder(request):
+    
     # Store this visit to front page in the database
     visit = Greeting()
     visit.save()
@@ -67,7 +74,14 @@ def index(request):
     # Grab all players in database
     players = Players.objects.all().order_by('-Rating')
    
-    return render(request, 'index.html', {'players': players})
+    return render(request, 'ladder.html', {'players': players})
+    
+def contact(request):
+    return render(request, 'contact.html', {})
+    
+def index(request):
+   
+    return render(request, 'index.html', {})
 
 
 def log(request):

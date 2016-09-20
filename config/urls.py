@@ -12,6 +12,10 @@ import src.views
 urlpatterns = [
     url(r'^$', src.views.index, name='index'),
     url(r'^log', src.views.log, name='log'),
+    url(r'^about', src.views.about, name='about'),
+    url(r'^ladder', src.views.ladder, name='ladder'),
+    url(r'^contact', src.views.contact, name='contact'),
+    url(r'^rules', src.views.rules, name='rules'),
     url(r'^stats/(?P<player>.*)', src.views.stats, name='stats'),
     url(r'^admin/', include(admin.site.urls)),
 ]
