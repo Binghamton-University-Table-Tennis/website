@@ -68,9 +68,6 @@ def ladder(request):
     visit = Greeting()
     visit.save()
     
-    # Check if there are matches to be processed
-    checkForUpdates()
-    
     # Grab all players in database
     players = Players.objects.all().order_by('-Rating')
    
@@ -92,10 +89,7 @@ def log(request):
     return render(request, 'log.html', {'visits': visits})
     
 def stats(request, player):
-    
-    # Check if there are matches to be processed
-    checkForUpdates()
-    
+
     name = player.split('_')
     player = Players.objects.all().filter(First_Name = name[0], Last_Name = name[1])
     
