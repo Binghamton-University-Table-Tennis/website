@@ -28,7 +28,15 @@
   }
   
   th {
-    background-color: #5abc12;
+    background-color: #CFCFCF;
+  }
+  
+  .winRow td {
+    background-color: #00AA00;
+  }
+  
+  .loseRow td {
+    background-color: #FF7777;
   }
   
   tr:nth-child(even) {
@@ -97,21 +105,24 @@
         
     
     {% for match in matches %}
-        <tr>
-          <td>{{ match.Day }}</td>
-          
+
           {% if match.Winner_First_Name.strip == player.First_Name.strip and match.Winner_Last_Name.strip == player.Last_Name.strip %}
-            <td>{{ match.Loser_First_Name.strip}} {{ match.Loser_Last_Name.strip }}</td>
-            <td>{{ match.Winner_Score}}-{{ match.Loser_Score }}</td>
-            <td>+{{ match.Points }}</td>
-            <td>{{ match.Winner_Rating }}</td>
+            <tr class="winRow">
+              <td>{{ match.Day }}</td>
+              <td>{{ match.Loser_First_Name.strip}} {{ match.Loser_Last_Name.strip }}</td>
+              <td>{{ match.Winner_Score}}-{{ match.Loser_Score }}</td>
+              <td>+{{ match.Points }}</td>
+              <td>{{ match.Winner_Rating }}</td>
+            </tr>
           {% else %}
-            <td>{{ match.Winner_First_Name.strip}} {{ match.Winner_Last_Name.strip }}</td>
-            <td>{{ match.Loser_Score}}-{{ match.Winner_Score }}</td>
-            <td>-{{ match.Points }}</td>
-            <td>{{ match.Loser_Rating }}</td>
+            <tr class="loseRow">
+              <td>{{ match.Day }}</td>
+              <td>{{ match.Winner_First_Name.strip}} {{ match.Winner_Last_Name.strip }}</td>
+              <td>{{ match.Loser_Score}}-{{ match.Winner_Score }}</td>
+              <td>-{{ match.Points }}</td>
+              <td>{{ match.Loser_Rating }}</td>
+            </tr>
           {% endif %}
-        </tr>
     {% endfor %}
         
         
