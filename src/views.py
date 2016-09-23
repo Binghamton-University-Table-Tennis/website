@@ -96,9 +96,8 @@ def stats(request, player):
     matchesWon = Matches.objects.all().filter(Winner_First_Name = name[0], Winner_Last_Name = name[1])
     matchesLost = Matches.objects.all().filter(Loser_First_Name = name[0], Loser_Last_Name = name[1])
     
-    matches = matchesWon | matchesLost
-    matches.order_by('-Day')
-    
+    matches = (matchesWon | matchesLost).order_by('-Day')
+
     medal = getMedal(player[0].Rating)
     standing = getStanding(player[0].Standing)
     
