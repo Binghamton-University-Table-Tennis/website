@@ -92,7 +92,7 @@ def log(request):
     
 def stats(request, player):
 
-    name = player.split()
+    name = player.title().split()
     
     if len(name) != 2:
         return render(request, 'index.html', {'error': True})
