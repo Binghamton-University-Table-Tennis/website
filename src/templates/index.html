@@ -2,7 +2,12 @@
 {% load staticfiles %}
 
 {% block content %}
-
+ 
+{% if error == True %}
+<div class="alert alert-warning">
+  <strong>Player not found!</strong>
+</div>
+{% endif %}
 <div class="jumbotron text-center">
   <div class="container-fluid">
     <div class="lang-logo">

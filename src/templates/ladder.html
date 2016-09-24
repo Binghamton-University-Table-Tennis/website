@@ -20,7 +20,7 @@
     {% for player in players %}
     <tr>
       <th>{{ forloop.counter }}</th>
-      <th><a href="/stats/{{player.First_Name}}_{{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
+      <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
       <th> {{player.Matches_Won }} </th>
       <th> {{player.Matches_Lost }}  </th>
       <th>{{ player.Rating }}</th>

@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
 
 from .models import Greeting
 from .models import Players
 from .models import Matches
 from Ratings import * 
+
 
 #updates player's stats only if they haven't been updated, function called before the page is rendered.
 #after an unaccounted match is taken care of towards a player's score, the updated is marked true in the match table stored in the database
@@ -78,7 +80,7 @@ def contact(request):
     
 def index(request):
    
-    return render(request, 'index.html', {})
+    return render(request, 'index.html', {'error': False})
 
 
 def log(request):
@@ -90,8 +92,15 @@ def log(request):
     
 def stats(request, player):
 
-    name = player.split('_')
+    name = player.split()
+    
+    if len(name) != 2:
+        return render(request, 'index.html', {'error': True})
+    
     player = Players.objects.all().filter(First_Name = name[0], Last_Name = name[1])
+
+    if len(player) != 1:
+        return render(request, 'index.html', {'error': True})
     
     matchesWon = Matches.objects.all().filter(Winner_First_Name = name[0], Winner_Last_Name = name[1])
     matchesLost = Matches.objects.all().filter(Loser_First_Name = name[0], Loser_Last_Name = name[1])
@@ -139,3 +148,8 @@ def getMedal(rating):
         medal = "Diamond"
         
     return medal
+    
+def search(request):
+    result = request.GET.get('searchName')
+    return redirect('stats', player=result)
+    

@@ -108,9 +108,9 @@
         <ul class="nav navbar-nav">
           <li><a class="navbar-brand glyphicon glyphicon-leaf" href="/"></a></li>
           <li><a href="/">Home</a></li>
-          <li><form action="/stats/Eric_Haberli" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
+          <li><form action="/search" method="GET" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
               <div class="input-group">
-                <input type="text" class="form-control" id="srch-term" placeholder="Find person">
+                <input type="text" name="searchName" class="form-control" id="srch-term" placeholder="Find person">
                 <div class="input-group-btn">
                   <button type="submit" class="btn btn-default glyphicon glyphicon-search" style="background-color: #EEE"></button>
                 </div>

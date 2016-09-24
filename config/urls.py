@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^rules', src.views.rules, name='rules'),
     url(r'^stats/(?P<player>.*)', src.views.stats, name='stats'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^search/', src.views.search, name='search'),
 ]
