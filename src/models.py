@@ -12,8 +12,8 @@ class Greeting(models.Model):
        return self.Time
 
 class Players(models.Model):
-    First_Name = models.CharField(max_length=10)
-    Last_Name = models.CharField(max_length=10)
+    First_Name = models.CharField(max_length=20)
+    Last_Name = models.CharField(max_length=20)
     Rating = models.IntegerField()
     Matches_Won = models.IntegerField(editable=False, default=0)
     Matches_Lost = models.IntegerField(editable=False, default=0)
@@ -29,10 +29,10 @@ class Players(models.Model):
        return (self.First_Name + " " + self.Last_Name)
 
 class Matches(models.Model):
-    Winner_First_Name = models.CharField(max_length=10)
-    Winner_Last_Name = models.CharField(max_length=10)
-    Loser_First_Name = models.CharField(max_length=10)
-    Loser_Last_Name = models.CharField(max_length=10)
+    Winner_First_Name = models.CharField(max_length=20)
+    Winner_Last_Name = models.CharField(max_length=20)
+    Loser_First_Name = models.CharField(max_length=20)
+    Loser_Last_Name = models.CharField(max_length=20)
     Winner_Score = models.IntegerField()
     Loser_Score = models.IntegerField()
     Day = models.DateField()
