@@ -7,16 +7,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <style type="text/css">
-    body { padding-top: 70px; }
+    html {
+      background: url('https://dl.dropboxusercontent.com/u/80056253/Table%20Tennis%20Website%20Images/campus.jpg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body { 
+      padding-top: 70px;
+      color: black;
+      font-size: 3;
+      background-color: rgba(255,255,255, 0.7);
+    }
     .jumbotron {
-        background-image: url('https://henryjgentledotcom.files.wordpress.com/2016/05/background_45-01.jpg');
+        background-color: #007451;
         background-position: 0% 25%;
         background-size: cover;
         background-repeat: no-repeat;
-        color: white;
+        padding-top: 100px;
         padding-bottom: 160px;
         margin-top:-20px;
         text-shadow: black 0.1em 0.1em 0.1em;
+        
     }
     .jumbotron .btn-primary {
         background: #84aac0;
@@ -31,7 +44,7 @@
         margin: 1em auto 2em
     }
     .navbar {
-        background-color: #266294;
+        background-color: #007451;
         box-shadow: 2px 2px 2px #555;
         z-index: 999;
     }
@@ -43,14 +56,12 @@
     }
     .jumbotron .lang-logo {
         display: block;
-        background: #b01302;
-        border-radius: 50%;
+        border-radius: 70%;
         overflow: hidden;
         width: 150px;
         height: 150px;
         margin: auto;
-        border: 2px solid white
-    }
+      }
     .jumbotron .lang-logo img {
         max-width: 100%
     }
@@ -69,10 +80,16 @@
       bottom: 0;
       padding-top: 20px;
       padding-bottom: 30px;
-      background-color: #2f2f2f; /* Black Gray */
+      background-color: #007451; /* Binghamton Green */
       color: #fff;
       font-family:Comic Sans MS;
       font-size:150%;
+    }
+    .container img {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
   </style>
 </head>
@@ -102,9 +119,9 @@
     }
   });
 -->
-<body onload="update()">
+<body onload="update()" class="container">
   <nav class="navbar navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container">
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li><a class="navbar-brand glyphicon glyphicon-leaf" href="/"></a></li>
