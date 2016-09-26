@@ -45,7 +45,7 @@
         margin: 1em auto 2em
     }
     .nav {
-        padding-right: 20px;
+        padding-right: 15px;
     }
     .navbar {
         background-color: #007451;
@@ -106,8 +106,7 @@
 
 <body onload="update()" class="container">
    <nav class="navbar">
-    <div class="container">
-      <div class="collapse navbar-collapse" id="myNavbar">
+
         <ul class="nav navbar-nav">
           <li><a href="/">Home</a></li>
           <li><form action="/search" method="GET" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
@@ -125,8 +124,7 @@
           <li><a href="/rules">Rules</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
-      </div>
-    </div>
+
   </nav>
 <br>
 {% block content %}{% endblock %}
