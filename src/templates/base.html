@@ -103,32 +103,7 @@
     }
   </style>
 </head>
-<!--
-<script>
-    var people = ["name1", "name2", "name3", "name4", "name5", "name6", "name7", "name8", "name9", "name10", "name11", "name12", "name13"];
-    var rating = 1000;
-    var i = 0;
-    
-    function insertPerson(name){
-        people.push(name);
-        
-    }
-    function update(){
-        for(i = 0; i < people.length; i++){
-            document.getElementById("rankTable").innerHTML += "<tr><td>" + (i+1) + "</td><td>" + people[i] + "</td><td>" + rating + "</td></tr>";
-        }
-    }
-</script>
 
-// setup autocomplete function pulling from players
-  $('#autocomplete').autocomplete({
-    lookup: players,
-    onSelect: function (suggestion) {
-      var thehtml = '<strong>Player Name:</strong> ' + suggestion.value + ' <br> <strong>Symbol:</strong> ' + suggestion.data;
-      $('#outputcontent').html(thehtml);
-    }
-  });
--->
 <body onload="update()" class="container">
    <nav class="navbar">
     <div class="container">
