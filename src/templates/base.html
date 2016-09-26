@@ -16,7 +16,6 @@
       height: 100%;
     }
     body { 
-      padding-top: 90px;
       padding-bottom: 20px;
       color: black;
       font-size: 3;
@@ -44,6 +43,9 @@
         color: #d9ccee;
         max-width: 75%;
         margin: 1em auto 2em
+    }
+    .nav {
+        padding-right: 20px;
     }
     .navbar {
         background-color: #007451;
@@ -100,6 +102,29 @@
       margin: auto;
     }
   </style>
+  <nav class="navbar">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><form action="/search" method="GET" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
+              <div class="input-group">
+                <input type="text" name="searchName" class="form-control" id="srch-term" placeholder="Find person">
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default glyphicon glyphicon-search" style="background-color: #EEE"></button>
+                </div>
+              </div>
+            </form></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/ladder">Ladder</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/rules">Rules</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </head>
 <!--
 <script>
@@ -128,29 +153,7 @@
   });
 -->
 <body onload="update()" class="container">
-  <nav class="navbar navbar-fixed-top">
-    <div class="container">
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
-          <li><form action="/search" method="GET" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
-              <div class="input-group">
-                <input type="text" name="searchName" class="form-control" id="srch-term" placeholder="Find person">
-                <div class="input-group-btn">
-                  <button type="submit" class="btn btn-default glyphicon glyphicon-search" style="background-color: #EEE"></button>
-                </div>
-              </div>
-            </form></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/ladder">Ladder</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/rules">Rules</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<br>
 {% block content %}{% endblock %}
 <footer class="container-fluid text-center footer-settings">
   <div><p>Check out our Facebook page!</p></div>
