@@ -50,11 +50,12 @@ def checkForUpdates():
             w.save()
             l.save()
         
-        m.Points = winPts[2]
-        m.Winner_Rating = winPts[0]
-        m.Loser_Rating = winPts[1]
-        m.Updated = 1
-        m.save()
+        if len(winPts) != 0:
+            m.Points = winPts[2]
+            m.Winner_Rating = winPts[0]
+            m.Loser_Rating = winPts[1]
+            m.Updated = 1
+            m.save()
 
 
 checkForUpdates()
