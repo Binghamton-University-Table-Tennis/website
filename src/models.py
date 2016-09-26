@@ -14,12 +14,12 @@ class Greeting(models.Model):
 class Players(models.Model):
     First_Name = models.CharField(max_length=20)
     Last_Name = models.CharField(max_length=20)
-    Rating = models.IntegerField()
+    Rating = models.IntegerField(editable=False, default=1000)
     Matches_Won = models.IntegerField(editable=False, default=0)
     Matches_Lost = models.IntegerField(editable=False, default=0)
     Matches_Played = models.IntegerField(editable=False, default=0)
     Win_Rate =models.IntegerField(editable=False, default=0)
-    Standing = models.IntegerField()
+    Standing = models.IntegerField(choices=[(x, x) for x in range(1, 6)])
     
     class Meta:
         db_table = "players"
