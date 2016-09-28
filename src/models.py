@@ -35,7 +35,7 @@ class Matches(models.Model):
     Loser_Last_Name = models.CharField(max_length=20)
     Winner_Score = models.IntegerField()
     Loser_Score = models.IntegerField()
-    Day = models.DateField()
+    Day = models.DateTimeField('date created', auto_now_add=True, editable=False)
     Points = models.IntegerField(editable=False, default=0)
     Winner_Rating = models.IntegerField(editable=False, default=0)
     Loser_Rating = models.IntegerField(editable=False, default=0)
