@@ -20,7 +20,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -102,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Eastern'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
