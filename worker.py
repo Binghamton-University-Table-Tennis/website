@@ -59,6 +59,10 @@ def checkForUpdates():
             w.Win_Rate = int((float(winnerMatchesWon) / winnerMatchesPlayed)*100)
             l.Win_Rate = int((float(loserMatchesWon) / loserMatchesPlayed)*100)
             
+            # Mark player as having played this week (+10 points per week)
+            w.Played_This_Week = 1
+            l.Played_This_Week = 1
+            
             w.save()
             l.save()
         
