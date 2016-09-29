@@ -24,6 +24,12 @@ table{
   <table class="table-hover center" id="rankTable" style="width:100%">
     
     <tr>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
       <th>Rank</th>
       <th>Name</th>
       <th>Wins</th>
@@ -32,6 +38,12 @@ table{
     </tr>
     {% for player in players %}
     <tr>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
       <th>{{ forloop.counter }}</th>
       <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
       <th> {{player.Matches_Won }} </th>
