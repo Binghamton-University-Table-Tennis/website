@@ -101,11 +101,6 @@
       max-width: 1000px;
       margin: auto;
     }
-    
-    table, th, td {
-      text-align: center;
-    }
-
   </style>
 </head>
 
@@ -133,38 +128,26 @@
   </nav>
 {% block content %}{% endblock %}
 <footer class="container-fluid text-center footer-settings">
-  <div><p><u><a href="https://www.facebook.com/groups/binghamtontabletennis/" style="color:white;" target="_blank">Check out our Facebook page!</a></u></p></div>
-  
-  <table id="rankTable" style="width:100%">
-  <colgroup>
-    <col style="width: 33%" />
-    <col style="width: 33%" />
-    <col style="width: 33%" />
-  </colgroup>
-    <tr class="text-center">
-      <th>Binghamton University</th>
-        <th>E-Board Members</th>
-      <th>Practices at West Gym Lobby</th>
-    
-    </tr>
-  
-    <tr class="text-center">
-      <th>4400 Vestal Pkwy E</th>
-            <th>Co-Presidents: Eric Haberli & Jeffrey Chan</th>
-
-      <th>Mondays and Thursdays</th>
-    </tr>
-
-    <tr class="text-center">
-      <th>Binghamton, NY 13902</th>
-            <th>Secretary/Treasurer: Richard Zhang</th>
-
-      <th>From 8PM to 10PM</th>
-    </tr>
-  </table>
-  
-  
-
+  <div><p><a href="https://www.facebook.com/groups/binghamtontabletennis/" style="color:white;" target="_blank">Check out our Facebook page!</a></p></div>
+  <div class="container">
+    <div class="container col-sm-1"></div>
+    <div class="container col-sm-3">
+      <p>Binghamton University</p>
+      <p>4400 Vestal Pkwy E</p>
+      <p>Binghamton, NY 13902</p>
+    </div>
+    <div class="container col-sm-4">
+      <p>Practices at West Gym Lobby</p>
+      <p>Mondays and Thursdays</p>
+      <p>From 8PM to 10PM</p>
+    </div>
+    <div class="container col-sm-3">
+      <p>E-Board Members</p>
+      <p>Co-Presidents: Eric Haberli & Jeffrey Chan</p>
+      <p>Secretary/Treasurer: Richard Zhang</p>
+    </div>
+    <div class="container col-sm-1"></div>
+  </div>
 </footer>
 </body>
 </html>
