@@ -20,6 +20,7 @@ class Players(models.Model):
     Matches_Played = models.IntegerField(editable=False, default=0)
     Win_Rate =models.IntegerField(editable=False, default=0)
     Standing = models.IntegerField(choices=[(x, x) for x in range(1, 6)])
+    Played_This_Week = models.IntegerField(editable=False, default=0)
     
     class Meta:
         db_table = "players"

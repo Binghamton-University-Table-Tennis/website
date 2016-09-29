@@ -1,5 +1,7 @@
 import django 
 import os
+import time
+from datetime import date
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
@@ -10,6 +12,16 @@ from src.models import Players
 from src.models import Matches
 from src.Ratings import * 
 
+def weeklyReward():
+    #returns day of week, sunday is 6
+    if(date.today().weekday() == 6):
+        playersParticipated = Players.objects.all().filter(Played_This_Week = 1)
+        for p in playersParticipated:
+            p.Rating += 10;
+            p.Played_This_Week = 0;
+            p.save()
+            
+    
 def checkForUpdates():
 
     #we extract all matches that haven't been put towards players' ratings, and sort them by the date the matches occurred
@@ -59,3 +71,4 @@ def checkForUpdates():
 
 
 checkForUpdates()
+weeklyReward()
