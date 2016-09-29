@@ -4,14 +4,10 @@
 {% block content %}
 <!---TODO:FIND A WAY TO CENTER THE TABLE OF RANKINGS --->
 <style type="text/css">
-.center {
-    margin-left:auto; 
-    margin-right:auto;
-}
 
-table{
-  margin: 0;
-}
+  table, th, td {
+    text-align: center;
+  }
 
 </style>
 
@@ -21,15 +17,9 @@ table{
 </div>
 <br>
 <div class="container">
-  <table class="table-hover center" id="rankTable" style="width:100%">
+  <table class="table-hover" id="rankTable" style="width:100%">
     
-    <tr>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
+    <tr class="text-center">
       <th>Rank</th>
       <th>Name</th>
       <th>Wins</th>
@@ -37,13 +27,7 @@ table{
       <th>Rating</th>
     </tr>
     {% for player in players %}
-    <tr>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
+    <tr class="text-center">
       <th>{{ forloop.counter }}</th>
       <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
       <th> {{player.Matches_Won }} </th>
@@ -54,8 +38,7 @@ table{
     
   </table>
 
-
-  <hr>
+<br><br>
   
 </div>
 {% endblock %}
