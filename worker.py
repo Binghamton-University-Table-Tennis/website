@@ -13,8 +13,8 @@ from src.models import Matches
 from src.Ratings import * 
 
 def weeklyReward():
-    #returns day of week, sunday is 6
-    if(date.today().weekday() == 6):
+    #returns day of week, friday is 4
+    if(date.today().weekday() == 4):
         playersParticipated = Players.objects.all().filter(Played_This_Week = 1)
         for p in playersParticipated:
 
