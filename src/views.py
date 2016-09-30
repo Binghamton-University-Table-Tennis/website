@@ -66,10 +66,6 @@ def rules(request):
 
 def ladder(request):
     
-    # Store this visit to front page in the database
-    visit = Greeting()
-    visit.save()
-    
     # Grab all players in database
     players = Players.objects.all().order_by('-Rating')
    
@@ -79,7 +75,14 @@ def contact(request):
     return render(request, 'contact.html', {})
     
 def index(request):
-   
+    
+    # Store this visit to front page in the database
+    visits = Greeting.objects.all();
+        
+    for v in visits:
+        v.Count += 1
+        v.save()
+        
     return render(request, 'index.html', {'error': False})
 
 

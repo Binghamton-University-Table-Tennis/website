@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Greeting(models.Model):
-    Time = models.DateTimeField('date created', auto_now_add=True)
+    Count = models.IntegerField(editable=False, default = 0)
     
     class Meta:
         db_table = "visits"
