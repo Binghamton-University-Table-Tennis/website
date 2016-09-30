@@ -26,13 +26,15 @@
       <th>Rating</th>
     </tr>
     {% for player in players %}
-    <tr class="text-center">
-      <th>{{ forloop.counter }}</th>
-      <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
-      <th> {{player.Matches_Won }} </th>
-      <th> {{player.Matches_Lost }}  </th>
-      <th>{{ player.Rating }}</th>
-    </tr>
+      {% if player.Matches_Played > 0 %}
+        <tr class="text-center">
+          <th>{{ forloop.counter }}</th>
+          <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
+          <th> {{player.Matches_Won }} </th>
+          <th> {{player.Matches_Lost }}  </th>
+          <th>{{ player.Rating }}</th>
+        </tr>
+      {% endif %}
     {% endfor %}
     
   </table>
