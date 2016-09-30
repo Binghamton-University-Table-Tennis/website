@@ -67,7 +67,9 @@ def rules(request):
 def ladder(request):
     
     # Grab all players in database
-    players = Players.objects.all().order_by('-Rating')
+    playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).order_by('-Rating')
+    playersUnranked = Players.objects.all().filter(Matches_Played = 0).order_by('-Rating')
+    players = playersRanked | playersUnranked
    
     return render(request, 'ladder.html', {'players': players})
     

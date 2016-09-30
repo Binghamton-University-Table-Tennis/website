@@ -34,6 +34,14 @@
           <th> {{player.Matches_Lost }}  </th>
           <th>{{ player.Rating }}</th>
         </tr>
+      {% else %}
+        <tr class="text-center">
+          <th>{{ forloop.counter }}</th>
+          <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
+          <th> {{player.Matches_Won }} </th>
+          <th> {{player.Matches_Lost }}  </th>
+          <th>Not ranked</th>
+        </tr>
       {% endif %}
     {% endfor %}
     
