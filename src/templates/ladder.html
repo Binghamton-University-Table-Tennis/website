@@ -28,8 +28,7 @@
       <th>Losses</th>
       <th>Rating</th>
     </tr>
-    {% for player in players %}
-      {% if player.Matches_Played > 0 %}
+    {% for player in playersRanked %}
         <tr class="text-center">
           <th>{{ forloop.counter }}</th>
           <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
@@ -37,7 +36,9 @@
           <th> {{player.Matches_Lost }}  </th>
           <th>{{ player.Rating }}</th>
         </tr>
-      {% else %}
+    {% endfor %}
+    
+    {% for player in playersUnranked %}
         <tr class="text-center">
           <th>-</th>
           <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
@@ -45,7 +46,6 @@
           <th> {{player.Matches_Lost }}  </th>
           <th>Not ranked</th>
         </tr>
-      {% endif %}
     {% endfor %}
     
   </table>

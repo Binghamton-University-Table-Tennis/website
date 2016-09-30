@@ -69,9 +69,8 @@ def ladder(request):
     # Grab all players in database
     playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).order_by('-Rating')
     playersUnranked = Players.objects.all().filter(Matches_Played = 0).order_by('-Rating')
-    players = playersRanked | playersUnranked
-   
-    return render(request, 'ladder.html', {'players': players})
+
+    return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
     
 def contact(request):
     return render(request, 'contact.html', {})
