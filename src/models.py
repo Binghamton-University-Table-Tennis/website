@@ -61,3 +61,24 @@ class ClubAttendance(models.Model):
     def __unicode__(self):
        return (self.First_Name + " " + self.Last_Name)
     
+class Practices(models.Model):
+    Date = models.DateField(auto_now_add=True, editable=False)
+
+    class Meta:
+        db_table = "practices"
+        verbose_name_plural = "Practices"
+
+    def __unicode__(self):
+       return (self.Date)
+       
+class AttendanceHistory(models.Model):
+    First_Name = models.CharField(max_length=20)
+    Last_Name = models.CharField(max_length=20)
+    Date = models.DateField(auto_now_add=True, editable=False)
+
+    class Meta:
+        db_table = "attendance_history"
+        verbose_name_plural = "Attendance History"
+
+    def __unicode__(self):
+       return (self.Date)
