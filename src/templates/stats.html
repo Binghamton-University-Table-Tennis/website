@@ -118,10 +118,10 @@
     
     {% for match in matches %}
 
-          {% if match.Winner_First_Name.strip == player.First_Name.strip and match.Winner_Last_Name.strip == player.Last_Name.strip %}
+          {% if match.Winner_First_Name.strip|title == player.First_Name.strip|title and match.Winner_Last_Name.strip|title == player.Last_Name.strip|title %}
             <tr class="winRow">
               <td>{{ match.Day }}</td>
-              <td>{{ match.Loser_First_Name.strip}} {{ match.Loser_Last_Name.strip }}</td>
+              <td>{{ match.Loser_First_Name.strip|title }} {{ match.Loser_Last_Name.strip|title }}</td>
               <td>{{ match.Winner_Score}}-{{ match.Loser_Score }}</td>
               <td>+{{ match.Points }}</td>
               <td>{{ match.Winner_Rating }}</td>
@@ -129,7 +129,7 @@
           {% else %}
             <tr class="loseRow">
               <td>{{ match.Day }}</td>
-              <td>{{ match.Winner_First_Name.strip}} {{ match.Winner_Last_Name.strip }}</td>
+              <td>{{ match.Winner_First_Name.strip|title }} {{ match.Winner_Last_Name.strip|title }}</td>
               <td>{{ match.Loser_Score}}-{{ match.Winner_Score }}</td>
               <td>-{{ match.Points }}</td>
               <td>{{ match.Loser_Rating }}</td>

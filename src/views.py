@@ -118,8 +118,8 @@ def stats(request, player):
     if len(player) != 1:
         return render(request, 'index.html', {'error': True})
     
-    matchesWon = Matches.objects.all().filter(Winner_First_Name = name[0], Winner_Last_Name = name[1])
-    matchesLost = Matches.objects.all().filter(Loser_First_Name = name[0], Loser_Last_Name = name[1])
+    matchesWon = Matches.objects.all().filter(Winner_First_Name__iexact = name[0], Winner_Last_Name__iexact = name[1])
+    matchesLost = Matches.objects.all().filter(Loser_First_Name__iexact = name[0], Loser_Last_Name__iexact = name[1])
     
     matches = (matchesWon | matchesLost).order_by('-Day')
 

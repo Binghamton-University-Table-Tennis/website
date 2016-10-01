@@ -2,6 +2,7 @@ import django
 import os
 import time
 from datetime import date
+import datetime
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
@@ -38,8 +39,8 @@ def checkForUpdates():
     notYetUpdated = Matches.objects.all().filter(Updated = 0).order_by('Day')
     #iterating over each match, we update the stats of the winner and loser for that match
     for m in notYetUpdated:
-        winner = Players.objects.all().filter(First_Name = m.Winner_First_Name, Last_Name = m.Winner_Last_Name)
-        loser = Players.objects.all().filter(First_Name = m.Loser_First_Name, Last_Name = m.Loser_Last_Name)
+        winner = Players.objects.all().filter(First_Name__iexact = m.Winner_First_Name, Last_Name__iexact = m.Winner_Last_Name)
+        loser = Players.objects.all().filter(First_Name__iexact = m.Loser_First_Name, Last_Name__iexact = m.Loser_Last_Name)
         win = 0
         lose = 0
         winPts = []
@@ -89,21 +90,28 @@ def checkAttendance():
     hadPractice = False
     
     for attendee in attendees:
-        player = Players.objects.all().filter(First_Name = attendee.First_Name, Last_Name = attendee.Last_Name)
+        player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
         
         for p in player:
             p.Attendance += 1
             p.save()
-            attendance_entry = AttendanceHistory(First_Name = p.First_Name, Last_Name = p.Last_Name)
+            attendance_entry = AttendanceHistory(First_Name = p.First_Name.title(), Last_Name = p.Last_Name.title())
             attendance_entry.save()
 
         attendee.delete()
         hadPractice = True
 
     if hadPractice:
+        duplicatePractice = Practices.objects.all().filter(Date = datetime.datetime.today().strftime('%Y-%m-%d'))
+        
+        if duplicatePractice.count > 0:
+            return;
+            
         practice = Practices()
         practice.save()
 
+
+########## MAIN ##########
+
 checkForUpdates()
 checkAttendance()
-#weeklyReward()
