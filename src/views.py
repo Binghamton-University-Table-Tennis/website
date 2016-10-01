@@ -94,6 +94,13 @@ def log(request):
     
     return render(request, 'log.html', {'visits': visits})
     
+def attendance(request):
+
+    # Grab all visits to front page
+    players = Players.objects.all().order_by('-Attendance')
+    
+    return render(request, 'attendance.html', {'players': players})
+    
 def stats(request, player):
 
     name = player.title().split()

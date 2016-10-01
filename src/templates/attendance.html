@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<style type="text/css">
+
+  table, th, td {
+    text-align: center;
+  }
+  tr:hover { 
+    background: #D3D3D3; 
+    
+  }
+</style>
+
+<div class="container">
+
+
+<h2>Attendance</h2>
+<br>
+
+
+<table style="width:100%">
+  <tr class="text-center">
+    <th>Name</th>
+    <th>Attendance Count</th>
+
+  </tr>
+        
+    
+{% for player in players %}
+
+  <tr>
+    <td>{{ player.First_Name }} {{ player.Last_Name }}</td>
+    <td>{{ player.Attendance }}</td>
+  </tr>
+  
+{% endfor %}
+        
+        
+</table>
+<br><br>
+
+</div>
+
+{% endblock %}
