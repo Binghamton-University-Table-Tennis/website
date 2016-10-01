@@ -99,7 +99,6 @@ def log(request):
     
 def attendance(request):
 
-    # Grab all visits to front page
     players = Players.objects.all().order_by('-Attendance')
     practices = Practices.objects.all().order_by('-Date')
     history = AttendanceHistory.objects.all()
