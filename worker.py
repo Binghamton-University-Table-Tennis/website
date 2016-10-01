@@ -10,6 +10,7 @@ django.setup()
 from src.models import Greeting
 from src.models import Players
 from src.models import Matches
+from src.models import ClubAttendance
 from src.Ratings import * 
 
 def weeklyReward():
@@ -79,6 +80,19 @@ def checkForUpdates():
             m.Updated = 1
             m.save()
 
+def checkAttendance():
+    attendees = ClubAttendance.objects.all()
+    
+    for attendee in attendees:
+        player = Players.objects.all().filter(First_Name = attendee.First_Name, Last_Name = attendee.Last_Name)
+        
+        for p in player:
+            p.Attendance += 1
+            p.save()
+            
+        attendee.delete()
+
 
 checkForUpdates()
+checkAttendance()
 #weeklyReward()
