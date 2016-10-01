@@ -49,4 +49,15 @@ class Matches(models.Model):
 
     def __unicode__(self):
        return (self.Winner_Last_Name + " vs " + self.Loser_Last_Name)
+
+class ClubAttendance(models.Model):
+    First_Name = models.CharField(max_length=20)
+    Last_Name = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "attendance"
+        verbose_name_plural = "Club Attendance"
+
+    def __unicode__(self):
+       return (self.First_Name + " " + self.Last_Name)
     
