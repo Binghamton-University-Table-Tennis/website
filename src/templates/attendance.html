@@ -40,6 +40,32 @@
         
         
 </table>
+<br><br><br>
+
+<h2>Attendance History</h2>
+<br>
+
+{% for practice in practices %}
+  
+  <table style="width:100%">
+        <tr class="text-center">
+          <td><b><u>{{ practice.Date }}</u></b></td>
+        </tr>
+        
+    {% for attendanceEntry in history %}
+    
+      {% if attendanceEntry.Date == practice.Date %}
+        <tr class="text-center">
+          <td>{{ attendanceEntry.First_Name }} {{ attendanceEntry.Last_Name }}</td>
+        </tr>
+      {% endif %}
+      
+    {% endfor %}
+    
+  </table>
+  <br>
+  
+{% endfor %}
 <br><br>
 
 </div>

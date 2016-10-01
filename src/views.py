@@ -5,6 +5,9 @@ from django.shortcuts import redirect
 from .models import Greeting
 from .models import Players
 from .models import Matches
+from .models import Practices
+from .models import AttendanceHistory
+
 from Ratings import * 
 
 
@@ -98,8 +101,10 @@ def attendance(request):
 
     # Grab all visits to front page
     players = Players.objects.all().order_by('-Attendance')
+    practices = Practices.objects.all().order_by('-Date')
+    history = AttendanceHistory.objects.all()
     
-    return render(request, 'attendance.html', {'players': players})
+    return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history})
     
 def stats(request, player):
 
