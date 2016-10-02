@@ -128,13 +128,12 @@ def stats(request, player):
     
     matches = (matchesWon | matchesLost).order_by('-Day')
 
-    medal = getMedal(player[0].Rating)
     standing = getStanding(player[0].Standing)
     
     if request.user.is_authenticated():   
-        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal, 'standing': standing, 'admin': True})
+        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'standing': standing, 'admin': True})
     else:
-        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal, 'standing': standing})
+        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'standing': standing})
     
 def getStanding(standing):
     classStanding = ""
