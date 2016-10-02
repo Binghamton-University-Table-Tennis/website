@@ -106,9 +106,9 @@ def history(request, date):
     history = AttendanceHistory.objects.all().filter(Date = parsed_date).order_by('Last_Name')
     
     if request.user.is_authenticated():   
-        return render(request, 'history.html', {'history': history, 'date': str(parsed_date), 'admin': True})
+        return render(request, 'history.html', {'history': history, 'date': parsed_date, 'admin': True})
     else:       
-        return render(request, 'history.html', {'history': history, 'date': str(parsed_date)})
+        return render(request, 'history.html', {'history': history, 'date': parsed_date})
         
 
 def stats(request, player):
