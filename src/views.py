@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from datetime import datetime
+from django.http import HttpResponseRedirect
 
 from .models import Greeting
 from .models import Players
@@ -46,7 +47,6 @@ def contact(request):
     
 def index(request):
     
-        
     # Store this visit to front page in the database
     visits = Greeting.objects.all();
         
@@ -64,37 +64,31 @@ def log(request):
 
     # Only admins can view
     if not request.user.is_authenticated():
-        return render(request, 'index.html', {'error': False})
+        return HttpResponseRedirect("/admin/")
         
     # Grab all visits to front page
     visits = Greeting.objects.all()
     
-    if request.user.is_authenticated():   
-        return render(request, 'log.html', {'visits': visits, 'admin': True})
-    else:       
-        return render(request, 'log.html', {'visits': visits})
-    
+    return render(request, 'log.html', {'visits': visits, 'admin': True})
+
 def attendance(request):
     
     # Only admins can view
     if not request.user.is_authenticated():
-        return render(request, 'index.html', {'error': False})
-    
+        return HttpResponseRedirect("/admin/")   
+        
     players = Players.objects.all().order_by('-Attendance')
     practices = Practices.objects.all().order_by('-Date')
     history = AttendanceHistory.objects.all()
     
-    if request.user.is_authenticated():   
-        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True})
-    else:       
-        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history})
+    return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True})
 
     
 def history(request, date):
     
     # Only admins can view
     if not request.user.is_authenticated():
-        return render(request, 'index.html', {'error': False})
+        return HttpResponseRedirect("/admin/")   
         
     # Format date so that it can be used in the filter. Some months are abbreviated with a period, some are not.
     if "." in date:
@@ -105,11 +99,7 @@ def history(request, date):
 
     history = AttendanceHistory.objects.all().filter(Date = parsed_date).order_by('Last_Name')
     
-    if request.user.is_authenticated():   
-        return render(request, 'history.html', {'history': history, 'date': parsed_date, 'admin': True})
-    else:       
-        return render(request, 'history.html', {'history': history, 'date': parsed_date})
-        
+    return render(request, 'history.html', {'history': history, 'date': parsed_date, 'admin': True})
 
 def stats(request, player):
 
