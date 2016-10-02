@@ -115,7 +115,7 @@ def history(request, date):
     else:
         parsed_date = datetime.strptime(date, '%B %d, %Y').date()
 
-    history = AttendanceHistory.objects.all().filter(Date = parsed_date)
+    history = AttendanceHistory.objects.all().filter(Date = parsed_date).order_by('Last_Name')
     return render(request, 'history.html', {'history': history, 'date': str(parsed_date)})
     
 def stats(request, player):
