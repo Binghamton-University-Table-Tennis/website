@@ -108,7 +108,13 @@ def attendance(request):
     
 def history(request, date):
     
-    parsed_date = datetime.strptime(date, '%b. %d, %Y').date()
+    # Format date so that it can be used in the filter. Some months are abbreviated with a period, some are not.
+    if "." in date:
+        date = str(date).replace("Sept", "Sep")     # Sept. must be converted to Sep. It's the only odd case
+        parsed_date = datetime.strptime(date, '%b. %d, %Y').date()
+    else:
+        parsed_date = datetime.strptime(date, '%B %d, %Y').date()
+
     history = AttendanceHistory.objects.all().filter(Date = parsed_date)
     return render(request, 'history.html', {'history': history, 'date': str(parsed_date)})
     
