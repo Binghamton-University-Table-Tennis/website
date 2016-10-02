@@ -17,9 +17,20 @@
 <div class="container">
 
 
+
+<h2>Attendance History</h2>
 <br>
 
+<ul>
+{% for practice in practices %}
+  <li><a href="/history/{{ practice.Date }}">{{ practice.Date }}</a></li>
+{% endfor %}
+</ul>
 
+<br>
+
+<h2>Attendance Totals</h2>
+<br>
 <table style="width:100%">
   <tr class="text-center">
     <th>Name</th>
@@ -39,17 +50,6 @@
         
         
 </table>
-<br><br><br>
-
-<h2>Attendance History</h2>
-<br>
-
-<ul>
-{% for practice in practices %}
-  <li><a href="/history/{{ practice.Date }}">{{ practice.Date }}</a></li>
-{% endfor %}
-</ul>
-
 <br><br>
 
 </div>
