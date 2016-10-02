@@ -110,7 +110,7 @@ def history(request, date):
     
     parsed_date = datetime.strptime(date, '%b. %d, %Y').date()
     history = AttendanceHistory.objects.all().filter(Date = parsed_date)
-    return render(request, 'history.html', {'history': history, 'date': date})
+    return render(request, 'history.html', {'history': history, 'date': parsed_date})
     
 def stats(request, player):
 
