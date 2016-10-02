@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container">
+
+
+<h2>Attendance on {{ date }}</h2>
+
+
+<ul>
+
+{% for entry in history %}
+    <li>{{ entry.First_Name }} {{ entry.Last_Name }}</li>
+{% endfor %}
+
+</ul>
+<br><br>
+
+</div>
+
+{% endblock %}

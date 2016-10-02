@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', src.views.search, name='search'),
     url(r'^attendance/', src.views.attendance, name='attendance'),
+    url(r'^history/(?P<date>.*)', src.views.history, name='history'),
 ]

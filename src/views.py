@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
+from datetime import datetime
 
 from .models import Greeting
 from .models import Players
@@ -104,6 +105,12 @@ def attendance(request):
     history = AttendanceHistory.objects.all()
     
     return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history})
+    
+def history(request, date):
+    
+    parsed_date = datetime.strptime(date, '%b. %d, %Y').date()
+    history = AttendanceHistory.objects.all().filter(Date = parsed_date)
+    return render(request, 'history.html', {'history': history, 'date': date})
     
 def stats(request, player):
 
