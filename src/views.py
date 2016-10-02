@@ -63,10 +63,17 @@ def checkForUpdates():
 # Create your views here.
 
 def about(request):
-    return render(request, 'about.html', {})
-    
+    if request.user.is_authenticated():   
+        return render(request, 'about.html', {'admin': True})
+    else:
+        return render(request, 'about.html', {})    
+        
 def rules(request):
-    return render(request, 'rules.html', {})
+    
+    if request.user.is_authenticated():   
+        return render(request, 'rules.html', {'admin': True})
+    else:
+        return render(request, 'rules.html', {})
 
 def ladder(request):
     
@@ -74,13 +81,21 @@ def ladder(request):
     playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).order_by('-Rating')
     playersUnranked = Players.objects.all().filter(Matches_Played = 0).order_by('-Rating')
 
-    return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
+    if request.user.is_authenticated():   
+        return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True})
+    else:
+        return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
     
 def contact(request):
-    return render(request, 'contact.html', {})
+    
+    if request.user.is_authenticated():   
+        return render(request, 'contact.html', {'admin': True})
+    else:
+        return render(request, 'contact.html', {})
     
 def index(request):
     
+        
     # Store this visit to front page in the database
     visits = Greeting.objects.all();
         
@@ -88,26 +103,48 @@ def index(request):
         v.Count += 1
         v.save()
         
-    return render(request, 'index.html', {'error': False})
+    if request.user.is_authenticated():   
+        return render(request, 'index.html', {'error': False, 'admin': True})
+    else:                                       
+        return render(request, 'index.html', {'error': False})
 
 
 def log(request):
 
+    # Only admins can view
+    if not request.user.is_authenticated():
+        return render(request, 'index.html', {'error': False})
+        
     # Grab all visits to front page
     visits = Greeting.objects.all()
     
-    return render(request, 'log.html', {'visits': visits})
+    if request.user.is_authenticated():   
+        return render(request, 'log.html', {'visits': visits, 'admin': True})
+    else:       
+        return render(request, 'log.html', {'visits': visits})
     
 def attendance(request):
-
+    
+    # Only admins can view
+    if not request.user.is_authenticated():
+        return render(request, 'index.html', {'error': False})
+    
     players = Players.objects.all().order_by('-Attendance')
     practices = Practices.objects.all().order_by('-Date')
     history = AttendanceHistory.objects.all()
     
-    return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history})
+    if request.user.is_authenticated():   
+        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True})
+    else:       
+        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history})
+
     
 def history(request, date):
     
+    # Only admins can view
+    if not request.user.is_authenticated():
+        return render(request, 'index.html', {'error': False})
+        
     # Format date so that it can be used in the filter. Some months are abbreviated with a period, some are not.
     if "." in date:
         date = str(date).replace("Sept", "Sep")     # Sept. must be converted to Sep. It's the only odd case
@@ -116,8 +153,13 @@ def history(request, date):
         parsed_date = datetime.strptime(date, '%B %d, %Y').date()
 
     history = AttendanceHistory.objects.all().filter(Date = parsed_date).order_by('Last_Name')
-    return render(request, 'history.html', {'history': history, 'date': str(parsed_date)})
     
+    if request.user.is_authenticated():   
+        return render(request, 'history.html', {'history': history, 'date': str(parsed_date), 'admin': True})
+    else:       
+        return render(request, 'history.html', {'history': history, 'date': str(parsed_date)})
+        
+
 def stats(request, player):
 
     name = player.title().split()
@@ -138,7 +180,10 @@ def stats(request, player):
     medal = getMedal(player[0].Rating)
     standing = getStanding(player[0].Standing)
     
-    return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal, 'standing': standing})
+    if request.user.is_authenticated():   
+        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal, 'standing': standing, 'admin': True})
+    else:
+        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'medal': medal, 'standing': standing})
     
 def getStanding(standing):
     classStanding = ""
