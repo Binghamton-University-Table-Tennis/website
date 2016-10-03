@@ -113,7 +113,7 @@ def checkAttendance():
     if hadPractice:
         duplicatePractice = Practices.objects.all().filter(Date = datetime.datetime.today().strftime('%Y-%m-%d'))
         
-        if duplicatePractice.count > 0:
+        if duplicatePractice.count() > 0:
             return;
             
         practice = Practices()
