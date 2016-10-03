@@ -102,6 +102,13 @@ def checkAttendance():
         player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
         
         for p in player:
+            
+            # Check for existing entry for this player in attendance history for today
+            duplicateAttendanceEntry = AttendanceHistory.objects.all().filter(First_Name__iexact = p.First_Name, Last_Name__iexact = p.Last_Name, Date = datetime.datetime.today().strftime('%Y-%m-%d'))
+            
+            if duplicateAttendanceEntry.count() > 0:
+                break;
+            
             p.Attendance += 1
             p.save()
             attendance_entry = AttendanceHistory(First_Name = p.First_Name.title(), Last_Name = p.Last_Name.title())
