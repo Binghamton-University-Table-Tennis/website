@@ -106,13 +106,19 @@ def stats(request, player):
     name = player.title().split()
     
     if len(name) != 2:
-        return render(request, 'index.html', {'error': True})
+        if request.user.is_authenticated():   
+            return render(request, 'index.html', {'error': True, 'admin': True})
+        else:
+            return render(request, 'index.html', {'error': True})
     
     player = Players.objects.all().filter(First_Name = name[0], Last_Name = name[1])
 
     if len(player) != 1:
-        return render(request, 'index.html', {'error': True})
-    
+        if request.user.is_authenticated():   
+            return render(request, 'index.html', {'error': True, 'admin': True})
+        else:
+            return render(request, 'index.html', {'error': True})
+            
     matchesWon = Matches.objects.all().filter(Winner_First_Name__iexact = name[0], Winner_Last_Name__iexact = name[1])
     matchesLost = Matches.objects.all().filter(Loser_First_Name__iexact = name[0], Loser_Last_Name__iexact = name[1])
     

@@ -43,7 +43,7 @@
 {% for player in players %}
 
   <tr>
-    <td>{{ player.First_Name }} {{ player.Last_Name }}</td>
+    <td><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></td>
     <td>{{ player.Attendance }}</td>
   </tr>
   
