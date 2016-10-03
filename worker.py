@@ -92,6 +92,10 @@ def checkAttendance():
     for attendee in attendees:
         player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
         
+        if player.count > 1:
+            attendee.delete()
+            continue
+        
         for p in player:
             p.Attendance += 1
             p.save()
