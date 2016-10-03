@@ -86,15 +86,20 @@ def checkForUpdates():
 
 def checkAttendance():
     attendees = ClubAttendance.objects.all()
-    
+
     hadPractice = False
     
     for attendee in attendees:
-        player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
         
-        if player.count > 1:
+        # Check for duplicate attendance entries
+        duplicateAttendee = ClubAttendance.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
+        
+        if duplicateAttendee.count() > 1:
             attendee.delete()
             continue
+        
+        # Proceed with saving attendance for this member
+        player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
         
         for p in player:
             p.Attendance += 1
