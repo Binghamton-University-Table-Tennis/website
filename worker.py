@@ -46,6 +46,12 @@ def checkForUpdates():
         winPts = []
 
         for w, l in zip(winner, loser):
+            
+            # Delete entry if winner and loser are the same person
+            if w.First_Name.title() == l.First_Name.title() and w.Last_Name.title() == l.Last_Name.title():
+                m.delete()
+                break
+            
             win = w.Rating
             lose = l.Rating
             #call function that calculates how much the players' ratings should change, based on their difference in skill level
