@@ -113,9 +113,9 @@ def checkAttendance():
             
         isLate = 0
         
-        # Set late deadline to 8:30 pm (30 minutes after practice starts)
-        check = datetime.datetime(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day, 13, 30)
-        if attendee.Time.hour - check.hour > 0 or (attendee.Time.hour - check.hour == 0 and attendee.Time.minute - check.minute > 0):
+        # Set late deadline to 12:30 AM UTC (8:30 PM EST). This is 30 minutes after practice starts.
+        deadline = datetime.datetime(datetime.datetime.utcnow().year, datetime.datetime.utcnow().month, datetime.datetime.utcnow().day, 0, 30)
+        if attendee.Time.hour - deadline.hour > 0 or (attendee.Time.hour - deadline.hour == 0 and attendee.Time.minute - deadline.minute > 0):
             isLate = 1
         
         # Proceed with saving attendance for this member
