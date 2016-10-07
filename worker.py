@@ -111,8 +111,15 @@ def checkAttendance():
             attendee.delete()
             continue
             
+        isLate = 0
+        
+        # Set late deadline to 8:30 pm (30 minutes after practice starts)
+        check = datetime.datetime(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day, 13, 30)
+        if attendee.Time.hour - check.hour > 0 or (attendee.Time.hour - check.hour == 0 and attendee.Time.minute - check.minute > 0):
+            isLate = 1
+        
         # Proceed with saving attendance for this member
-        attendance_entry = AttendanceHistory(First_Name = attendee.First_Name.title(), Last_Name = attendee.Last_Name.title())
+        attendance_entry = AttendanceHistory(First_Name = attendee.First_Name.title(), Last_Name = attendee.Last_Name.title(), Late = isLate)
         attendance_entry.save()
         
         # If player exists in database, update attendance record
@@ -121,6 +128,10 @@ def checkAttendance():
         for p in player:
             
             p.Attendance += 1
+            
+            if isLate == 1:
+                p.Lateness += 1
+                
             p.save()
 
         attendee.delete()
