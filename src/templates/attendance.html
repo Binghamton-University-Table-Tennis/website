@@ -36,7 +36,7 @@
   <tr class="text-center">
     <th>Name</th>
     <th>Attendance Count</th>
-
+    <th>Lateness Count</th>
   </tr>
         
     
@@ -45,6 +45,7 @@
   <tr>
     <td><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></td>
     <td>{{ player.Attendance }}</td>
+    <td>{{ player.Lateness }}</td>
   </tr>
   
 {% endfor %}

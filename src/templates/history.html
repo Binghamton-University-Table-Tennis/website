@@ -5,13 +5,17 @@
   <div class="container">
 
 
-<h2>Attendance on {{ date }} ({{ history|length }} Members)</h2>
+<h2>Attendance on {{ date }} ({{ total }} Members)</h2>
 
 
 <ul>
 
 {% for entry in history %}
-    <li><a href="/stats/{{entry.First_Name}} {{entry.Last_Name}}">{{ entry.First_Name }} {{ entry.Last_Name }}</a></li>
+  <li><a href="/stats/{{entry.First_Name}} {{entry.Last_Name}}">{{ entry.First_Name }} {{ entry.Last_Name }}</a></li>
+{% endfor %}
+
+{% for entry in lateHistory %}
+  <li>(LATE) <a href="/stats/{{entry.First_Name}} {{entry.Last_Name}}">{{ entry.First_Name }} {{ entry.Last_Name }}</a></li>
 {% endfor %}
 
 </ul>
