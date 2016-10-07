@@ -22,7 +22,8 @@ class Players(models.Model):
     Standing = models.IntegerField(choices=[(x, x) for x in range(1, 6)])
     Played_This_Week = models.IntegerField(editable=False, default=0)
     Attendance = models.IntegerField(editable=False, default=0)
-    
+    Lateness = models.IntegerField(editable=False, default=0)
+
     class Meta:
         db_table = "players"
         verbose_name_plural = "Players"
@@ -53,6 +54,7 @@ class Matches(models.Model):
 class ClubAttendance(models.Model):
     First_Name = models.CharField(max_length=20)
     Last_Name = models.CharField(max_length=20)
+    Time = models.DateTimeField('date created', auto_now_add=True, editable=False)
 
     class Meta:
         db_table = "attendance"
@@ -75,6 +77,7 @@ class AttendanceHistory(models.Model):
     First_Name = models.CharField(max_length=20)
     Last_Name = models.CharField(max_length=20)
     Date = models.DateField(auto_now_add=True, editable=False)
+    Late = models.IntegerField(editable=False, default=0)
 
     class Meta:
         db_table = "attendance_history"
