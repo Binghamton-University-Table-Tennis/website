@@ -113,12 +113,13 @@ def checkAttendance():
 
         isLate = 0
 
-        # Set late deadline to 12:30 AM UTC (8:30 PM EST). This is 30 minutes after practice starts.
+        # This script runs at 3:30 AM UTC (10:30 PM EST).
+        # Late deadline is 1:30 AM UTC (8:30 PM EST). This is 30 minutes after practice starts.
         deadline = datetime.datetime.utcnow()
-        hourDiff = attendee.Time.hour - deadline.hour
+        hourDiff = deadline.hour - attendee.Time.hour
 
-        # If member signs in 1-2 hours late or 30 min late, mark him/her as late
-        if (1 <= hourDiff <= 2) or (hourDiff == 0 and attendee.Time.minute - deadline.minute > 0):
+        # If member signs in late, mark him/her as late
+        if (0 <= hourDiff <= 1) or (hourDiff == 2 and attendee.Time.minute - deadline.minute > 0):
             isLate = 1
 
         # Proceed with saving attendance for this member
