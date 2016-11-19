@@ -3,6 +3,7 @@ import os
 import time
 from datetime import date
 import datetime
+import dst
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
@@ -113,13 +114,19 @@ def checkAttendance():
 
         isLate = 0
 
-        # This script runs at 3:30 AM UTC (10:30 PM EST).
-        # Late deadline is 1:30 AM UTC (8:30 PM EST). This is 30 minutes after practice starts.
-        deadline = datetime.datetime.utcnow()
-        hourDiff = deadline.hour - attendee.Time.hour
+        # Heroku Scheduler has a fixed time this script runs at, which is 3:30 AM UTC.
+        currentTime = datetime.datetime.utcnow()
 
+        # Handle non-daylight savings offset.
+        if not is_dst():
+            currentTime -= datetime.timedelta(hours=1)
+
+        # Get difference between currentTime hour and sign-in hour
+        hourDiff = currentTime.hour - attendee.Time.hour
+
+        # Late deadline is 8:30 PM EST. This is 30 minutes after practice starts. The UTC time depends on whether Daylight Savings is in effect.
         # If member signs in late, mark him/her as late
-        if (0 <= hourDiff <= 1) or (hourDiff == 2 and attendee.Time.minute - deadline.minute > 0):
+        if (0 <= hourDiff <= 1) or (hourDiff == 2 and attendee.Time.minute - currentTime.minute > 0):
             isLate = 1
 
         # Proceed with saving attendance for this member
