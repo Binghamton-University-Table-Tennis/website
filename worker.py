@@ -3,7 +3,7 @@ import os
 import time
 from datetime import date
 import datetime
-import dst
+from dst import is_dst
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 

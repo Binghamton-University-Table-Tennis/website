@@ -3,7 +3,7 @@
 from datetime import datetime
 import pytz
 
-def is_dst ():
+def is_dst():
     """Determine whether or not Daylight Savings Time (DST)
     is currently in effect"""
 
