@@ -93,7 +93,6 @@ def checkForUpdates():
 
 def checkAttendance():
     attendees = ClubAttendance.objects.all()
-
     hadPractice = False
 
     for attendee in attendees:
@@ -114,19 +113,20 @@ def checkAttendance():
 
         isLate = 0
 
-        # Heroku Scheduler has a fixed time this script runs at, which is 3:30 AM UTC.
-        currentTime = datetime.datetime.utcnow()
+        # Heroku Scheduler has a fixed time this script runs at, which is 3:30 UTC.
+        lateStartTime = datetime.datetime.utcnow()
+        lateEndTime = lateStartTime
 
-        # Handle non-daylight savings offset.
+        # Handle daylight savings offset.
         if not is_dst():
-            currentTime -= datetime.timedelta(hours=1)
+            lateStartTime -= datetime.timedelta(hours=2)
+        else:
+            lateStartTime -= datetime.timedelta(hours=3)
+            lateEndTime -= datetime.timedelta(hours=1)
 
-        # Get difference between currentTime hour and sign-in hour
-        hourDiff = currentTime.hour - attendee.Time.hour
-
-        # Late deadline is 8:30 PM EST. This is 30 minutes after practice starts. The UTC time depends on whether Daylight Savings is in effect.
+        # Late deadline is 8:30 PM EST. The UTC time depends on whether Daylight Savings is in effect.
         # If member signs in late, mark him/her as late
-        if (0 <= hourDiff <= 1) or (hourDiff == 2 and attendee.Time.minute - currentTime.minute > 0):
+        if (lateStartTime <= attendee.Time <= lateEndTime):
             isLate = 1
 
         # Proceed with saving attendance for this member
