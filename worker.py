@@ -5,6 +5,7 @@ from datetime import date
 import datetime
 from dst import is_dst
 from django.utils import timezone
+import pytz
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
@@ -124,6 +125,9 @@ def checkAttendance():
         else:
             lateStartTime -= datetime.timedelta(hours=3)
             lateEndTime -= datetime.timedelta(hours=1)
+
+        lateStartTime = lateStartTime.replace(tzinfo=pytz.UTC)
+        lateEndTime = lateEndTime.replace(tzinfo=pytz.UTC)
 
         # Late deadline is 8:30 PM EST. The UTC time depends on whether Daylight Savings is in effect.
         # If member signs in late, mark him/her as late
