@@ -126,6 +126,7 @@ def checkAttendance():
             lateStartTime -= datetime.timedelta(hours=3)
             lateEndTime -= datetime.timedelta(hours=1)
 
+        # Update timezone info for the currently timezone-unaware datetime objects
         lateStartTime = lateStartTime.replace(tzinfo=pytz.UTC)
         lateEndTime = lateEndTime.replace(tzinfo=pytz.UTC)
 
