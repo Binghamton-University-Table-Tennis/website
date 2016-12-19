@@ -4,6 +4,7 @@ import time
 from datetime import date
 import datetime
 from dst import is_dst
+from django.utils import timezone
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
@@ -114,7 +115,7 @@ def checkAttendance():
         isLate = 0
 
         # Heroku Scheduler has a fixed time this script runs at, which is 3:30 UTC.
-        lateStartTime = datetime.datetime.utcnow()
+        lateStartTime = timezone.now()
         lateEndTime = lateStartTime
 
         # Handle daylight savings offset.
