@@ -7,20 +7,20 @@
   table, th, td {
     text-align: center;
   }
-  tr:hover { 
-    background: #D3D3D3; 
-    
+  tr:hover {
+    background: #D3D3D3;
+
   }
 </style>
 
 <div class="text-center">
-  <h1>FALL 2016 LADDER</h1>
-  <p>The ladder system updates after each practice at 10:30 PM EST.</p>
+  <h1>2016-2017 LADDER</h1>
+  <p>The ladder system automatically updates after each practice.</p>
 </div>
 <br>
 <div class="container">
   <table class="tr:hover" id="rankTable" style="width:100%">
-    
+
     <tr class="text-center">
       <th>Rank</th>
       <th>Name</th>
@@ -37,7 +37,7 @@
           <th>{{ player.Rating }}</th>
         </tr>
     {% endfor %}
-    
+
     {% for player in playersUnranked %}
         <tr class="text-center">
           <th>-</th>
@@ -47,10 +47,10 @@
           <th>Not ranked</th>
         </tr>
     {% endfor %}
-    
+
   </table>
 
 <br><br>
-  
+
 </div>
 {% endblock %}
