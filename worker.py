@@ -139,17 +139,24 @@ def checkAttendance():
         attendance_entry = AttendanceHistory(First_Name = attendee.First_Name.title(), Last_Name = attendee.Last_Name.title(), Late = isLate)
         attendance_entry.save()
 
-        # If player exists in database, update attendance record
+        # Get all matching records
         player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
 
-        for p in player:
+        # Player does not exist
+        if len(player) == 0:
+            new_player = Players(First_Name = attendee.First_Name, Last_Name = attendee.Last_Name, Standing = "Unknown")
+            new_player.save()
 
-            p.Attendance += 1
+        # If player exists in database, update attendance record
+        else:
+            for p in player:
 
-            if isLate == 1:
-                p.Lateness += 1
+                p.Attendance += 1
 
-            p.save()
+                if isLate == 1:
+                    p.Lateness += 1
+
+                p.save()
 
         attendee.delete()
         hadPractice = True

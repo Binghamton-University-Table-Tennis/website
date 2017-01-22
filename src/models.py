@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Greeting(models.Model):
     Count = models.IntegerField(editable=False, default = 0)
-    
+
     class Meta:
         db_table = "visits"
         verbose_name_plural = "Visits"
@@ -19,7 +19,7 @@ class Players(models.Model):
     Matches_Lost = models.IntegerField(editable=False, default=0)
     Matches_Played = models.IntegerField(editable=False, default=0)
     Win_Rate =models.IntegerField(editable=False, default=0)
-    Standing = models.IntegerField(choices=[(1, "Freshman"), (2, "Sophomore"), (3, "Junior"), (4, "Senior"), (5, "Grad")])
+    Standing = models.IntegerField(choices=[(1, "Freshman"), (2, "Sophomore"), (3, "Junior"), (4, "Senior"), (5, "Grad"), (6, "Unknown")])
     Played_This_Week = models.IntegerField(editable=False, default=0)
     Attendance = models.IntegerField(editable=False, default=0)
     Lateness = models.IntegerField(editable=False, default=0)
@@ -43,7 +43,7 @@ class Matches(models.Model):
     Winner_Rating = models.IntegerField(editable=False, default=0)
     Loser_Rating = models.IntegerField(editable=False, default=0)
     Updated = models.IntegerField(editable=False, default=0)
-    
+
     class Meta:
         db_table = "matches"
         verbose_name_plural = "Matches"
@@ -62,7 +62,7 @@ class ClubAttendance(models.Model):
 
     def __unicode__(self):
        return (self.First_Name + " " + self.Last_Name)
-    
+
 class Practices(models.Model):
     Date = models.DateField(auto_now_add=True, editable=False)
 
@@ -72,7 +72,7 @@ class Practices(models.Model):
 
     def __unicode__(self):
        return (self.Date)
-       
+
 class AttendanceHistory(models.Model):
     First_Name = models.CharField(max_length=20)
     Last_Name = models.CharField(max_length=20)
