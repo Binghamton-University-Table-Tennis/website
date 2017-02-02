@@ -21,7 +21,10 @@ def about(request):
         return render(request, 'about.html', {})
 
 def photos(request):
-    return render(request, 'photos.html', {})
+    if request.user.is_authenticated():
+        return render(request, 'photos.html', {'admin': True})
+    else:
+        return render(request, 'photos.html', {})
 
 def rules(request):
 
