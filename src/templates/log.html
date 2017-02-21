@@ -24,13 +24,13 @@
   <div class="container">
 
 
-<h1><b><u>Log</u></b></h1><br>
+<h1><b><u>Summary</u></b></h1><br>
 
 
 <ul>
 
 {% for visit in visits %}
-<h3>Front Page Visits: {{ visit.Count }}</h3>
+<h3>Total Front Page Visits: {{ visit.Count }}</h3>
 {% endfor %}
 <h3>Total Club Members: {{ numPlayers }}</h3>
 <h3>Total Practices: {{ numPractices }}</h3>
