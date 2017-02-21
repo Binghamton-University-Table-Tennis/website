@@ -65,6 +65,7 @@ class ClubAttendance(models.Model):
 
 class Practices(models.Model):
     Date = models.DateField(auto_now_add=True, editable=False)
+    Count = models.IntegerField(editable=False, default=0)
 
     class Meta:
         db_table = "practices"
