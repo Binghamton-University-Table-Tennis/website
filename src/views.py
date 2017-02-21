@@ -75,7 +75,11 @@ def log(request):
     # Grab all visits to front page
     visits = Greeting.objects.all()
 
-    return render(request, 'log.html', {'visits': visits, 'admin': True})
+    # Grab other summary data
+    players = Players.objects.all()
+    practices = Practices.objects.all()
+
+    return render(request, 'log.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices)})
 
 def attendance(request):
 

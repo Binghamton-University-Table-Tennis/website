@@ -5,8 +5,8 @@
 
 <style>
 .jumbotron {
-    background: url('https://i.imgur.com/8wF1rsn.jpg');
-    background-position: 0% 30%;
+    background: url('https://i.imgur.com/cJGzRON.jpg');
+    background-position: 0% 20%;
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 100px;
@@ -24,15 +24,16 @@
   <div class="container">
 
 
-<h2>Page View Report</h2>
+<h1><b><u>Log</u></b></h1><br>
 
 
 <ul>
 
 {% for visit in visits %}
-    <li>Front Page Visits: {{ visit.Count }}</li>
+<h3>Front Page Visits: {{ visit.Count }}</h3>
 {% endfor %}
-
+<h3>Total Club Members: {{ numPlayers }}</h3>
+<h3>Total Practices: {{ numPractices }}</h3>
 </ul>
 <br><br>
 
