@@ -86,3 +86,14 @@ class AttendanceHistory(models.Model):
 
     def __unicode__(self):
        return (self.Date)
+
+class Updates(models.Model):
+    Date = models.DateField(auto_now_add=True, editable=False)
+    Message = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = "updates"
+        verbose_name_plural = "Updates"
+
+    def __unicode__(self):
+       return str(self.Date)

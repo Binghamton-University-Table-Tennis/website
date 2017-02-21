@@ -14,6 +14,25 @@
     <h1 style="color:white;">Binghamton University Table Tennis Club</h1>
 </div>
 
+
+
+<div class="container">
+  <div class="col-sm-4 nopadding"></div>
+  <div class="container">
+
+{% if updateCount > 0 %}
+    <h1><b>Updates</b></h1>
+    <ul>
+    {% for update in updates %}
+      <h3>{{ update.Date }} - {{ update.Message }}</h3>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+  </div>
+</div>
+
+
 <div class="container">
   <div class="col-sm-4 nopadding"></div>
   <div class="container">
@@ -32,7 +51,7 @@
 <div class="container">
   <div class="col-sm-4 nopadding"></div>
   <div class="container">
-    <h1><b>New Rating System</b></h1>
+    <h1><b>Rating System</b></h1>
     <h3>We now have a competitive rating system based
         on the USATT rating system for those that want
         to compare themselves to their fellow members.

@@ -9,6 +9,7 @@ from .models import Players
 from .models import Matches
 from .models import Practices
 from .models import AttendanceHistory
+from .models import Updates
 
 from Ratings import *
 
@@ -60,10 +61,13 @@ def index(request):
         v.Count += 1
         v.save()
 
+    updates = Updates.objects.all();
+    updateCount = len(updates)
+
     if request.user.is_authenticated():
-        return render(request, 'index.html', {'error': False, 'admin': True})
+        return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount})
     else:
-        return render(request, 'index.html', {'error': False})
+        return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount})
 
 
 def log(request):

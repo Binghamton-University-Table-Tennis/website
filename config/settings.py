@@ -1,5 +1,5 @@
 """
-Django settings for rating-system project, on Heroku. 
+Django settings for rating-system project, on Heroku.
 """
 
 import os
