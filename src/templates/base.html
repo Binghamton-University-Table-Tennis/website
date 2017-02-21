@@ -110,32 +110,20 @@
       left: 0;
       right: 0;
     }
-    h3 {
-      padding-left: 30px;
-      padding-right: 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
+    /*h3 {*/
+    /*  padding-left: 30px;*/
+    /*  padding-right: 30px;*/
+    /*  max-width: 1000px;*/
+    /*  margin: auto;*/
+    /*}*/
   </style>
 </head>
 
 <body class="container nopadding">
    <nav class="navbar">
-
-        <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
-          <li><form action="/search" method="GET" class="navbar-form" role="search" > <!-- autocomplete = "on" -->
-              <div class="input-group">
-                <input type="text" name="searchName" class="form-control" id="srch-term" placeholder="Find person">
-                <div class="input-group-btn">
-                  <button type="submit" class="btn btn-default glyphicon glyphicon-search" style="background-color: #EEE"></button>
-                </div>
-              </div>
-            </form></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">Home</a></li>
           {% if admin %}
-          <li><a href="/admin">Admin</a></li>
           <li><a href="/attendance">Attendance</a></li>
           <li><a href="/log">Log</a></li>
           {% endif %}
