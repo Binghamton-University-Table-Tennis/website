@@ -96,6 +96,7 @@ def checkForUpdates():
 def checkAttendance():
     attendees = ClubAttendance.objects.all()
     hadPractice = False
+    attendance_count = 0
 
     for attendee in attendees:
 
@@ -160,6 +161,7 @@ def checkAttendance():
 
         attendee.delete()
         hadPractice = True
+        attendance_count += 1
 
     if hadPractice:
         duplicatePractice = Practices.objects.all().filter(Date = datetime.datetime.today().strftime('%Y-%m-%d'))
@@ -167,8 +169,10 @@ def checkAttendance():
         if duplicatePractice.count() > 0:
             return;
 
-        practice = Practices()
+        practice = Practices(Count = attendance_count)
         practice.save()
+
+
 
 
 ########## MAIN ##########
