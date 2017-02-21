@@ -8,11 +8,11 @@
   table, th, td {
     text-align: center;
   }
-  tr:hover { 
-    background: #D3D3D3; 
-    
+  tr:hover {
+    background: #D3D3D3;
+
   }
-  
+
 </style>
 
 <div class="container">
@@ -24,7 +24,7 @@
 
 <ul>
 {% for practice in practices %}
-  <li><a href="/history/{{ practice.Date }}">{{ practice.Date }}</a></li>
+  <li><a href="/history/{{ practice.Date }}">{{ practice.Date }}</a> ({{ practice.Count }} Members)</li>
 {% endfor %}
 </ul>
 
@@ -38,8 +38,8 @@
     <th>Attendance Count</th>
     <th>Lateness Count</th>
   </tr>
-        
-    
+
+
 {% for player in players %}
 
   <tr>
@@ -47,10 +47,10 @@
     <td>{{ player.Attendance }}</td>
     <td>{{ player.Lateness }}</td>
   </tr>
-  
+
 {% endfor %}
-        
-        
+
+
 </table>
 <br><br>
 
