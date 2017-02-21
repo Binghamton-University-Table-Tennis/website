@@ -61,7 +61,7 @@ def index(request):
         v.Count += 1
         v.save()
 
-    updates = Updates.objects.all();
+    updates = Updates.objects.all().order_by('-Date');
     updateCount = len(updates)
 
     if request.user.is_authenticated():
