@@ -80,10 +80,22 @@ def log(request):
     visits = Greeting.objects.all()
 
     # Grab other summary data
-    players = Players.objects.all()
+    players = Players.objects.all().order_by('-Attendance')
     practices = Practices.objects.all()
 
-    return render(request, 'log.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices)})
+    # Get average number of members per practice
+    sum = 0
+    for practice in practices:
+        sum += practice.Count
+
+    average = sum / len(practices)
+
+    # Get top 3 players with most attendance
+
+    if len(players) >= 1:
+        topAttendance = players[0].First_Name + " " + players[0].Last_Name
+
+    return render(request, 'log.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
 
 def attendance(request):
 
