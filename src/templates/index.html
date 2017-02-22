@@ -22,11 +22,11 @@
 
 {% if updateCount > 0 %}
     <h1><b>News/Updates</b></h1>
-    <ul>
+
     {% for update in updates %}
       <h3><b><u>{{ update.Date }}</u></b> - {{ update.Message }}</h3>
     {% endfor %}
-    </ul>
+
 {% endif %}
 
   </div>
