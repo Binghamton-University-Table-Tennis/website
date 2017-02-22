@@ -88,7 +88,7 @@ class AttendanceHistory(models.Model):
        return (self.Date)
 
 class Updates(models.Model):
-    Date = models.DateField(auto_now_add=True, editable=False)
+    Date = models.DateField()
     Message = models.CharField(max_length=200)
 
     class Meta:
