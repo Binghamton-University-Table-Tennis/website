@@ -23,6 +23,7 @@ class Players(models.Model):
     Played_This_Week = models.IntegerField(editable=False, default=0)
     Attendance = models.IntegerField(editable=False, default=0)
     Lateness = models.IntegerField(editable=False, default=0)
+    LastSeen = models.DateField()
 
     class Meta:
         db_table = "players"
