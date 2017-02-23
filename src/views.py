@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.http import HttpResponseRedirect
+from django.utils import timezone
+import pytz
 
 from .models import Greeting
 from .models import Players
@@ -36,9 +38,13 @@ def rules(request):
 
 def ladder(request):
 
+    # Determine who is still active in the club
+    one_month_ago = timezone.now().date()
+    one_month_ago -= timedelta(days=30)
+
     # Grab all players in database
-    playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).order_by('-Rating')
-    playersUnranked = Players.objects.all().filter(Matches_Played = 0).order_by('-Rating')
+    playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
+    playersUnranked = Players.objects.all().filter(Matches_Played = 0, ).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
 
     if request.user.is_authenticated():
         return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True})
