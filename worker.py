@@ -20,21 +20,6 @@ from src.models import AttendanceHistory
 
 from src.Ratings import *
 
-def weeklyReward():
-    #returns day of week, friday is 4
-    if(date.today().weekday() == 4):
-        playersParticipated = Players.objects.all().filter(Played_This_Week = 1)
-        for p in playersParticipated:
-
-            match = Matches(Winner_First_Name = p.First_Name, Winner_Last_Name = p.Last_Name, Loser_First_Name = "Weekly", Loser_Last_Name ="Participation", Winner_Score=0, Loser_Score=0, Points=10, Winner_Rating=p.Rating+10, Updated=1)
-            match.save()
-
-            p.Rating += 10;
-            p.Played_This_Week = 0;
-            p.save()
-
-
-
 
 def checkForUpdates():
 
