@@ -130,7 +130,7 @@ def checkAttendance():
 
         # Player does not exist
         if len(player) == 0:
-            new_player = Players(First_Name = attendee.First_Name, Last_Name = attendee.Last_Name, Standing = 6, Attendance = 1)
+            new_player = Players(First_Name = attendee.First_Name.title(), Last_Name = attendee.Last_Name.title(), Standing = 6, Attendance = 1, LastSeen = timezone.now().date())
             new_player.save()
 
         # If player exists in database, update attendance record
