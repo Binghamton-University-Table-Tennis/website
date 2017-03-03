@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Greeting(models.Model):
@@ -23,7 +24,7 @@ class Players(models.Model):
     Played_This_Week = models.IntegerField(editable=False, default=0)
     Attendance = models.IntegerField(editable=False, default=0)
     Lateness = models.IntegerField(editable=False, default=0)
-    LastSeen = models.DateField()
+    LastSeen = models.DateField(editable=False, default=timezone.now().date())
 
     class Meta:
         db_table = "players"
