@@ -137,6 +137,7 @@ def checkAttendance():
         else:
             for p in player:
 
+                p.LastSeen = timezone.now().date()
                 p.Attendance += 1
 
                 if isLate == 1:
