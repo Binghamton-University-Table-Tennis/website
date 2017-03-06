@@ -43,3 +43,5 @@ Now, go to the Heroku site for your new app, go to Settings, click Reveal Config
 
 - $ git push heroku master
 - $ heroku run python manage.py migrate
+
+You can now navigate to your brand new URL hosted on Heroku.
