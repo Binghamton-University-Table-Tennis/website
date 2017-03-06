@@ -8,6 +8,8 @@ https://binghamtontabletennis.herokuapp.com/
 First, create a new Python workspace. Then, enter the following commands in bash:
 - $ git clone https://github.com/BinghamtonTableTennis/rating-system
 - $ cd rating-system/
+- $ sudo apt-get update
+- $ sudo apt install libpq-dev python-dev
 - $ sudo pip install -r requirements.txt
 - $ sudo service postgresql start
 - $ export DATABASE_URL=postgres:///"$(whoami)"
