@@ -35,6 +35,9 @@ First, create a new Python workspace. Then, enter the following commands in bash
 ## To create a local admin
 - $ python manage.py createsuperuser
 
+## To access the admin panel
+- Go to /admin and enter admin credentials
+
 ## Deploying to Heroku from Cloud9
 Make sure you have a local copy working as explained above. Next, create a Heroku account at https://www.heroku.com/. Then, run the following command (enter credentials when prompted):
 - $ heroku create
@@ -45,3 +48,6 @@ Now, go to the Heroku site for your new app, go to Settings, click Reveal Config
 - $ heroku run python manage.py migrate
 
 You can now navigate to your brand new URL hosted on Heroku.
+
+## To create an admin on Heroku
+- $ heroku run python manage.py createsuperuser
