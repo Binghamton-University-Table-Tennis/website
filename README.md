@@ -1,5 +1,5 @@
-# rating-system
-Web application displaying the ratings for Binghamton Table Tennis Club members
+# Binghamton University Table Tennis Club Website
+Stores attendance, practices, player info/ratings, photos, and more.
 
 ## Website URL
 https://binghamtontabletennis.herokuapp.com/
