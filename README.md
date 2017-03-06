@@ -34,3 +34,12 @@ First, create a new Python workspace. Then, enter the following commands in bash
 
 ## To create a local admin
 - $ python manage.py createsuperuser
+
+## Deploying to Heroku from Cloud9
+Make sure you have a local copy working as explained above. Next, create a Heroku account at https://www.heroku.com/. Then, run the following command (enter credentials when prompted):
+- $ heroku create
+
+Now, go to the Heroku site for your new app, go to Settings, click Reveal Config Vars, and create a key called SECRET_KEY. Enter anything you would like for the value. Then, run the following two commands:
+
+- $ git push heroku master
+- $ heroku run python manage.py migrate
