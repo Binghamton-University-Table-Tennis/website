@@ -1,5 +1,18 @@
 # Binghamton University Table Tennis Club Website
-Stores attendance, practices, player info/ratings, photos, and more.
+Our website provides the following information to all users:
+- A ladder that organizes users based on the USATT rating system
+- Player information (wins, losses, match history)
+- Club photos at past tournaments
+- An about us page
+- The ITTF rules for table tennis
+- A contact page
+
+For admins only:
+- Track attendances at each practice (including late members)
+- Add new players to the database
+- Add matches to the database
+- View summary statistics (Average players per practice, total front page visits, and more)
+- Display messages/updates on the front page
 
 ## Website URL
 https://binghamtontabletennis.herokuapp.com/
