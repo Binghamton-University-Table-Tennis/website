@@ -19,35 +19,37 @@ https://binghamtontabletennis.herokuapp.com/
 
 ## To run locally on Cloud9
 First, create a new Python workspace. Then, enter the following commands in bash:
-- $ git clone https://github.com/BinghamtonTableTennis/rating-system
-- $ cd rating-system/
-- $ sudo apt-get update
-- $ sudo apt install libpq-dev python-dev
-- $ sudo pip install -r requirements.txt
-- $ sudo service postgresql start
-- $ export DATABASE_URL=postgres:///"$(whoami)"
-- $ export SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
-- $ touch .env
-- $ python manage.py migrate
-- $ python manage.py collectstatic
-- $ heroku local
+
+    $ git clone https://github.com/BinghamtonTableTennis/rating-system
+    $ cd rating-system/
+    $ sudo apt-get update
+    $ sudo apt install libpq-dev python-dev
+    $ sudo pip install -r requirements.txt
+    $ sudo service postgresql start
+    $ export DATABASE_URL=postgres:///"$(whoami)"
+    $ export SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
+    $ touch .env
+    $ python manage.py migrate
+    $ python manage.py collectstatic
+    $ heroku local
 
 ## To create a local admin
-- $ python manage.py createsuperuser
+    $ python manage.py createsuperuser
 
 ## To access the admin panel
-- Go to /admin and enter admin credentials
+Go to /admin and enter admin credentials
 
 ## Deploying to Heroku from Cloud9
 Make sure you have a local copy working as explained above. Next, create a Heroku account at https://www.heroku.com/. Then, run the following command (enter credentials when prompted):
-- $ heroku create
+
+    $ heroku create
 
 Now, go to the Heroku site for your new app, go to Settings, click Reveal Config Vars, and create a key called SECRET_KEY. Enter anything you would like for the value. Then, run the following two commands:
 
-- $ git push heroku master
-- $ heroku run python manage.py migrate
+    $ git push heroku master
+    $ heroku run python manage.py migrate
 
 You can now navigate to your brand new URL hosted on Heroku.
 
 ## To create an admin on Heroku
-- $ heroku run python manage.py createsuperuser
+    $ heroku run python manage.py createsuperuser
