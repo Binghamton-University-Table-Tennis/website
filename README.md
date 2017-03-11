@@ -6,6 +6,7 @@ Our website provides the following information to all users:
 - An about us page
 - The ITTF rules for table tennis
 - A contact page
+- Home page with club info, updates, and links to other social media
 
 For admins only:
 - Track attendances at each practice (including late members)
