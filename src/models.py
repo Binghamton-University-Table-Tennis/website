@@ -103,7 +103,13 @@ class Updates(models.Model):
 class Slides(models.Model):
     Date = models.DateField()
     Title = models.CharField(max_length=100)
-    SlidesID = models.CharField(max_length=300)
+
+    ########## How to get the SlidesID ##########
+    # Full URL = https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit#slide=id.g1b0ebe7be8_0_0
+    # SlidesID = 1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
+    SlidesID = models.CharField(max_length=100)
+
+
 
     class Meta:
         db_table = "slides"
