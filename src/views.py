@@ -12,6 +12,7 @@ from .models import Matches
 from .models import Practices
 from .models import AttendanceHistory
 from .models import Updates
+from .models import Slides
 
 from Ratings import *
 
@@ -24,10 +25,13 @@ def about(request):
         return render(request, 'about.html', {})
 
 def photos(request):
+
+    links = Slides.objects.all().order_by('Date')
+
     if request.user.is_authenticated():
-        return render(request, 'photos.html', {'admin': True})
+        return render(request, 'photos.html', {'admin': True, 'links': links})
     else:
-        return render(request, 'photos.html', {})
+        return render(request, 'photos.html', {'links': links})
 
 def rules(request):
 

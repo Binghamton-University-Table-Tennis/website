@@ -8,6 +8,7 @@ from .models import Players
 from .models import Matches
 from .models import ClubAttendance
 from .models import Updates
+from .models import Slides
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
@@ -15,3 +16,4 @@ admin.site.register(Players)
 admin.site.register(Matches)
 admin.site.register(Updates)
 admin.site.register(ClubAttendance)
+admin.site.register(Slides)

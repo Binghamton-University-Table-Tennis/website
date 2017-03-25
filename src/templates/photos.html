@@ -6,31 +6,14 @@
   <h1><b><u>Photos</u></b></h1>
 </div>
 
-<div class="container">
-  <h2>Fall 2016 RIT Tournament</h2><br>
+{% for link in links %}
+  <div class="container">
+  <h2>{{ link.Title }}</h2><br>
     <center>
-      <iframe src="https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+      <iframe src="https://docs.google.com/presentation/d/"{{ link.URL }}"/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </center>
-</div>
-<br><br>
-
-
-<div class="container">
-  <h2>Spring 2017 SUNY Oswego Tournament</h2><br>
-    <center>
-      <iframe src="https://docs.google.com/presentation/d/1cWFw7n1ZA6faXkT5Qwu_lTgHN7uFeWEy7bOJRT255wc/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </center>
-</div>
-<br><br>
-
-
-<div class="container">
-  <h2>2017 Great Lakes Regional Tournament</h2><br>
-    <center>
-      <iframe src="https://docs.google.com/presentation/d/1FWiWxX2WwfW2e61S5VmuPsm9tMETN5lylmYO8NZugkI/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </center>
-</div>
-<br><br>
-
+  </div>
+  <br><br>
+{% endfor %}
 
 {% endblock %}
