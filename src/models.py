@@ -101,6 +101,7 @@ class Updates(models.Model):
        return str(self.Date)
 
 class Slides(models.Model):
+    Date = models.DateField()
     Title = models.CharField(max_length=100)
     URL = models.CharField(max_length=300)
 
