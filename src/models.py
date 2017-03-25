@@ -103,7 +103,7 @@ class Updates(models.Model):
 class Slides(models.Model):
     Date = models.DateField()
     Title = models.CharField(max_length=100)
-    URL = models.CharField(max_length=300)
+    SlidesID = models.CharField(max_length=300)
 
     class Meta:
         db_table = "slides"
