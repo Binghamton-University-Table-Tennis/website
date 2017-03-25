@@ -99,3 +99,14 @@ class Updates(models.Model):
 
     def __unicode__(self):
        return str(self.Date)
+
+class Slides(models.Model):
+    Title = models.CharField(max_length=100)
+    URL = models.CharField(max_length=300)
+
+    class Meta:
+        db_table = "slides"
+        verbose_name_plural = "Slides"
+
+    def __unicode__(self):
+       return str(self.Title)
