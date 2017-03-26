@@ -28,7 +28,7 @@ On the admin panel, you will see 5 tables available to modify with Add/Change op
 - Updates
 
 ### Club Attendance
-To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name. At 3:30 UTC, a script will automatically run to go through the Club Attendance and store them in an attendance_history table to be displayed on the Attendance page (admin only).
+To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name. At 3:30 AM UTC, a script will automatically run to go through the Club Attendance and store them in an attendance_history table to be displayed on the Attendance page (admin only).
 
 ### Matches
 To record ranked matches, enter the winner and loser names and the score (best of 3 match). The same script for the Club Attendance will collect the match results and update the ladder page as well as individual match history pages.
