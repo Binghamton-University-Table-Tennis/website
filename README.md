@@ -19,6 +19,44 @@ For admins only:
 ## Website URL
 https://binghamtontabletennis.herokuapp.com/
 
+## How to use the admin panel
+On the admin panel, you will see 5 tables available to modify with Add/Change options:
+- Club Attendance
+- Matches
+- Players
+- Slides
+- Updates
+
+### Club Attendance
+To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name. At 3:30 UTC, a script will automatically run to go through the Club Attendance and store them in an attendance_history table to be displayed on the Attendance page (admin only).
+
+### Matches
+To record ranked matches, enter the winner and loser names and the score (best of 3 match). The same script for the Club Attendance will collect the match results and update the ladder page as well as individual match history pages.
+
+### Players
+To manually add a new player to the database, have members enter their first and last name and class standing. Note: New members who sign in on the Club Attendance form will automatically have a Player entry created for them.
+
+### Slides
+To add a new slideshow to the photos page, you need to add a date, title, and a slides ID.
+- Date: Needed to organize slides to ascending order
+- Title: Used to label a slideshow
+- Slides ID: The ID of the slideshow (see below)
+
+##### How to get the Slides ID
+- In your browser, open up the Google Slides you want to share on the photos page
+- Make sure the slideshow is published (File -> Publish to the web -> Publish)
+- Look for the slides ID in the URL.
+
+For example, if the URL is:
+
+      https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit#slide=id.g1b0ebe7be8_0_0
+the Slides ID is:
+
+      1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
+
+### Updates
+To post an update on the front page, simply enter the date and the message you want to display.
+
 ## To run locally on Cloud9
 First, create a new Python workspace. Then, enter the following commands in bash:
 
