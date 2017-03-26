@@ -37,14 +37,14 @@ To record ranked matches, enter the winner and loser names and the score (best o
 To manually add a new player to the database, have members enter their first and last name and class standing. Note: New members who sign in on the Club Attendance form will automatically have a Player entry created for them.
 
 ### Slides
-To add a new slideshow to the photos page, you need to add a date, title, and a slides ID.
+To add a new slideshow to the photos page, first make sure the Google Slides is published (File -> Publish to the web -> Publish). Then, fill in the following fields:
+
 - Date: Needed to organize slides to ascending order
 - Title: Used to label a slideshow
 - Slides ID: The ID of the slideshow (see below)
 
 ##### How to get the Slides ID
 - In your browser, open up the Google Slides you want to share on the photos page
-- Make sure the slideshow is published (File -> Publish to the web -> Publish)
 - Look for the slides ID in the URL.
 
 For example, if the URL is:
