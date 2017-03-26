@@ -19,6 +19,9 @@ For admins only:
 ## Website URL
 https://binghamtontabletennis.herokuapp.com/
 
+## To access the admin panel
+Go to /admin and enter admin credentials
+
 ## How to use the admin panel
 On the admin panel, you will see 5 tables available to modify with Add/Change options:
 - Club Attendance
@@ -75,9 +78,6 @@ First, create a new Python workspace. Then, enter the following commands in bash
 
 ## To create a local admin
     $ python manage.py createsuperuser
-
-## To access the admin panel
-Go to /admin and enter admin credentials
 
 ## Deploying to Heroku from Cloud9
 Make sure you have a local copy working as explained above. Next, create a Heroku account at https://www.heroku.com/. Then, run the following command (enter credentials when prompted):
