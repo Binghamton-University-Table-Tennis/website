@@ -14,6 +14,7 @@ For admins only:
 - Add matches to the database
 - View summary statistics (Average players per practice, total front page visits, and more)
 - Display messages/updates on the front page
+- Add new Google Slides to the photos page
 
 ## Website URL
 https://binghamtontabletennis.herokuapp.com/
