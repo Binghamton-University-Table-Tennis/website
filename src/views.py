@@ -22,7 +22,7 @@ from Ratings import *
 
 def about(request):
 
-    photoList = Images.objects.all().filter(Page__iexact = 'about')
+    photoList = Images.objects.all().filter(Page = Images.ABOUT)
 
     if len(photoList) == 1:
         photo = photoList[0]

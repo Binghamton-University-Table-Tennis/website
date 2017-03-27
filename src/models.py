@@ -128,7 +128,27 @@ class EBoard(models.Model):
        return str(self.Name)
 
 class Images(models.Model):
-    Page = models.IntegerField(choices=[(1, "background"), (2, "index"), (3, "attendance"), (4, "summary"), (5, "ladder"), (6, "about"), (7, "rules"), (8, "contact")])
+    BACKGROUND = 1
+    INDEX = 2
+    ATTENDANCE = 3
+    SUMMARY = 4
+    LADDER = 5
+    ABOUT = 6
+    RULES = 7
+    CONTACT = 8
+
+    PAGE_CHOICES = (
+        (BACKGROUND, "background"),
+        (INDEX, "index"),
+        (ATTENDANCE, "attendance"),
+        (SUMMARY, "summary"),
+        (LADDER, "ladder"),
+        (ABOUT, "about"),
+        (RULES, "rules"),
+        (CONTACT, "contact")
+    )
+
+    Page = models.IntegerField(choices=PAGE_CHOICES)
     URL = models.CharField(max_length=200)
 
     class Meta:
