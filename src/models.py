@@ -136,4 +136,4 @@ class Images(models.Model):
         verbose_name_plural = "Images"
 
     def __unicode__(self):
-       return str(self.Page)
+       return str(self.get_Page_display())
