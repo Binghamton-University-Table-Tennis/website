@@ -11,7 +11,7 @@ import src.views
 
 urlpatterns = [
     url(r'^$', src.views.index, name='index'),
-    url(r'^log', src.views.log, name='log'),
+    url(r'^summary', src.views.summary, name='summary'),
     url(r'^about', src.views.about, name='about'),
     url(r'^photos', src.views.photos, name='photos'),
     url(r'^ladder', src.views.ladder, name='ladder'),

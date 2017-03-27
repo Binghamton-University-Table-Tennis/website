@@ -125,7 +125,7 @@ def index(request):
         return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount})
 
 
-def log(request):
+def summary(request):
 
     # Only admins can view
     if not request.user.is_authenticated():
@@ -154,7 +154,7 @@ def log(request):
     else:
         topAttendance = "N/A"
 
-    return render(request, 'log.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
+    return render(request, 'summary.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
 
 def attendance(request):
 
