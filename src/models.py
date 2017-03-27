@@ -157,3 +157,13 @@ class Images(models.Model):
 
     def __unicode__(self):
        return str(self.get_Page_display())
+
+class Location(models.Model):
+    Description = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = "location"
+        verbose_name_plural = "Location"
+
+    def __unicode__(self):
+       return str(self.Description)
