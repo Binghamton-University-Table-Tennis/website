@@ -13,6 +13,7 @@ from .models import Practices
 from .models import AttendanceHistory
 from .models import Updates
 from .models import Slides
+from .models import EBoard
 
 from Ratings import *
 
@@ -57,10 +58,12 @@ def ladder(request):
 
 def contact(request):
 
+    eboard = EBoard.objects.all()
+
     if request.user.is_authenticated():
-        return render(request, 'contact.html', {'admin': True})
+        return render(request, 'contact.html', {'admin': True, 'eboard': eboard})
     else:
-        return render(request, 'contact.html', {})
+        return render(request, 'contact.html', {'eboard': eboard})
 
 def index(request):
 

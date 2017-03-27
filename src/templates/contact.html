@@ -28,9 +28,9 @@
     <div class="container">
 
       <ul>
-        <li>Eric Haberli - Co-President </li>
-        <li>Jeffrey Chan - Co-President </li>
-        <li>Richard Zhang - Secretary/Treasurer </li>
+        {% for member in eboard %}
+          <li>{{ member.Name }} - {{ member.get_Position_display }} </li>
+        {% endfor %}
         <br>
         <li>For general inquiry, contact us at binghamtontabletennis@gmail.com</li>
       </ul>
