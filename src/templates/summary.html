@@ -4,17 +4,19 @@
 {% block content %}
 
 <style>
+
+{% if photo %}
 .jumbotron {
-    background: url('https://i.imgur.com/cJGzRON.jpg');
-    background-position: 0% 20%;
+    background: url({{ photo.URL }});
+    background-position: 0% 50%;
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 100px;
     padding-bottom: 160px;
     margin-top:-20px;
     text-shadow: black 0.1em 0.1em 0.1em;
-
 }
+{% endif %}
 
 </style>
 

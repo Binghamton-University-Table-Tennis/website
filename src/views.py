@@ -154,7 +154,16 @@ def summary(request):
     else:
         topAttendance = "N/A"
 
-    return render(request, 'summary.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
+    # Get image URL for this page's banner
+    photoList = Images.objects.all().filter(Page = Images.SUMMARY)
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        return render(request, 'summary.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance, 'photo': photo})
+    else:
+        return render(request, 'summary.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
+
 
 def attendance(request):
 
@@ -166,7 +175,15 @@ def attendance(request):
     practices = Practices.objects.all().order_by('-Date')
     history = AttendanceHistory.objects.all()
 
-    return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True})
+    # Get image URL for this page's banner
+    photoList = Images.objects.all().filter(Page = Images.ATTENDANCE)
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True, 'photo': photo})
+    else:
+        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True})
 
 
 def history(request, date):
