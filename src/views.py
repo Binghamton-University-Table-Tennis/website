@@ -119,10 +119,20 @@ def index(request):
     updates = Updates.objects.all().order_by('-Date');
     updateCount = len(updates)
 
-    if request.user.is_authenticated():
-        return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount})
+    photoList = Images.objects.all().filter(Page = Images.INDEX)
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        if request.user.is_authenticated():
+            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount, 'photo': photo})
+        else:
+            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount, 'photo': photo})
     else:
-        return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount})
+        if request.user.is_authenticated():
+            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount})
+        else:
+            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount})
 
 
 def summary(request):
