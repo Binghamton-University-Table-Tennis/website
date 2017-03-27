@@ -128,7 +128,7 @@ class EBoard(models.Model):
        return str(self.Name)
 
 class Images(models.Model):
-    Page = models.CharField(max_length=50)
+    Page = models.IntegerField(choices=[(1, "background"), (2, "index"), (3, "attendance"), (4, "summary"), (5, "ladder"), (6, "about"), (7, "rules"), (8, "contact")])
     URL = models.CharField(max_length=200)
 
     class Meta:
