@@ -12,8 +12,10 @@ p1{
     font-style: italic;
 
 }
+
+{% if photo %}
 .jumbotron {
-    background: url('https://i.imgur.com/M75NvGv.jpg');
+    background: url({{ photo.URL }});
     background-position: 0% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -21,8 +23,8 @@ p1{
     padding-bottom: 160px;
     margin-top:-20px;
     text-shadow: black 0.1em 0.1em 0.1em;
-
 }
+{% endif %}
 
 </style>
 

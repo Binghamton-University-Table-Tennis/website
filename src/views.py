@@ -48,10 +48,20 @@ def photos(request):
 
 def rules(request):
 
-    if request.user.is_authenticated():
-        return render(request, 'rules.html', {'admin': True})
+    photoList = Images.objects.all().filter(Page = Images.RULES)
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        if request.user.is_authenticated():
+            return render(request, 'rules.html', {'admin': True, 'photo': photo})
+        else:
+            return render(request, 'rules.html', {'photo': photo})
     else:
-        return render(request, 'rules.html', {})
+        if request.user.is_authenticated():
+            return render(request, 'rules.html', {'admin': True})
+        else:
+            return render(request, 'rules.html', {})
 
 def ladder(request):
 
@@ -63,19 +73,39 @@ def ladder(request):
     playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
     playersUnranked = Players.objects.all().filter(Matches_Played = 0, ).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
 
-    if request.user.is_authenticated():
-        return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True})
+    photoList = Images.objects.all().filter(Page = Images.LADDER)
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        if request.user.is_authenticated():
+            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True, 'photo': photo})
+        else:
+            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'photo': photo})
     else:
-        return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
+        if request.user.is_authenticated():
+            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True})
+        else:
+            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
 
 def contact(request):
 
     eboard = EBoard.objects.all()
+    photoList = Images.objects.all().filter(Page = Images.CONTACT)
 
-    if request.user.is_authenticated():
-        return render(request, 'contact.html', {'admin': True, 'eboard': eboard})
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        if request.user.is_authenticated():
+            return render(request, 'contact.html', {'admin': True, 'eboard': eboard, 'photo': photo})
+        else:
+            return render(request, 'contact.html', {'eboard': eboard, 'photo': photo})
     else:
-        return render(request, 'contact.html', {'eboard': eboard})
+        if request.user.is_authenticated():
+            return render(request, 'contact.html', {'admin': True, 'eboard': eboard})
+        else:
+            return render(request, 'contact.html', {'eboard': eboard})
 
 def index(request):
 
