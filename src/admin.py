@@ -12,6 +12,8 @@ from .models import Slides
 from .models import EBoard
 from .models import Images
 from .models import Location
+from .models import Practices
+from .models import AttendanceHistory
 
 admin.site.unregister(User)
 admin.site.unregister(Group)

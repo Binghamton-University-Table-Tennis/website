@@ -167,3 +167,19 @@ class Location(models.Model):
 
     def __unicode__(self):
        return str(self.Description)
+
+class OrganizationInformation(models.Model):
+    Organization_Name = models.CharField(max_length=100)
+    Organization_Email = models.CharField(max_length=100)
+    Organization_Facebook = models.CharField(max_length=100)
+    Organization_Bengaged = models.CharField(max_length=100)
+    Organization_Youtube = models.CharField(max_length=100)
+    Organization_Address1 = models.CharField(max_length=100)
+    Organization_Address2 = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "organization_information"
+        verbose_name_plural = "Organization Information"
+
+    def __unicode__(self):
+       return str(self.Organization_Name)
