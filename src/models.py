@@ -126,3 +126,14 @@ class EBoard(models.Model):
 
     def __unicode__(self):
        return str(self.Name)
+
+class Images(models.Model):
+    Page = models.CharField(max_length=50)
+    URL = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = "images"
+        verbose_name_plural = "Images"
+
+    def __unicode__(self):
+       return str(self.Page)
