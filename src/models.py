@@ -109,11 +109,20 @@ class Slides(models.Model):
     # SlidesID = 1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
     SlidesID = models.CharField(max_length=100)
 
-
-
     class Meta:
         db_table = "slides"
         verbose_name_plural = "Slides"
 
     def __unicode__(self):
        return str(self.Title)
+
+class EBoard(models.Model):
+    Name = models.CharField(max_length=50)
+    Position = models.IntegerField(choices=[(1, "President"), (2, "Co-President"), (3, "Treasurer"), (4, "Secretary"), (5, "Webmaster")])
+
+    class Meta:
+        db_table = "eboard"
+        verbose_name_plural = "EBoard"
+
+    def __unicode__(self):
+       return str(self.Name)
