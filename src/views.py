@@ -143,12 +143,16 @@ def log(request):
     for practice in practices:
         sum += practice.Count
 
-    average = sum / len(practices)
+    if (len(practices) > 0):
+        average = sum / len(practices)
+    else:
+        average = 0
 
-    # Get top 3 players with most attendance
-
+    # Get player with most attendance
     if len(players) >= 1:
         topAttendance = players[0].First_Name + " " + players[0].Last_Name
+    else:
+        topAttendance = "N/A"
 
     return render(request, 'log.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
 
