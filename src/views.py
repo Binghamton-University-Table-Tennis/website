@@ -14,16 +14,28 @@ from .models import AttendanceHistory
 from .models import Updates
 from .models import Slides
 from .models import EBoard
+from .models import Images
 
 from Ratings import *
 
 # Create your views here.
 
 def about(request):
-    if request.user.is_authenticated():
-        return render(request, 'about.html', {'admin': True})
+
+    photoList = Images.objects.all().filter(Page__iexact = 'about')
+
+    if len(photoList) == 1:
+        photo = photoList[0]
+
+        if request.user.is_authenticated():
+            return render(request, 'about.html', {'admin': True, 'photo': photo})
+        else:
+            return render(request, 'about.html', {'photo': photo})
     else:
-        return render(request, 'about.html', {})
+        if request.user.is_authenticated():
+            return render(request, 'about.html', {'admin': True})
+        else:
+            return render(request, 'about.html', {})
 
 def photos(request):
 

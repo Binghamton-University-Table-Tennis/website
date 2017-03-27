@@ -18,7 +18,12 @@
 
   <br>
 
-  <img src="https://i.imgur.com/XYpxViO.jpg" class="img-responsive"></img>
+
+  {% if photo %}
+    <center><img src={{ photo.URL }} class="img-responsive"></img></center>
+  {% endif %}
+
+
 </div>
 
 <br><br><br>
