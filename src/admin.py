@@ -10,6 +10,7 @@ from .models import ClubAttendance
 from .models import Updates
 from .models import Slides
 from .models import EBoard
+from .models import Images
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
@@ -19,3 +20,4 @@ admin.site.register(Updates)
 admin.site.register(ClubAttendance)
 admin.site.register(Slides)
 admin.site.register(EBoard)
+admin.site.register(Images)
