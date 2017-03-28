@@ -14,6 +14,7 @@ from .models import Images
 from .models import Location
 from .models import Practices
 from .models import AttendanceHistory
+from .models import OrganizationInformation
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
@@ -27,3 +28,4 @@ admin.site.register(Images)
 admin.site.register(Location)
 admin.site.register(Practices)
 admin.site.register(AttendanceHistory)
+admin.site.register(OrganizationInformation)
