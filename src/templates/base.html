@@ -163,17 +163,11 @@
       <br>
 
       <h2><b>Follow us:</b>
-        <a href={{ organization.Facebook }} style="color:white;" target="_blank">
-          <img src="http://imgur.com/57LpVS2.png" href={{ organization.Facebook }} width="42" height="42"></img>
-        </a>
-
-        <a href={{ organization.Other_Website }} style="color:white;" target="_blank">
-          <img src={{ organization.Other_Website_Logo }} href={{ organization.Other_Website }} width="42" height="42"></img>
-        </a>
-
-        <a href={{ organization.Youtube }} style="color:white;" target="_blank">
-          <img src="http://imgur.com/KKZya3A.png" href={{ organization.Youtube }} width="42" height="42"></img>
-        </a>
+        {% for media in socialMediaList %}
+          <a href={{ media.Website_URL }} style="color:white;" target="_blank">
+            <img src={{ media.Logo_URL }} href={{ media.Website_URL }} width="42" height="42"></img>
+          </a>
+        {% endfor %}
       </h2>
 
       <br>
