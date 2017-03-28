@@ -182,4 +182,4 @@ class OrganizationInformation(models.Model):
         verbose_name_plural = "Organization Information"
 
     def __unicode__(self):
-       return str(self.Organization_Name)
+       return str(self.Name)
