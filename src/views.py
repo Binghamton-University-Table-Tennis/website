@@ -23,6 +23,7 @@ from Ratings import *
 
 def about(request):
 
+    # Get jumbotron image for about us page
     photoList = Images.objects.all().filter(Page = Images.ABOUT)
 
     if len(photoList) == 1:
@@ -117,7 +118,7 @@ def index(request):
         v.Count += 1
         v.save()
 
-    # Get all update messages
+    # Get all news/updates
     updates = Updates.objects.all().order_by('-Date');
     updateCount = len(updates)
 

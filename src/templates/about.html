@@ -4,20 +4,8 @@
 {% block content %}
 <div class="container">
   <h1><b><u>About Us</u></b></h1>
-
-
-      <h3>The Table Tennis Club is designed to provide
-        students with the opportunity to compete against
-        other players as well as the opportunity to
-        enhance their table tennis skills. Requiring
-        minimal equipment, it is an ideal
-        recreational activity for everyone. Although the
-        club will be primarily recreational, players with
-        competitive intent are welcome to join as well.
-      </h3>
-
+    <h3>{{ organization.Description }}</h3>
   <br>
-
 
   {% if photo %}
     <center><img src={{ photo.URL }} class="img-responsive"></img></center>
