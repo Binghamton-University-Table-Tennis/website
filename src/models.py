@@ -24,7 +24,7 @@ class Players(models.Model):
     Played_This_Week = models.IntegerField(editable=False, default=0)
     Attendance = models.IntegerField(editable=False, default=0)
     Lateness = models.IntegerField(editable=False, default=0)
-    LastSeen = models.DateField(editable=False, default=timezone.now().date())
+    LastSeen = models.DateField(editable=False, default=timezone.now)
 
     class Meta:
         db_table = "players"
