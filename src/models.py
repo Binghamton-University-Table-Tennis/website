@@ -162,10 +162,6 @@ class Images(models.Model):
 class OrganizationInformation(models.Model):
     Name = models.CharField(max_length=100)
     Email = models.CharField(max_length=100)
-    Facebook = models.CharField(max_length=100)
-    Other_Website = models.CharField(max_length=100)
-    Other_Website_Logo = models.CharField(max_length=100)
-    Youtube = models.CharField(max_length=100)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100)
     Copyright_Year = models.CharField(max_length=20)
