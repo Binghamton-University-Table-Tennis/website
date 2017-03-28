@@ -84,7 +84,7 @@ class AttendanceHistory(models.Model):
 
     class Meta:
         db_table = "attendance_history"
-        verbose_name_plural = "Attendance History"
+        verbose_name_plural = "Past Attendance"
 
     def __unicode__(self):
        return (self.Date)
