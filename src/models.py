@@ -74,7 +74,7 @@ class Practices(models.Model):
         verbose_name_plural = "Practices"
 
     def __unicode__(self):
-       return (self.Date)
+       return str(self.Date)
 
 class AttendanceHistory(models.Model):
     First_Name = models.CharField(max_length=20)
@@ -87,7 +87,7 @@ class AttendanceHistory(models.Model):
         verbose_name_plural = "Past Attendance"
 
     def __unicode__(self):
-       return (self.Date)
+       return str(self.Date)
 
 class Updates(models.Model):
     Date = models.DateField()
