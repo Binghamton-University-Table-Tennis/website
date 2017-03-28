@@ -15,6 +15,8 @@ from .models import Practices
 from .models import AttendanceHistory
 from .models import OrganizationInformation
 from .models import FrontPageContent
+from .models import SocialMedia
+
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
@@ -29,3 +31,4 @@ admin.site.register(Practices)
 admin.site.register(AttendanceHistory)
 admin.site.register(OrganizationInformation)
 admin.site.register(FrontPageContent)
+admin.site.register(SocialMedia)

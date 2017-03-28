@@ -59,6 +59,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'src.context_processors.getBackgroundImage',
                 'src.context_processors.getOrganizationInformation',
+                'src.context_processors.getSocialMedia',
             ],
         },
     },

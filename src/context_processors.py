@@ -1,5 +1,6 @@
 from .models import Images
 from .models import OrganizationInformation
+from .models import SocialMedia
 
 
 def getBackgroundImage(request):
@@ -19,5 +20,14 @@ def getOrganizationInformation(request):
     if len(organizationList) >= 1:
         organization = organizationList[0]
     	return {'organization': organization}
+    else:
+    	return {}
+
+def getSocialMedia(request):
+
+    socialMediaList = SocialMedia.objects.all()
+
+    if len(socialMediaList) >= 1:
+    	return {'socialMediaList': socialMediaList}
     else:
     	return {}
