@@ -168,7 +168,7 @@
         </a>
 
         <a href={{ organization.Other_Website }} style="color:white;" target="_blank">
-          <img src="http://imgur.com/I94Lg9M.png" href={{ organization.Other_Website }} width="42" height="42"></img>
+          <img src={{ organization.Other_Website_Logo }} href={{ organization.Other_Website }} width="42" height="42"></img>
         </a>
 
         <a href={{ organization.Youtube }} style="color:white;" target="_blank">
@@ -178,7 +178,7 @@
 
       <br>
 
-      <h6>Copyright © 2016-
+      <h6>Copyright © {{ organization.Year_First_Established }}-
       <script>  // Get the current year
         var now = new Date;
         document.write(1900 + now.getYear());

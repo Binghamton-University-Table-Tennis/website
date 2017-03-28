@@ -173,9 +173,11 @@ class OrganizationInformation(models.Model):
     Email = models.CharField(max_length=100)
     Facebook = models.CharField(max_length=100)
     Other_Website = models.CharField(max_length=100)
+    Other_Website_Logo = models.CharField(max_length=100)
     Youtube = models.CharField(max_length=100)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100)
+    Year_First_Established = models.CharField(max_length=10)
 
     class Meta:
         db_table = "organization_information"
