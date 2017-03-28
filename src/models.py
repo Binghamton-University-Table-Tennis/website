@@ -168,7 +168,7 @@ class OrganizationInformation(models.Model):
     Youtube = models.CharField(max_length=100)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100)
-    Year_First_Established = models.CharField(max_length=10)
+    Copyright_Year = models.CharField(max_length=20)
     Description = models.CharField(max_length=500)
 
     class Meta:
