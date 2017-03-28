@@ -188,3 +188,14 @@ class FrontPageContent(models.Model):
 
     def __unicode__(self):
        return str(self.Title)
+
+class SocialMedia(models.Model):
+    Website_URL = models.CharField(max_length=100)
+    Logo_URL = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "social_media"
+        verbose_name_plural = "Social Media"
+
+    def __unicode__(self):
+       return str(self.Website_URL)
