@@ -165,3 +165,9 @@ def checkAttendance():
 
 checkForUpdates()
 checkAttendance()
+
+# Make sure the page count tracker exists
+visits = Greeting.objects.all()
+if len(visits) == 0:
+    visitObject = Greeting(Count = 0)
+    visitObject.save()

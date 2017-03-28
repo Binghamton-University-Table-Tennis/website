@@ -5,12 +5,15 @@ from django.utils import timezone
 class Greeting(models.Model):
     Count = models.IntegerField(editable=False, default = 0)
 
+    def get_absolute_url(self):
+        return "/summary"
+
     class Meta:
         db_table = "visits"
         verbose_name_plural = "Visits"
 
     def __unicode__(self):
-       return self.Time
+       return "Front page visits: " + str(self.Count)
 
 class Players(models.Model):
     First_Name = models.CharField(max_length=20)
@@ -25,6 +28,9 @@ class Players(models.Model):
     Attendance = models.IntegerField(editable=False, default=0)
     Lateness = models.IntegerField(editable=False, default=0)
     LastSeen = models.DateField(editable=False, default=timezone.now)
+
+    def get_absolute_url(self):
+        return "/attendance"
 
     class Meta:
         db_table = "players"
@@ -45,6 +51,9 @@ class Matches(models.Model):
     Winner_Rating = models.IntegerField(editable=False, default=0)
     Loser_Rating = models.IntegerField(editable=False, default=0)
     Updated = models.IntegerField(editable=False, default=0)
+
+    def get_absolute_url(self):
+        return "/ladder"
 
     class Meta:
         db_table = "matches"
@@ -69,6 +78,9 @@ class Practices(models.Model):
     Date = models.DateField(auto_now_add=True, editable=False)
     Count = models.IntegerField(editable=False, default=0)
 
+    def get_absolute_url(self):
+        return "/attendance"
+
     class Meta:
         db_table = "practices"
         verbose_name_plural = "Practices"
@@ -82,6 +94,9 @@ class AttendanceHistory(models.Model):
     Date = models.DateField(auto_now_add=True, editable=False)
     Late = models.IntegerField(editable=False, default=0)
 
+    def get_absolute_url(self):
+        return "/attendance"
+
     class Meta:
         db_table = "attendance_history"
         verbose_name_plural = "Past Attendance"
@@ -92,6 +107,9 @@ class AttendanceHistory(models.Model):
 class Updates(models.Model):
     Date = models.DateField()
     Message = models.CharField(max_length=200)
+
+    def get_absolute_url(self):
+        return "/"
 
     class Meta:
         db_table = "updates"
@@ -109,6 +127,9 @@ class Slides(models.Model):
     # SlidesID = 1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
     SlidesID = models.CharField(max_length=100)
 
+    def get_absolute_url(self):
+        return "/photos"
+
     class Meta:
         db_table = "slides"
         verbose_name_plural = "Slides"
@@ -119,6 +140,9 @@ class Slides(models.Model):
 class EBoard(models.Model):
     Name = models.CharField(max_length=50)
     Position = models.IntegerField(choices=[(1, "President"), (2, "Co-President"), (3, "Treasurer"), (4, "Secretary"), (5, "Webmaster")])
+
+    def get_absolute_url(self):
+        return "/contact"
 
     class Meta:
         db_table = "eboard"
@@ -151,6 +175,9 @@ class Images(models.Model):
     Page = models.IntegerField(choices=PAGE_CHOICES)
     URL = models.CharField(max_length=200)
 
+    def get_absolute_url(self):
+        return "/"
+
     class Meta:
         db_table = "images"
         verbose_name_plural = "Images"
@@ -167,6 +194,9 @@ class OrganizationInformation(models.Model):
     Copyright_Year = models.CharField(max_length=20)
     Description = models.CharField(max_length=500)
 
+    def get_absolute_url(self):
+        return "/"
+
     class Meta:
         db_table = "organization_information"
         verbose_name_plural = "Organization Information"
@@ -178,6 +208,9 @@ class FrontPageContent(models.Model):
     Title = models.CharField(max_length=100)
     Description = models.CharField(max_length=500)
 
+    def get_absolute_url(self):
+        return "/"
+
     class Meta:
         db_table = "front_page_content"
         verbose_name_plural = "Front Page Content"
@@ -188,6 +221,9 @@ class FrontPageContent(models.Model):
 class SocialMedia(models.Model):
     Website_URL = models.CharField(max_length=100)
     Logo_URL = models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+        return "/"
 
     class Meta:
         db_table = "social_media"

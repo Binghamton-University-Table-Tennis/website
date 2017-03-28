@@ -17,6 +17,7 @@ from .models import AttendanceHistory
 from .models import OrganizationInformation
 from .models import FrontPageContent
 from .models import SocialMedia
+from .models import Greeting
 
 class TextInputAdmin(admin.ModelAdmin):
     formfield_overrides = {
@@ -36,6 +37,7 @@ class TextareaAdmin(admin.ModelAdmin):
 admin.site.unregister(User)
 admin.site.unregister(Group)
 admin.site.register(Players)
+admin.site.register(Greeting)
 admin.site.register(Matches, TextInputAdmin)
 admin.site.register(Updates, TextareaAdmin)
 admin.site.register(ClubAttendance)
