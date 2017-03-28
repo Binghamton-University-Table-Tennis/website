@@ -15,6 +15,7 @@ from .models import Updates
 from .models import Slides
 from .models import EBoard
 from .models import Images
+from .models import FrontPageContent
 
 from Ratings import *
 
@@ -116,23 +117,28 @@ def index(request):
         v.Count += 1
         v.save()
 
+    # Get all update messages
     updates = Updates.objects.all().order_by('-Date');
     updateCount = len(updates)
 
+    # Get all front page content
+    frontPageContent = FrontPageContent.objects.all()
+
+    # Get jumbotron image for home page
     photoList = Images.objects.all().filter(Page = Images.INDEX)
 
     if len(photoList) == 1:
         photo = photoList[0]
 
         if request.user.is_authenticated():
-            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount, 'photo': photo})
+            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount, 'photo': photo, 'frontPageContent': frontPageContent})
         else:
-            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount, 'photo': photo})
+            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount, 'photo': photo, 'frontPageContent': frontPageContent})
     else:
         if request.user.is_authenticated():
-            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount})
+            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount, 'frontPageContent': frontPageContent})
         else:
-            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount})
+            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount, 'frontPageContent': frontPageContent})
 
 
 def summary(request):

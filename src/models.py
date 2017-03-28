@@ -169,6 +169,7 @@ class OrganizationInformation(models.Model):
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100)
     Year_First_Established = models.CharField(max_length=10)
+    Description = models.CharField(max_length=500)
 
     class Meta:
         db_table = "organization_information"
@@ -176,3 +177,14 @@ class OrganizationInformation(models.Model):
 
     def __unicode__(self):
        return str(self.Name)
+
+class FrontPageContent(models.Model):
+    Title = models.CharField(max_length=100)
+    Description = models.CharField(max_length=500)
+
+    class Meta:
+        db_table = "front_page_content"
+        verbose_name_plural = "Front Page Content"
+
+    def __unicode__(self):
+       return str(self.Title)

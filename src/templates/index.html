@@ -50,6 +50,15 @@
   </div>
 </div>
 
+{% for content in frontPageContent %}
+<div class="container">
+  <div class="col-sm-4 nopadding"></div>
+  <div class="container">
+    <h1><b>{{ content.Title }}</b></h1>
+    <h3>{{ content.Description }}</h3>
+  </div>
+</div>
+{% endfor %}
 
 <div class="container">
   <div class="col-sm-4 nopadding"></div>
@@ -66,6 +75,7 @@
     </h3>
   </div>
 </div>
+
 <div class="container">
   <div class="col-sm-4 nopadding"></div>
   <div class="container">
@@ -81,6 +91,7 @@
     </h3>
   </div>
 </div>
+
 <div class="container">
   <div class="col-sm-4 nopadding"></div>
   <div class="container">
@@ -91,6 +102,7 @@
     </h3>
   </div>
 </div>
+
 <br>
 <br>
 {% endblock %}
