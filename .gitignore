@@ -97,3 +97,6 @@ db.sqlite3
 
 # Local run configuration
 preview_script.sh
+
+# Static files that will automatically be created on Heroku
+config/staticfiles/

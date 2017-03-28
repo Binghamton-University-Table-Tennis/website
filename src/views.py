@@ -4,6 +4,9 @@ from django.shortcuts import redirect
 from datetime import datetime, timedelta
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
+
 import pytz
 
 from .models import Greeting
@@ -275,3 +278,15 @@ def search(request):
     result = request.GET.get('searchName')
     return redirect('stats', player=result)
 
+@csrf_exempt
+def sendemail(request):
+    sender = request.POST.get('sender')
+    subject = request.POST.get('subject')
+    body = request.POST.get('body')
+
+    sentStatus = send_mail('subject', 'body', 'binghamtontabletennis@gmail.com', ['binghamtontabletennis@gmail.com'], fail_silently=False)
+
+    if sentStatus:
+        return HttpResponse("Success")
+    else:
+        return HttpResponse("Fail")

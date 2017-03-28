@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block scripts %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <style>
 
@@ -29,17 +33,42 @@
 
     <div class="container">
 
-      <ul>
         {% for member in eboard %}
-          <li>{{ member.Name }} - {{ member.get_Position_display }} </li>
+          <h3>{{ member.Name }} - {{ member.get_Position_display }} </h3>
         {% endfor %}
-        <br>
-        <li>For general inquiry, contact us at {{ organization.Email }}</li>
-      </ul>
+
+      <br><br>
+
+
     </div>
 
 
+    {% if organization.Email %}
+    <div class="container">
+      <hr>
+      <br><br>
+
+      <h2>For general inquiry, contact us at {{ organization.Email }} or contact us directly using the form below.</h2>
+
+      <br><br><br>
+
+    </div>
+
+
+    <center>
+    <p id="message" style="color:red;"></p>
+    <input type="text" id="sender_box" placeholder="Your email" /><br><br>
+    <input type="text" id="subject_box" placeholder="Subject " /><br><br>
+    <textarea id="body_box" rows="4" cols="50"></textarea><br><br>
+    <button class="btn btn-lg btn-default" id="send_btn"> Send</button>
+
+    </center>
+
+    {% endif %}
+
 </div>
+
+
 
 <br><br><br>
 {% endblock %}
