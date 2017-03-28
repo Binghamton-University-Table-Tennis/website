@@ -11,7 +11,6 @@ from .models import Updates
 from .models import Slides
 from .models import EBoard
 from .models import Images
-from .models import Location
 from .models import Practices
 from .models import AttendanceHistory
 from .models import OrganizationInformation
@@ -25,7 +24,6 @@ admin.site.register(ClubAttendance)
 admin.site.register(Slides)
 admin.site.register(EBoard)
 admin.site.register(Images)
-admin.site.register(Location)
 admin.site.register(Practices)
 admin.site.register(AttendanceHistory)
 admin.site.register(OrganizationInformation)
