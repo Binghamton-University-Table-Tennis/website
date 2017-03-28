@@ -87,7 +87,7 @@ class AttendanceHistory(models.Model):
         verbose_name_plural = "Past Attendance"
 
     def __unicode__(self):
-       return str(self.Date)
+       return str(self.Date) + ": " + self.First_Name + " " + self.Last_Name
 
 class Updates(models.Model):
     Date = models.DateField()
@@ -98,7 +98,7 @@ class Updates(models.Model):
         verbose_name_plural = "Updates"
 
     def __unicode__(self):
-       return str(self.Date)
+       return str(self.Date) + ": " + self.Message
 
 class Slides(models.Model):
     Date = models.DateField()
