@@ -278,13 +278,12 @@ def search(request):
     result = request.GET.get('searchName')
     return redirect('stats', player=result)
 
-@csrf_exempt
 def sendemail(request):
     sender = request.POST.get('sender')
     subject = request.POST.get('subject')
     body = request.POST.get('body')
 
-    sentStatus = send_mail('subject', 'body', 'binghamtontabletennis@gmail.com', ['binghamtontabletennis@gmail.com'], fail_silently=False)
+    sentStatus = send_mail(subject, body, 'binghamtontabletennis@gmail.com', ['binghamtontabletennis@gmail.com'], fail_silently=False)
 
     if sentStatus:
         return HttpResponse("Success")
