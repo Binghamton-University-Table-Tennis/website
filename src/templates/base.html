@@ -168,6 +168,7 @@
       <p>{{ organization.Address2 }}</p>
       <br>
 
+      {% if socialMediaList %}
       <h2><b>Follow us:</b>
         {% for media in socialMediaList %}
           <a href={{ media.Website_URL }} style="color:white;" target="_blank">
@@ -175,6 +176,7 @@
           </a>
         {% endfor %}
       </h2>
+      {% endif %}
 
       <br>
 
