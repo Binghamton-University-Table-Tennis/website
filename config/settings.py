@@ -61,6 +61,7 @@ TEMPLATES = [
                 'src.context_processors.getBackgroundImage',
                 'src.context_processors.getOrganizationInformation',
                 'src.context_processors.getSocialMedia',
+                'src.context_processors.getColorScheme',
             ],
         },
     },
