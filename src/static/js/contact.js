@@ -39,8 +39,15 @@ $(document).ready(function() {
            url: "/sendemail/",
            data: $("#email_form").serialize(),
            success: function(data) {
-              $('#message').attr('style', 'color:green');
-        		  $('#message').text('Your message was successfully sent. If you provided your email, we will get back to you as soon as possible.');
+
+              if (data == "Success") {
+                $('#message').attr('style', 'color:green');
+        		    $('#message').text('Your message was successfully sent. If you provided your email, we will get back to you as soon as possible.');
+              }
+              else {
+                $('#message').attr('style', 'color:red');
+        		    $('#message').text("Error: " + data + ". Please try again later or use an email application.");
+              }
            },
            error: function() {
               $('#message').attr('style', 'color:red');

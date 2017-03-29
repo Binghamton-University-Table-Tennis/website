@@ -302,7 +302,7 @@ def sendemail(request):
     body = request.POST.get('body')
 
     if len(sender) == 0 or len(subject) == 0 or len(body) == 0:
-        return HttpResponse("Empty field")
+        return HttpResponse("Empty Field")
 
     organizationList = OrganizationInformation.objects.all()
     organization = None
@@ -325,7 +325,7 @@ def sendemail(request):
     result = json.load(response)
 
     if not result['success']:
-        return HttpResponse("Bad reCAPTCHA")
+        return HttpResponse("Bad reCAPTCHA Response")
 
     content = "FROM: " + sender + "\n"
     content += "\n----------------------------------------------------\n"
