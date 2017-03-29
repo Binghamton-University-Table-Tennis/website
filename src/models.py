@@ -528,7 +528,9 @@ class ColorScheme(models.Model):
         (BLACK, "Black"),
     )
 
-    Color = models.CharField(choices=COLOR_CHOICES, max_length=10)
+    HeaderColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
+    HeaderTextColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
+    BodyTextColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
 
     def get_absolute_url(self):
         return "/"
@@ -538,4 +540,4 @@ class ColorScheme(models.Model):
         verbose_name_plural = "Color Scheme"
 
     def __unicode__(self):
-       return str(self.get_Color_display())
+       return str(self.get_HeaderColor_display())
