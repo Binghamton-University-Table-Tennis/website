@@ -129,10 +129,11 @@ Now, go to the Heroku site for your new app, go to Settings, click Reveal Config
 
 You can now navigate to your brand new URL hosted on Heroku.
 
-### Additional steps required to Heroku deployment
-You must install 2 add-ons on your app's overview page
+### Additional steps required on Heroku
+You must setup the following features on your Heroku app's dashboard
 - Heroku Scheduler
 - SendGrid
+- Google reCAPTCHA API Keys
 
 #### Heroku Scheduler
 Add the following daily job at 3:30 AM UTC:
@@ -144,8 +145,19 @@ Add the following daily job at 3:30 AM UTC:
 - Provide an API Key Name, allow Full Access, and click Create & View
 - Copy the API Key provided on the screen (Note: This key will not be shown again)
 - Go back to your application dashboard on Heroku and go to Settings -> Reveal Config Vars
-- Add a new key-value pair, where the key is SENDGRID_API_KEY, and the value is the API Key you copied.
+- Add a new key-value pair:
+       
+      SENDGRID_API_KEY = your_sendgrid_api_key
      
+#### Google reCAPTCHA API Keys
+- Go to https://www.google.com/recaptcha/admin 
+- Create a new reCAPTCHA V2, providing a label and your Heroku domain. You will be given a site key and a secret key
+- Go to your application dashboard on Heroku and go to Settings -> Reveal Config Vars
+- Add a two new key-value pairs:
+        
+      GOOGLE_RECAPTCHA_SITE_KEY = your_site_key
+      GOOGLE_RECAPTCHA_SECRET_KEY = your_secret_key
+
 
 ## To create an admin on Heroku
     $ heroku run python manage.py createsuperuser
