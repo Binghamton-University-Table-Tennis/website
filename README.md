@@ -20,6 +20,7 @@ For admins only:
 - Change E-Board members and club email displayed on the contact us page
 - Add social media links in footer
 - Update the organization information that is displayed throughout the site
+- Change color scheme of navigation bar and footer
 - Five login attempts. After five failed attempts, the user will be locked out for one hour.
 
 ## Sample Website
