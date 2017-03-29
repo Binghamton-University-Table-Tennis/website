@@ -7,6 +7,7 @@ Our website provides the following information to all users:
 - The ITTF rules for table tennis
 - Contact page
 - Home page with club info, updates, and links to other social media
+- Send an email to the organization email through the contact page
 
 For admins only:
 - Track attendances at each practice (including late members)
@@ -126,6 +127,24 @@ Now, go to the Heroku site for your new app, go to Settings, click Reveal Config
     $ heroku run python manage.py migrate
 
 You can now navigate to your brand new URL hosted on Heroku.
+
+### Additional steps required to Heroku deployment
+You must install 2 add-ons on your app's overview page
+- Heroku Scheduler
+- SendGrid
+
+#### Heroku Scheduler
+Add the following daily job at 3:30 AM UTC:
+
+    $ python worker.py
+    
+#### SendGrid
+- Go to Settings -> API Keys -> Create API Key (top right)
+- Provide an API Key Name, allow Full Access, and click Create & View
+- Copy the API Key provided on the screen (Note: This key will not be shown again)
+- Go back to your application dashboard on Heroku and go to Settings -> Reveal Config Vars
+- Add a new key-value pair, where the key is SENDGRID_API_KEY, and the value is the API Key you copied.
+     
 
 ## To create an admin on Heroku
     $ heroku run python manage.py createsuperuser
