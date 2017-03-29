@@ -11,15 +11,19 @@ $(document).ready(function() {
       var subject = $('#subject_box').val().trim();
       var body = $('#body_box').val().trim();
 
-      if (sender.length == 0 || subject.length == 0 || body.length == 0) {
-    	$('#message').text("Please make sure all fields are filled in.");
-
-		setTimeout(function(){
-			$('#message').fadeOut();
-		}, 2000);
+      if (sender.length == 0) {
+    	$('#message').text("Please enter a contact name or email.").show().delay(2000).fadeOut();
+      }
+      else if (subject.length == 0) {
+    	$('#message').text("Please enter a subject.").show().delay(2000).fadeOut();
+      }
+      else if (body.length == 0) {
+    	$('#message').text("Please enter a message to send.").show().delay(2000).fadeOut();
+      }
+      else if (sender.length == 0 || subject.length == 0 || body.length == 0) {
+    	$('#message').text("Please make sure all fields are filled in.").show().delay(2000).fadeOut();
       }
       else {
-
         $('#message').attr('style', 'color:black');
       	$('#message').text('Sending...');;
       	$('#sender_box').hide();
@@ -31,16 +35,12 @@ $(document).ready(function() {
 
     		if (data == "Success") {
 				$('#message').attr('style', 'color:green');
-        		$('#message').text('Your message was successfully sent. We will get back to you as soon as we can.');
+        		$('#message').text('Your message was successfully sent. We will get back to you as soon as we can.').show().delay(3000).fadeOut();
     		}
     		else {
     			$('#message').attr('style', 'color:red');
-        		$('#message').text('Failed to send your message. Please try again later or use an email application.');
+        		$('#message').text('Failed to send your message. Please try again later or use an email application.').show().delay(3000).fadeOut();
     		}
-
-    		setTimeout(function(){
-				$('#message').fadeOut();
-			}, 3000);
 
 		});
       }
