@@ -134,10 +134,3 @@ STATICFILES_DIRS = (
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-# Email settings
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME')
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True

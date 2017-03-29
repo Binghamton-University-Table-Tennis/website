@@ -20,14 +20,16 @@ $(document).ready(function() {
       }
       else {
 
-      	$('#message').text("");
-      	$('#sender_box').text("");
-      	$('#subject_box').text("");
-      	$('#body_box').text("");
+        $('#message').attr('style', 'color:black');
+      	$('#message').text('Sending...');;
+      	$('#sender_box').hide();
+      	$('#subject_box').hide();
+      	$('#body_box').hide();
+      	$('#send_btn').hide();
 
-		$.post("/sendemail/", {'sender': sender, 'subject': subject, 'body': body, 'csrftoken': csrftoken}, function(data, status){
+		$.post("/sendemail/", {'sender': sender, 'subject': subject, 'body': body}, function(data, status){
 
-    		if (status == "Success") {
+    		if (data == "Success") {
 				$('#message').attr('style', 'color:green');
         		$('#message').text('Your message was successfully sent. We will get back to you as soon as we can.');
     		}
@@ -44,33 +46,4 @@ $(document).ready(function() {
       }
 
     });
-});
-
-// using jQuery
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-    }
 });

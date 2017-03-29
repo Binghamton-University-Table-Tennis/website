@@ -7,6 +7,10 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
+
 import pytz
 
 from .models import Greeting
@@ -19,6 +23,7 @@ from .models import Slides
 from .models import EBoard
 from .models import Images
 from .models import FrontPageContent
+from .models import OrganizationInformation
 
 from Ratings import *
 
@@ -278,14 +283,36 @@ def search(request):
     result = request.GET.get('searchName')
     return redirect('stats', player=result)
 
+@csrf_exempt
 def sendemail(request):
     sender = request.POST.get('sender')
     subject = request.POST.get('subject')
     body = request.POST.get('body')
 
-    sentStatus = send_mail(subject, body, 'binghamtontabletennis@gmail.com', ['binghamtontabletennis@gmail.com'], fail_silently=False)
+    organizationList = OrganizationInformation.objects.all()
+    organization = None
 
-    if sentStatus:
-        return HttpResponse("Success")
+    if len(organizationList) >= 1:
+        organization = organizationList[0]
     else:
-        return HttpResponse("Fail")
+        return HttpResponse("Organization Email Not Set")
+
+    content = "FROM: " + sender + "\n"
+    content += "\n----------------------------------------------------\n"
+    content += "\n" + body + "\n"
+    content += "\n----------------------------------------------------\n"
+    content += "\nNote: This email was sent from " + request.get_host() + ". The authenticity of the sender cannot be verified."
+
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    email_sender = Email(organization.Email)
+    email_dest = Email(organization.Email)
+    email_content = Content("text/plain", content)
+    mail = Mail(email_sender, subject, email_dest, email_content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+
+    if response.status_code >= 500:
+        return HttpResponse("Service Unavailable")
+    elif response.status_code >= 400:
+        return HttpResponse("Bad Request")
+    else:
+        return HttpResponse("Success")
