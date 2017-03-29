@@ -46,26 +46,29 @@
     <div class="container">
       <hr>
       <br><br>
-
-      <h2>For general inquiry, contact us at <a href=mailto:{{ organization.Email }}>{{ organization.Email }}</a> or contact us directly using the form below.</h2>
-
-      <br><br>
-
+      <h2>For general inquiry, contact us at <a href=mailto:{{ organization.Email }}>{{ organization.Email }}</a>.</h2>
+      <br>
     </div>
+    {% endif %}
 
+    <!--TODO: Change to recaptcha template tag-->
+    {% if organization.Email %}
 
-    <center>
-    <p id="message" style="color:red;"></p>
+    <div class="container">
+      <h2>You can also send us a message using the form below.</h2><br><br>
+      <center>
+      <p id="message" style="color:red;"></p>
 
-    <form action="" onsubmit="return false" id="email_form">
-      <input type="text" size="50" id="sender_box" name="sender" placeholder="Your Name (or Your Email if you want a reply)" /><br><br>
-      <input type="text" size="50" id="subject_box" name="subject" placeholder="Subject" /><br><br>
-      <textarea type="text" id="body_box" rows="4" cols="50" name="body" placeholder="Your Message"></textarea><br><br>
-      <script src='https://www.google.com/recaptcha/api.js'></script>
-      <div class="g-recaptcha" id="recaptcha" data-sitekey="6LfNvBoUAAAAAPTZD8-pbfyNry5V-BoWxS96gPgH"></div><br>
-      <button type="submit" id="send_btn" class="btn btn-lg btn-default">Send</button>
-    </form>
-    </center>
+      <form action="" onsubmit="return false" id="email_form">
+        <input type="text" size="50" id="sender_box" name="sender" placeholder="Your Name (or Your Email if you want a reply)" /><br><br>
+        <input type="text" size="50" id="subject_box" name="subject" placeholder="Subject" /><br><br>
+        <textarea type="text" id="body_box" rows="4" cols="50" name="body" placeholder="Your Message"></textarea><br><br>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <div class="g-recaptcha" id="recaptcha" data-sitekey="6LfNvBoUAAAAAPTZD8-pbfyNry5V-BoWxS96gPgH"></div><br>
+        <button type="submit" id="send_btn" class="btn btn-lg btn-default">Send</button>
+      </form>
+      </center>
+    </div>
 
     {% endif %}
 
