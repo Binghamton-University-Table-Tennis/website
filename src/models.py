@@ -237,8 +237,8 @@ class SocialMedia(models.Model):
 class ColorScheme(models.Model):
 
     RED = '#ff0000'
-    ORANGE = 'ffa500'
-    YELLOW = 'ffff00'
+    ORANGE = '#ffa500'
+    YELLOW = '#ffff00'
     GREEN = '#005a43'
     BLUE = '#0000ff'
     INDIGO = '#4b0082'
