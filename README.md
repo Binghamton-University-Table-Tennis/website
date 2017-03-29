@@ -108,6 +108,7 @@ First, create a new Python workspace. Then, enter the following commands in bash
     $ sudo pip install -r requirements.txt
     $ sudo service postgresql start
     $ export DATABASE_URL=postgres:///"$(whoami)"
+    $ export DEBUG=True
     $ export SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
     $ touch .env
     $ python manage.py migrate
@@ -121,6 +122,7 @@ First, create a new Python workspace. Then, enter the following commands in bash
 Make sure you have a local copy working as explained above. Next, create a Heroku account at https://www.heroku.com/. Then, run the following commands (enter credentials when prompted):
 
     $ heroku create
+    $ heroku config:set DEBUG=False
     $ heroku config:set SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
     $ git push heroku master
     $ heroku run python manage.py migrate
