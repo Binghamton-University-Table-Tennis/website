@@ -218,6 +218,7 @@ class FrontPageContent(models.Model):
     def __unicode__(self):
        return str(self.Title)
 
+
 class SocialMedia(models.Model):
     Website_URL = models.CharField(max_length=100)
     Logo_URL = models.CharField(max_length=100)
@@ -231,3 +232,40 @@ class SocialMedia(models.Model):
 
     def __unicode__(self):
        return str(self.Website_URL)
+
+
+class ColorScheme(models.Model):
+
+    RED = '#ff0000'
+    ORANGE = 'ffa500'
+    YELLOW = 'ffff00'
+    GREEN = '#007451'
+    BLUE = '#0000ff'
+    INDIGO = '#4b0082'
+    VIOLET = '#8a2be2'
+    GRAY = '#808080'
+    BLACK = '#000000'
+
+    COLOR_CHOICES = (
+        (RED, "Red"),
+        (ORANGE, "Orange"),
+        (YELLOW, "Yellow"),
+        (GREEN, "Green"),
+        (BLUE, "Blue"),
+        (INDIGO, "Indigo"),
+        (VIOLET, "Violet"),
+        (GRAY, "Gray"),
+        (BLACK, "Black")
+    )
+
+    Color = models.CharField(choices=COLOR_CHOICES, max_length=10)
+
+    def get_absolute_url(self):
+        return "/"
+
+    class Meta:
+        db_table = "color_scheme"
+        verbose_name_plural = "Color Scheme"
+
+    def __unicode__(self):
+       return str(self.get_Color_display())

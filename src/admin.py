@@ -18,6 +18,7 @@ from .models import OrganizationInformation
 from .models import FrontPageContent
 from .models import SocialMedia
 from .models import Greeting
+from .models import ColorScheme
 
 class TextInputAdmin(admin.ModelAdmin):
     formfield_overrides = {
@@ -49,3 +50,4 @@ admin.site.register(AttendanceHistory, TextInputAdmin)
 admin.site.register(OrganizationInformation, TextareaAdmin)
 admin.site.register(FrontPageContent, TextareaAdmin)
 admin.site.register(SocialMedia, TextareaAdmin)
+admin.site.register(ColorScheme)
