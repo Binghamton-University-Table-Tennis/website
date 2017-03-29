@@ -64,7 +64,11 @@
         padding-right: 15px;
     }
     .navbar {
+        {% if colorScheme %}
         background-color: {{ colorScheme }};
+        {% else %}
+        background-color: #005a43;
+        {% endif %}
         box-shadow: 2px 2px 2px #555;
         z-index: 999;
     }
@@ -115,7 +119,11 @@
       bottom: 0;
       padding-top: 20px;
       padding-bottom: 30px;
+      {% if colorScheme %}
       background-color: {{ colorScheme }};
+      {% else %}
+      background-color: #005a43;
+      {% endif %}
       color: #fff;
       font-family:Comic Sans MS;
       font-size:150%;
