@@ -3,6 +3,7 @@
 
 $(document).ready(function() {
 
+
 	/*
 	 * Check that the user filled in all fields and send an email to the club email
 	 */
@@ -11,17 +12,18 @@ $(document).ready(function() {
       var subject = $('#subject_box').val().trim();
       var body = $('#body_box').val().trim();
 
+
       if (sender.length == 0) {
-    	$('#message').text("Please enter a contact name or email.").show().delay(2000).fadeOut();
+    	  $('#message').text("Please enter a contact name or email.").show().delay(2000).fadeOut();
       }
       else if (subject.length == 0) {
-    	$('#message').text("Please enter a subject.").show().delay(2000).fadeOut();
+    	  $('#message').text("Please enter a subject.").show().delay(2000).fadeOut();
       }
       else if (body.length == 0) {
-    	$('#message').text("Please enter a message to send.").show().delay(2000).fadeOut();
+    	  $('#message').text("Please enter a message to send.").show().delay(2000).fadeOut();
       }
       else if (sender.length == 0 || subject.length == 0 || body.length == 0) {
-    	$('#message').text("Please make sure all fields are filled in.").show().delay(2000).fadeOut();
+    	  $('#message').text("Please make sure all fields are filled in.").show().delay(2000).fadeOut();
       }
       else {
         $('#message').attr('style', 'color:black');
@@ -30,19 +32,22 @@ $(document).ready(function() {
       	$('#subject_box').hide();
       	$('#body_box').hide();
       	$('#send_btn').hide();
+        $('#recaptcha').hide();
 
-		$.post("/sendemail/", {'sender': sender, 'subject': subject, 'body': body}, function(data, status){
+        $.ajax({
+           type: "POST",
+           url: "/sendemail/",
+           data: $("#email_form").serialize(),
+           success: function(data) {
+              $('#message').attr('style', 'color:green');
+        		  $('#message').text('Your message was successfully sent. If you provided your email, we will get back to you as soon as possible.');
+           },
+           error: function() {
+              $('#message').attr('style', 'color:red');
+        		  $('#message').text('Failed to send your message. Please try again later or use an email application.');
+           }
+         });
 
-    		if (data == "Success") {
-				$('#message').attr('style', 'color:green');
-        		$('#message').text('Your message was successfully sent. If you provided your email, we will get back to you as soon as possible.').show().delay(3000).fadeOut();
-    		}
-    		else {
-    			$('#message').attr('style', 'color:red');
-        		$('#message').text('Failed to send your message. Please try again later or use an email application.').show().delay(3000).fadeOut();
-    		}
-
-		});
       }
 
     });

@@ -6,12 +6,16 @@ from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 import sendgrid
 import os
 from sendgrid.helpers.mail import *
 
 import pytz
+import urllib
+import urllib2
+import json
 
 from .models import Greeting
 from .models import Players
@@ -98,6 +102,7 @@ def ladder(request):
         else:
             return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
 
+@csrf_exempt
 def contact(request):
 
     eboard = EBoard.objects.all()
@@ -289,6 +294,9 @@ def sendemail(request):
     subject = request.POST.get('subject')
     body = request.POST.get('body')
 
+    if len(sender) == 0 or len(subject) == 0 or len(body) == 0:
+        return HttpResponse("Empty field")
+
     organizationList = OrganizationInformation.objects.all()
     organization = None
 
@@ -296,6 +304,21 @@ def sendemail(request):
         organization = organizationList[0]
     else:
         return HttpResponse("Organization Email Not Set")
+
+    # Validate reCAPTCHA
+    recaptcha_response = request.POST.get('g-recaptcha-response')
+    url = 'https://www.google.com/recaptcha/api/siteverify'
+    values = {
+        'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+        'response': recaptcha_response
+    }
+    data = urllib.urlencode(values)
+    req = urllib2.Request(url, data)
+    response = urllib2.urlopen(req)
+    result = json.load(response)
+
+    if not result['success']:
+        return HttpResponse("Bad reCAPTCHA")
 
     content = "FROM: " + sender + "\n"
     content += "\n----------------------------------------------------\n"
