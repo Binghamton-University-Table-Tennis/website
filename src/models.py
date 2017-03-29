@@ -239,7 +239,7 @@ class ColorScheme(models.Model):
     RED = '#ff0000'
     ORANGE = 'ffa500'
     YELLOW = 'ffff00'
-    GREEN = '#007451'
+    GREEN = '#005a43'
     BLUE = '#0000ff'
     INDIGO = '#4b0082'
     VIOLET = '#8a2be2'

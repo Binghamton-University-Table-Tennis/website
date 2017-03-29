@@ -35,6 +35,6 @@ def getColorScheme(request):
     colorList = ColorScheme.objects.all()
 
     if len(colorList) >= 1:
-    	return {'colorScheme': colorList[0]}
+    	return {'colorScheme': colorList[0].Color}
     else:
     	return {}
