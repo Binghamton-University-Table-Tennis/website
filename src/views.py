@@ -108,19 +108,26 @@ def contact(request):
     eboard = EBoard.objects.all()
     photoList = Images.objects.all().filter(Page = Images.CONTACT)
 
+    # Determine if these API keys are set
+    GOOGLE_RECAPTCHA_SITE_KEY = os.environ.get('GOOGLE_RECAPTCHA_SITE_KEY')
+    GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
+    SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {}
 
-        if request.user.is_authenticated():
-            return render(request, 'contact.html', {'admin': True, 'eboard': eboard, 'photo': photo})
-        else:
-            return render(request, 'contact.html', {'eboard': eboard, 'photo': photo})
-    else:
-        if request.user.is_authenticated():
-            return render(request, 'contact.html', {'admin': True, 'eboard': eboard})
-        else:
-            return render(request, 'contact.html', {'eboard': eboard})
+    if request.user.is_authenticated():
+        templateContext['admin'] = True
+
+    if GOOGLE_RECAPTCHA_SITE_KEY and GOOGLE_RECAPTCHA_SECRET_KEY and SENDGRID_API_KEY:
+        templateContext['GOOGLE_RECAPTCHA_SITE_KEY'] = GOOGLE_RECAPTCHA_SITE_KEY
+
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    templateContext['eboard'] = eboard
+
+    return render(request, 'contact.html', templateContext)
+
 
 def index(request):
 

@@ -51,8 +51,7 @@
     </div>
     {% endif %}
 
-    <!--TODO: Change to recaptcha template tag-->
-    {% if organization.Email %}
+    {% if GOOGLE_RECAPTCHA_SITE_KEY %}
 
     <div class="container">
       <h2>You can also send us a message using the form below.</h2><br><br>
@@ -64,7 +63,7 @@
         <input type="text" size="50" id="subject_box" name="subject" placeholder="Subject" /><br><br>
         <textarea type="text" id="body_box" rows="4" cols="50" name="body" placeholder="Your Message"></textarea><br><br>
         <script src='https://www.google.com/recaptcha/api.js'></script>
-        <div class="g-recaptcha" id="recaptcha" data-sitekey="6LfNvBoUAAAAAPTZD8-pbfyNry5V-BoWxS96gPgH"></div><br>
+        <div class="g-recaptcha" id="recaptcha" data-sitekey={{ GOOGLE_RECAPTCHA_SITE_KEY }}></div><br>
         <button type="submit" id="send_btn" class="btn btn-lg btn-default">Send</button>
       </form>
       </center>
