@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     		if (data == "Success") {
 				$('#message').attr('style', 'color:green');
-        		$('#message').text('Your message was successfully sent. We will get back to you as soon as we can.').show().delay(3000).fadeOut();
+        		$('#message').text('Your message was successfully sent. If you provided your email, we will get back to you as soon as possible.').show().delay(3000).fadeOut();
     		}
     		else {
     			$('#message').attr('style', 'color:red');
