@@ -1,5 +1,5 @@
 /* global $ */
-
+var recaptcha_finished = false;
 
 $(document).ready(function() {
 
@@ -24,6 +24,9 @@ $(document).ready(function() {
       }
       else if (sender.length == 0 || subject.length == 0 || body.length == 0) {
     	  $('#message').text("Please make sure all fields are filled in.").show().delay(2000).fadeOut();
+      }
+      else if (!recaptcha_finished) {
+    	  $('#message').text("Please complete the reCAPTCHA.").show().delay(2000).fadeOut();
       }
       else {
         $('#message').attr('style', 'color:black');
@@ -59,3 +62,7 @@ $(document).ready(function() {
 
     });
 });
+
+function recaptchaCallback() {
+  recaptcha_finished = true;
+}
