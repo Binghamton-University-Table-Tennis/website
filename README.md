@@ -20,12 +20,13 @@ For admins only:
 - Change E-Board members and club email displayed on the contact us page
 - Add social media links in footer
 - Update the organization information that is displayed throughout the site
+- Five login attempts. After five failed attempts, the user will be locked out for one hour.
 
 ## Sample Website
 Check out the Binghamton University Table Tennis Club website at https://binghamtontabletennis.herokuapp.com/
 
 ## To access the admin panel
-Go to /admin and enter admin credentials
+Go to /admin and enter admin credentials or click the Log In button in the navigation bar.
 
 ## How to use the admin panel
 On the admin panel, you will see several tables available to modify with Add/Change options:
