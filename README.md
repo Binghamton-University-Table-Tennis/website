@@ -102,8 +102,8 @@ To post an update on the front page, simply enter the date and the message you w
 ## To run locally on Cloud9
 First, create a new Python workspace. Then, enter the following commands in bash:
 
-    $ git clone https://github.com/BinghamtonTableTennis/rating-system
-    $ cd rating-system/
+    $ git clone https://github.com/Binghamton-University-Table-Tennis/website-template
+    $ cd website-template/
     $ sudo apt-get update
     $ sudo apt install libpq-dev python-dev
     $ sudo pip install -r requirements.txt
