@@ -45,11 +45,7 @@ On the admin panel, you will see several tables available to modify with Add/Cha
 - Updates
 
 ### Club Attendance
-To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name. Then, you must have a schedule to run the worker.py script at 3:30 AM UTC. This script currently assumes practice runs from 8pm-10pm with lateness starting at 8:30 PM. This can easily be done through Heroku Scheduler with the following command:
-
-    $ python worker.py
-
-This script will go through the Club Attendance and store the entries in an attendance_history table to be displayed on the Attendance page (admin only).
+To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name.
 
 ### EBoard
 Here, you can update who the current EBoard members are. You can choose from several positions and assign them to specific people. This information will be displayed on the contact page.
@@ -139,7 +135,7 @@ You must setup the following features on your Heroku app's dashboard
 - Google reCAPTCHA API Keys
 
 #### Heroku Scheduler
-Add the following daily job at 3:30 AM UTC:
+Create a daily job to update matches and practices (Note: Timezone for the scheduler is UTC):
 
     $ python worker.py
     
