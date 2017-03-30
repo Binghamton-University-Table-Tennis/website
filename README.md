@@ -114,6 +114,7 @@ First, create a new Python workspace. Then, enter the following commands in bash
     $ touch .env
     $ python manage.py migrate
     $ python manage.py collectstatic
+    $ python worker.py
     $ heroku local
 
 ## To create a local admin
@@ -127,6 +128,7 @@ Make sure you have a local copy working as explained above. Next, create a Herok
     $ heroku config:set SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
     $ git push heroku master
     $ heroku run python manage.py migrate
+    % heroku run python worker.py
 
 You can now navigate to your brand new URL hosted on Heroku.
 
