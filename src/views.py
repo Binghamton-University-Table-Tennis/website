@@ -38,44 +38,46 @@ def about(request):
     # Get jumbotron image for about us page
     photoList = Images.objects.all().filter(Page = Images.ABOUT)
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {}
 
-        if request.user.is_authenticated():
-            return render(request, 'about.html', {'admin': True, 'photo': photo})
-        else:
-            return render(request, 'about.html', {'photo': photo})
-    else:
-        if request.user.is_authenticated():
-            return render(request, 'about.html', {'admin': True})
-        else:
-            return render(request, 'about.html', {})
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    if request.user.is_authenticated():
+        templateContext['admin'] = True
+
+    return render(request, 'about.html', templateContext)
+
+
 
 def photos(request):
 
     links = Slides.objects.all().order_by('Date')
 
+    templateContext = {'links': links}
+
     if request.user.is_authenticated():
-        return render(request, 'photos.html', {'admin': True, 'links': links})
-    else:
-        return render(request, 'photos.html', {'links': links})
+        templateContext['admin'] = True
+
+    return render(request, 'photos.html', templateContext)
+
+
 
 def rules(request):
 
     photoList = Images.objects.all().filter(Page = Images.RULES)
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {}
 
-        if request.user.is_authenticated():
-            return render(request, 'rules.html', {'admin': True, 'photo': photo})
-        else:
-            return render(request, 'rules.html', {'photo': photo})
-    else:
-        if request.user.is_authenticated():
-            return render(request, 'rules.html', {'admin': True})
-        else:
-            return render(request, 'rules.html', {})
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    if request.user.is_authenticated():
+        templateContext['admin'] = True
+
+    return render(request, 'rules.html', templateContext)
+
+
 
 def ladder(request):
 
@@ -89,18 +91,16 @@ def ladder(request):
 
     photoList = Images.objects.all().filter(Page = Images.LADDER)
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {'playersRanked': playersRanked, 'playersUnranked': playersUnranked}
 
-        if request.user.is_authenticated():
-            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True, 'photo': photo})
-        else:
-            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'photo': photo})
-    else:
-        if request.user.is_authenticated():
-            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked, 'admin': True})
-        else:
-            return render(request, 'ladder.html', {'playersRanked': playersRanked, 'playersUnranked': playersUnranked})
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    if request.user.is_authenticated():
+        templateContext['admin'] = True
+
+    return render(request, 'ladder.html', templateContext)
+
 
 @csrf_exempt
 def contact(request):
@@ -148,18 +148,16 @@ def index(request):
     # Get jumbotron image for home page
     photoList = Images.objects.all().filter(Page = Images.INDEX)
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {'error': False, 'updates': updates, 'updateCount': updateCount, 'frontPageContent': frontPageContent}
 
-        if request.user.is_authenticated():
-            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount, 'photo': photo, 'frontPageContent': frontPageContent})
-        else:
-            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount, 'photo': photo, 'frontPageContent': frontPageContent})
-    else:
-        if request.user.is_authenticated():
-            return render(request, 'index.html', {'error': False, 'admin': True, 'updates': updates, 'updateCount': updateCount, 'frontPageContent': frontPageContent})
-        else:
-            return render(request, 'index.html', {'error': False, 'updates': updates, 'updateCount': updateCount, 'frontPageContent': frontPageContent})
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    if request.user.is_authenticated():
+        templateContext['admin'] = True
+
+    return render(request, 'index.html', templateContext)
+
 
 
 def summary(request):
@@ -194,12 +192,12 @@ def summary(request):
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.SUMMARY)
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance}
 
-        return render(request, 'summary.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance, 'photo': photo})
-    else:
-        return render(request, 'summary.html', {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance})
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    return render(request, 'summary.html', templateContext)
 
 
 def attendance(request):
@@ -215,12 +213,13 @@ def attendance(request):
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.ATTENDANCE)
 
-    if len(photoList) == 1:
-        photo = photoList[0]
+    templateContext = {'players': players, 'practices': practices, 'history': history, 'admin': True}
 
-        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True, 'photo': photo})
-    else:
-        return render(request, 'attendance.html', {'players': players, 'practices': practices, 'history': history, 'admin': True})
+    if len(photoList) >= 1:
+        templateContext['photo'] = photoList[0]
+
+    return render(request, 'attendance.html', templateContext)
+
 
 
 def history(request, date):
@@ -242,31 +241,35 @@ def stats(request, player):
 
     name = player.title().split()
 
+    templateContext = {}
+
+    if request.user.is_authenticated():
+        templateContext['admin'] = True
+
     if len(name) != 2:
-        if request.user.is_authenticated():
-            return render(request, 'index.html', {'error': True, 'admin': True})
-        else:
-            return render(request, 'index.html', {'error': True})
+        templateContext['error'] = True
+        return render(request, 'index.html', templateContext)
 
     player = Players.objects.all().filter(First_Name = name[0], Last_Name = name[1])
 
     if len(player) != 1:
-        if request.user.is_authenticated():
-            return render(request, 'index.html', {'error': True, 'admin': True})
-        else:
-            return render(request, 'index.html', {'error': True})
+        templateContext['error'] = True
+        return render(request, 'index.html', {'error': True})
 
     matchesWon = Matches.objects.all().filter(Winner_First_Name__iexact = name[0], Winner_Last_Name__iexact = name[1])
     matchesLost = Matches.objects.all().filter(Loser_First_Name__iexact = name[0], Loser_Last_Name__iexact = name[1])
 
     matches = (matchesWon | matchesLost).order_by('-Day')
-
     standing = getStanding(player[0].Standing)
 
+    templateContext = {'player': player[0], 'matches': matches, 'standing': standing}
+
     if request.user.is_authenticated():
-        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'standing': standing, 'admin': True})
-    else:
-        return render(request, 'stats.html', {'player': player[0], 'matches': matches, 'standing': standing})
+        templateContext['admin'] = True
+
+    return render(request, 'stats.html', templateContext)
+
+
 
 def getStanding(standing):
     classStanding = ""
