@@ -33,7 +33,11 @@
 
     body {
       padding-bottom: 20px;
+      {% if bodyTextColor %}
       color: {{ bodyTextColor }};
+      {% else %}
+      color: black;
+      {% endif %}
       font-size: 3;
       background-color: rgba(255,255,255, 0.9);
     }
@@ -73,10 +77,18 @@
         z-index: 999;
     }
     .nav.navbar-nav li a {
+      {% if headerTextColor %}
       color: {{ headerTextColor }};
+      {% else %}
+      color: white;
+      {% endif %}
     }
     .nav.navbar-nav li a:hover{
-      background-color: #163854;
+      {% if headerTextColor %}
+      background-color: {{ bodyTextColor }};
+      {% else %}
+      background-color: black;
+      {% endif %}
     }
     .jumbotron .lang-logo {
         display: block;
@@ -89,42 +101,44 @@
     .jumbotron .lang-logo img {
         max-width: 100%
     }
-    a {
-        color: black;
-    }
     .nopadding {
       padding: 0px !important;
       margin-top: 0px;
     }
     /* unvisited link */
     a:link {
-        color: blue;
+        {% if bodyTextColor %}
+        color: {{ bodyTextColor }};
+        {% else %}
+        color: white;
+        {% endif %}
     }
 
     /* visited link */
     a:visited {
-        color: blue;
-    }
-
-    /* mouse over link */
-    a:hover {
-        color: green;
+        {% if bodyTextColor %}
+        color: {{ bodyTextColor }};
+        {% else %}
+        color: white;
+        {% endif %}
     }
 
     /* selected link */
     a:active {
         color: black;
     }
+
     .footer-settings {
       bottom: 0;
       padding-top: 20px;
       padding-bottom: 30px;
-      {% if colorScheme %}
+      {% if headerColor %}
       background-color: {{ headerColor }};
+      color: {{ headerTextColor }};
       {% else %}
       background-color: #005a43;
+      color: white;
       {% endif %}
-      color: {{ headerTextColor }};
       font-family:Comic Sans MS;
       font-size:150%;
     }
