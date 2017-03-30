@@ -75,7 +75,7 @@ class ClubAttendance(models.Model):
        return (self.First_Name + " " + self.Last_Name)
 
 class Practices(models.Model):
-    Date = models.DateField(auto_now_add=True, editable=False)
+    Date = models.DateField(editable=False)
     Count = models.IntegerField(editable=False, default=0)
 
     def get_absolute_url(self):

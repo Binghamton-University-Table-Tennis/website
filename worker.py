@@ -21,14 +21,15 @@ from src.models import AttendanceHistory
 from src.Ratings import *
 
 
-def checkForUpdates():
+def checkForMatchUpdates():
 
-    #we extract all matches that haven't been put towards players' ratings, and sort them by the date the matches occurred
+    # Extract all matches that haven't been put towards players' ratings, and sort them by the date the matches occurred
     notYetUpdated = Matches.objects.all().filter(Updated = 0).order_by('Day')
-    #iterating over each match, we update the stats of the winner and loser for that match
-    for m in notYetUpdated:
-        winner = Players.objects.all().filter(First_Name__iexact = m.Winner_First_Name, Last_Name__iexact = m.Winner_Last_Name)
-        loser = Players.objects.all().filter(First_Name__iexact = m.Loser_First_Name, Last_Name__iexact = m.Loser_Last_Name)
+
+    # Iterate over each match and update the stats of the winner and loser for that match
+    for match in notYetUpdated:
+        winner = Players.objects.all().filter(First_Name__iexact = match.Winner_First_Name, Last_Name__iexact = match.Winner_Last_Name)
+        loser = Players.objects.all().filter(First_Name__iexact = match.Loser_First_Name, Last_Name__iexact = match.Loser_Last_Name)
         win = 0
         lose = 0
         winPts = []
@@ -37,12 +38,13 @@ def checkForUpdates():
 
             # Delete entry if winner and loser are the same person
             if w.First_Name.title() == l.First_Name.title() and w.Last_Name.title() == l.Last_Name.title():
-                m.delete()
+                match.delete()
                 break
 
             win = w.Rating
             lose = l.Rating
-            #call function that calculates how much the players' ratings should change, based on their difference in skill level
+
+            # Call function that calculates how much the players' ratings should change, based on their difference in skill level
             # Returns array: [Winner's new rating, Loser's new rating, Points exchanged]
             winPts = calculateRatings(win, lose)
 
@@ -64,110 +66,85 @@ def checkForUpdates():
             w.Win_Rate = int((float(winnerMatchesWon) / winnerMatchesPlayed)*100)
             l.Win_Rate = int((float(loserMatchesWon) / loserMatchesPlayed)*100)
 
-            # Mark player as having played this week (+10 points per week)
-            #w.Played_This_Week = 1
-            #l.Played_This_Week = 1
-
             w.save()
             l.save()
 
         if len(winPts) != 0:
-            m.Points = winPts[2]
-            m.Winner_Rating = winPts[0]
-            m.Loser_Rating = winPts[1]
-            m.Updated = 1
-            m.save()
+            match.Points = winPts[2]
+            match.Winner_Rating = winPts[0]
+            match.Loser_Rating = winPts[1]
+            match.Updated = 1
+            match.save()
 
-def checkAttendance():
-    attendees = ClubAttendance.objects.all()
-    hadPractice = False
-    attendance_count = 0
 
-    for attendee in attendees:
 
-        # Check for duplicate attendance entries
-        duplicateAttendee = ClubAttendance.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
+def checkForPracticeUpdates():
+    attendances = AttendanceHistory.objects.all()
+    practices = Practices.objects.all()
+    oldPractices = {}
+    newPractices = {}
 
-        if duplicateAttendee.count() > 1:
-            attendee.delete()
+    # Get all known practices
+    for practice in practices:
+        if practice.Date not in oldPractices:
+            oldPractices[practice.Date] = 1
+
+
+    # Check for attendees with dates that are not in the practice table
+    for attendance in attendances:
+
+        # Check for duplicates
+        duplicateAttendanceEntry = AttendanceHistory.objects.all().filter(First_Name__iexact = attendance.First_Name, Last_Name__iexact = attendance.Last_Name, Date = attendance.Date)
+
+        if duplicateAttendanceEntry.count() > 1:
+            attendance.delete()
             continue
 
-        # Check for existing entry for this attendee in attendance history for today
-        duplicateAttendanceEntry = AttendanceHistory.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name, Date = datetime.datetime.today().strftime('%Y-%m-%d'))
 
-        if duplicateAttendanceEntry.count() > 0:
-            attendee.delete()
-            continue
+        # Get all matching player records
+        player = Players.objects.all().filter(First_Name__iexact = attendance.First_Name, Last_Name__iexact = attendance.Last_Name)
 
-        isLate = 0
-
-        # Heroku Scheduler has a fixed time this script runs at, which is 3:30 UTC.
-        lateStartTime = timezone.now()
-        lateEndTime = lateStartTime
-
-        # Handle daylight savings offset.
-        if not is_dst():
-            lateStartTime -= datetime.timedelta(hours=2)
-        else:
-            lateStartTime -= datetime.timedelta(hours=3)
-            lateEndTime -= datetime.timedelta(hours=1)
-
-        # Update timezone info for the currently timezone-unaware datetime objects
-        lateStartTime = lateStartTime.replace(tzinfo=pytz.UTC)
-        lateEndTime = lateEndTime.replace(tzinfo=pytz.UTC)
-
-        # Late deadline is 8:30 PM EST. The UTC time depends on whether Daylight Savings is in effect.
-        # If member signs in late, mark him/her as late
-        if (lateStartTime <= attendee.Time <= lateEndTime):
-            isLate = 1
-
-        # Proceed with saving attendance for this member
-        attendance_entry = AttendanceHistory(First_Name = attendee.First_Name.title(), Last_Name = attendee.Last_Name.title(), Late = isLate)
-        attendance_entry.save()
-
-        # Get all matching records
-        player = Players.objects.all().filter(First_Name__iexact = attendee.First_Name, Last_Name__iexact = attendee.Last_Name)
-
-        # Player does not exist
         if len(player) == 0:
-            new_player = Players(First_Name = attendee.First_Name.title(), Last_Name = attendee.Last_Name.title(), Standing = 6, Attendance = 1, LastSeen = timezone.now().date())
+            # Player does not exist. Create new entry.
+            new_player = Players(First_Name = attendance.First_Name.title(), Last_Name = attendance.Last_Name.title(), Standing = 6, Attendance = 1, LastSeen = timezone.now().date())
             new_player.save()
-
-        # If player exists in database, update attendance record
         else:
+            # Player exists. Update attendance.
             for p in player:
-
                 p.LastSeen = timezone.now().date()
                 p.Attendance += 1
-
-                if isLate == 1:
-                    p.Lateness += 1
-
                 p.save()
 
-        attendee.delete()
-        hadPractice = True
-        attendance_count += 1
 
-    if hadPractice:
-        duplicatePractice = Practices.objects.all().filter(Date = datetime.datetime.today().strftime('%Y-%m-%d'))
+        # Determine if this is a new practice or not
+        if attendance.Date in oldPractices:
+            continue
+        else:
+            if attendance.Date not in newPractices:
+                newPractices[attendance.Date] = 0
+            newPractices[attendance.Date] += 1
 
-        if duplicatePractice.count() > 0:
-            return;
 
-        practice = Practices(Count = attendance_count)
-        practice.save()
+    # Save all new practices
+    for practiceDate, count in newPractices.items():
+        newPractice = Practices(Date = practiceDate, Count = count)
+        newPractice.save()
+
+
+
+
+def createPageVisitsTable():
+    # Make sure the page count tracker exists
+    visits = Greeting.objects.all()
+    if len(visits) == 0:
+        visitObject = Greeting(Count = 0)
+        visitObject.save()
 
 
 
 
 ########## MAIN ##########
 
-checkForUpdates()
-checkAttendance()
-
-# Make sure the page count tracker exists
-visits = Greeting.objects.all()
-if len(visits) == 0:
-    visitObject = Greeting(Count = 0)
-    visitObject.save()
+checkForMatchUpdates()
+checkForPracticeUpdates()
+createPageVisitsTable()

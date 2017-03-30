@@ -64,7 +64,7 @@ class OrganizationInformationAdmin(admin.ModelAdmin):
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
-admin.site.register(Players)
+admin.site.register(Players, NoAddPermissionAdmin)
 admin.site.register(Matches, TextInputAdmin)
 admin.site.register(Updates, TextareaAdmin)
 admin.site.register(ClubAttendance)
