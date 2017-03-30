@@ -36,7 +36,7 @@
 
 <ul>
 {% for practice in practices %}
-  <li><a href="/history/{{ practice.Date }}">{{ practice.Date }}</a> ({{ practice.Count }} Members)</li>
+  <li><a href="/history/{{ practice.Date }}">{{ practice.Date|date:"N d, Y"  }}</a> ({{ practice.Count }} Members)</li>
 {% endfor %}
 </ul>
 

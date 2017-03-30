@@ -225,20 +225,18 @@ def attendance(request):
 
 def history(request, date):
 
+    if date == "favicon.ico":
+        return HttpResponse("Bad Date")
+
+    dateObject = datetime.strptime(date, "%Y-%m-%d")
+
     # Only admins can view
     if not request.user.is_authenticated():
         return HttpResponseRedirect("/admin/")
 
-    # Format date so that it can be used in the filter. Some months are abbreviated with a period, some are not.
-    if "." in date:
-        date = str(date).replace("Sept", "Sep")     # Sept. must be converted to Sep. It's the only odd case
-        parsed_date = datetime.strptime(date, '%b. %d, %Y').date()
-    else:
-        parsed_date = datetime.strptime(date, '%B %d, %Y').date()
+    history = AttendanceHistory.objects.all().filter(Date = date).order_by('Last_Name')
 
-    history = AttendanceHistory.objects.all().filter(Date = parsed_date).order_by('Last_Name')
-
-    return render(request, 'history.html', {'history': history, 'total': history.count(), 'date': parsed_date, 'admin': True})
+    return render(request, 'history.html', {'history': history, 'total': history.count(), 'date': dateObject, 'admin': True})
 
 def stats(request, player):
 

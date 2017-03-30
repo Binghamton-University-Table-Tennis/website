@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'US/Eastern'
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
 USE_TZ = True
 
 
@@ -145,3 +145,6 @@ AXES_COOLOFF_TIME = 1   # 1 hour
 
 # Google reCAPTCHA
 GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
+
+# Date Format
+DATE_FORMAT = 'Y-m-d'

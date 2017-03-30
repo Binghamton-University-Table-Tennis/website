@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from .models import Players
 from .models import Matches
-from .models import ClubAttendance
 from .models import Updates
 from .models import Slides
 from .models import EBoard
@@ -67,7 +66,6 @@ admin.site.unregister(Group)
 admin.site.register(Players, NoAddPermissionAdmin)
 admin.site.register(Matches, TextInputAdmin)
 admin.site.register(Updates, TextareaAdmin)
-admin.site.register(ClubAttendance)
 admin.site.register(Slides, TextInputAdmin)
 admin.site.register(EBoard)
 admin.site.register(Images, TextInputAdmin)
