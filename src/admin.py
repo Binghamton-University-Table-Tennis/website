@@ -35,6 +35,33 @@ class TextareaAdmin(admin.ModelAdmin):
         })},
     }
 
+class AtMostOneEntryAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if self.model.objects.count() > 0:
+            return False
+        else:
+            return True
+
+class NoAddPermissionAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False
+
+class OrganizationInformationAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': Textarea(attrs={
+                                'rows': 1,
+                                'cols': 150,
+                                'style': 'height: 5em;'
+
+        })},
+    }
+
+    def has_add_permission(self, request):
+        if self.model.objects.count() > 0:
+            return False
+        else:
+            return True
+
 admin.site.unregister(User)
 admin.site.unregister(Group)
 admin.site.register(Players)
@@ -44,9 +71,9 @@ admin.site.register(ClubAttendance)
 admin.site.register(Slides, TextInputAdmin)
 admin.site.register(EBoard)
 admin.site.register(Images, TextInputAdmin)
-admin.site.register(Practices)
-admin.site.register(AttendanceHistory, TextInputAdmin)
-admin.site.register(OrganizationInformation, TextareaAdmin)
+admin.site.register(Practices, NoAddPermissionAdmin)
+admin.site.register(AttendanceHistory, NoAddPermissionAdmin)
+admin.site.register(OrganizationInformation, OrganizationInformationAdmin)
 admin.site.register(FrontPageContent, TextareaAdmin)
 admin.site.register(SocialMedia, TextareaAdmin)
-admin.site.register(ColorScheme)
+admin.site.register(ColorScheme, AtMostOneEntryAdmin)
