@@ -79,7 +79,7 @@ def checkForMatchUpdates():
 
 
 def checkForPracticeUpdates():
-    attendances = AttendanceHistory.objects.all()
+    attendances = AttendanceHistory.objects.all().filter(Updated = 0)
     practices = Practices.objects.all()
     oldPractices = {}
     newPractices = {}
@@ -118,12 +118,18 @@ def checkForPracticeUpdates():
 
         # Determine if this is a new practice or not
         if attendance.Date in oldPractices:
-            continue
+            oldPractice = Practices.objects.all().filter(Date = attendance.Date)[0]
+            oldPractice.Count += 1
+            oldPractice.save()
         else:
             if attendance.Date not in newPractices:
                 newPractices[attendance.Date] = 0
+
             newPractices[attendance.Date] += 1
 
+        # Mark as updated
+        attendance.Updated = 1
+        attendance.save()
 
     # Save all new practices
     for practiceDate, count in newPractices.items():

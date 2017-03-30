@@ -92,7 +92,7 @@ class AttendanceHistory(models.Model):
     First_Name = models.CharField(max_length=20)
     Last_Name = models.CharField(max_length=20)
     Date = models.DateField(auto_now_add=True, editable=False)
-    Late = models.IntegerField(editable=False, default=0)
+    Updated = models.IntegerField(editable=False, default=0)
 
     def get_absolute_url(self):
         return "/attendance"
