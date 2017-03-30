@@ -69,7 +69,7 @@ class ClubAttendance(models.Model):
 
     class Meta:
         db_table = "attendance"
-        verbose_name_plural = "Club Attendance"
+        verbose_name_plural = "Old Attendance"
 
     def __unicode__(self):
        return (self.First_Name + " " + self.Last_Name)
@@ -99,7 +99,7 @@ class AttendanceHistory(models.Model):
 
     class Meta:
         db_table = "attendance_history"
-        verbose_name_plural = "Past Attendance"
+        verbose_name_plural = "Club Attendance"
 
     def __unicode__(self):
        return str(self.Date) + ": " + self.First_Name + " " + self.Last_Name
