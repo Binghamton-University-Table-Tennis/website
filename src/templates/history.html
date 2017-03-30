@@ -2,20 +2,45 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div class="container">
+
+<style type="text/css">
+
+  table, th, td {
+    text-align: center;
+  }
+  tr:hover {
+    background: #D3D3D3;
+
+  }
+
+</style>
+
+
+<div class="container">
 
 
 <h2>Attendance on {{ date|date:"N d, Y"  }} ({{ total }} Members)</h2>
+<br><br>
 
+<table style="width:100%">
+  <tr class="text-center">
+    <th>Name</th>
+    <th>Sign In Time</th>
+  </tr>
 
-<ul>
 
 {% for entry in history %}
-  <li><a href="/stats/{{entry.First_Name}} {{entry.Last_Name}}">{{ entry.First_Name }} {{ entry.Last_Name }}</a></li>
+
+  <tr>
+    <td><a href="/stats/{{entry.First_Name}} {{entry.Last_Name}}">{{ entry.First_Name }} {{ entry.Last_Name }}</a></td>
+    <td>{{ entry.Time }}</td>
+  </tr>
+
 {% endfor %}
 
-</ul>
-<br><br>
+
+</table>
+<br><br><br>
 
 </div>
 

@@ -233,7 +233,7 @@ def history(request, date):
     if not request.user.is_authenticated():
         return HttpResponseRedirect("/admin/")
 
-    history = AttendanceHistory.objects.all().filter(Date = date).order_by('Last_Name')
+    history = AttendanceHistory.objects.all().filter(Date = date).order_by('Time')
 
     return render(request, 'history.html', {'history': history, 'total': history.count(), 'date': dateObject, 'admin': True})
 

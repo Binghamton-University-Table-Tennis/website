@@ -14,7 +14,6 @@ django.setup()
 from src.models import Greeting
 from src.models import Players
 from src.models import Matches
-from src.models import ClubAttendance
 from src.models import Practices
 from src.models import AttendanceHistory
 
