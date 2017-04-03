@@ -32,6 +32,7 @@ Go to /admin and enter admin credentials or click the Log In button in the navig
 ## How to use the admin panel
 On the admin panel, you will see several tables available to modify with Add/Change options:
 - Club Attendance
+- Color Scheme
 - EBoard
 - Front Page Content
 - Images
@@ -46,6 +47,9 @@ On the admin panel, you will see several tables available to modify with Add/Cha
 
 ### Club Attendance
 To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name.
+
+### Color Scheme
+Change the colors for the header/footer and text throughout the site.
 
 ### EBoard
 Here, you can update who the current EBoard members are. You can choose from several positions and assign them to specific people. This information will be displayed on the contact page.
@@ -62,14 +66,11 @@ To record ranked matches, enter the winner and loser names and the score (best o
 ### Organization Information
 Fill in this section completely to have the correct information displayed throughout the site.
 
-### Past Attendance
-This table is automatically populated after the club attendance script finishes running. Only modify this table if there are errors or if you want to clear the attendance history.
-
 ### Players
-To manually add a new player to the database, have members enter their first and last name and class standing. Note: New members who sign in on the Club Attendance form will automatically have a Player entry created for them.
+You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
 
 ### Practices
-This table is automatically populated after the club attendance script finishes running. Only modify this table if there are errors or if you want to clear the practice history.
+This table is automatically populated after the Club Attendance script finishes running. Only modify this table if there are errors or if you want to clear the practice history.
 
 ### Slides
 This website only supports Google Slides at this time. To add a new slideshow to the photos page, first make sure the Google Slides is published (File -> Publish to the web -> Publish). Then, fill in the following fields:
