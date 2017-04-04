@@ -28,6 +28,7 @@ class Players(models.Model):
     Attendance = models.IntegerField(editable=False, default=0)
     Lateness = models.IntegerField(editable=False, default=0)
     LastSeen = models.DateField(editable=False, default=timezone.now)
+    Email = models.CharField(max_length=100, blank=True)
 
     def get_absolute_url(self):
         return "/attendance"

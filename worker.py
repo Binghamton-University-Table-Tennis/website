@@ -126,6 +126,7 @@ def checkForPracticeUpdates():
 
             newPractices[attendance.Date] += 1
 
+
         # Mark as updated
         attendance.Updated = 1
         attendance.save()
