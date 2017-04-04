@@ -7,3 +7,4 @@ pytz==2012c
 sendgrid==3.6.3
 python_http_client==2.2.1
 django-axes==2.3.2
+django-sslify>=0.2
