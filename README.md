@@ -1,5 +1,5 @@
 # Table Tennis Club Website Template
-Our website provides the following information to all users:
+This website template provides the following information to all users:
 - A ladder that organizes users based on the USATT rating system
 - Player information (wins, losses, match history)
 - Club photos at past tournaments
