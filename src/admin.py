@@ -19,6 +19,37 @@ from .models import SocialMedia
 from .models import Greeting
 from .models import ColorScheme
 
+
+class DownloadEmailAdmin(admin.ModelAdmin):
+    actions = ['download_emails']
+    def download_emails(self, request, queryset):
+        import csv
+        from django.http import HttpResponse
+        import StringIO
+
+        players = Players.objects.all()
+
+        f = StringIO.StringIO()
+        # writer = csv.writer(f)
+
+        for player in queryset:
+            if player.Email != '':
+                output = '"%s %s" <%s>, ' % (player.First_Name, player.Last_Name, player.Email)
+                f.write(output)
+
+
+        f.seek(0)
+
+        response = HttpResponse(f, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=emails.txt'
+        return response
+
+    download_emails.short_description = "Download emails to a .txt file"
+
+    def has_add_permission(self, request):
+        return False
+
+
 class TextInputAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'150'})},
@@ -63,7 +94,7 @@ class OrganizationInformationAdmin(admin.ModelAdmin):
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
-admin.site.register(Players, NoAddPermissionAdmin)
+admin.site.register(Players, DownloadEmailAdmin)
 admin.site.register(Matches, TextInputAdmin)
 admin.site.register(Updates, TextareaAdmin)
 admin.site.register(Slides, TextInputAdmin)
