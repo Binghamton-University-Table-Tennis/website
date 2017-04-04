@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-
+from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^attendance/', src.views.attendance, name='attendance'),
     url(r'^history/(?P<date>.*)', src.views.history, name='history'),
     url(r'^sendemail', src.views.sendemail, name='sendemail'),
+    url(r'^googlefff843d3e229f2e0.html', TemplateView.as_view(template_name='googlefff843d3e229f2e0.html')),
 ]
