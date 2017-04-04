@@ -126,6 +126,12 @@ def checkForPracticeUpdates():
 
             newPractices[attendance.Date] += 1
 
+        # Check if member wants to join the mailing list
+        if attendance.Email != '' and '@' in attendance.Email:
+            player = Players.objects.all().filter(First_Name__iexact = attendance.First_Name, Last_Name__iexact = attendance.Last_Name)
+            for p in player:
+                p.Email = attendance.Email
+                p.save()
 
         # Mark as updated
         attendance.Updated = 1
