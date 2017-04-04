@@ -80,6 +80,7 @@ class Practices(models.Model):
 class AttendanceHistory(models.Model):
     First_Name = models.CharField(max_length=20)
     Last_Name = models.CharField(max_length=20)
+    Email = models.CharField(max_length=100, blank=True, help_text="Optional: Enter your email here if you wish to join the mailing list")
     Date = models.DateField(auto_now_add=True, editable=False)
     Time = models.DateTimeField('date created', auto_now_add=True, editable=False)
     Updated = models.IntegerField(editable=False, default=0)
