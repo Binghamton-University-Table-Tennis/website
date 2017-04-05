@@ -189,6 +189,13 @@ def summary(request):
     else:
         topAttendance = "N/A"
 
+    # Get player with highest club rating
+    players = Players.objects.all().order_by('-Rating')
+    if len(players) >= 1:
+        topRating = players[0].First_Name + " " + players[0].Last_Name
+    else:
+        topRating = "N/A"
+
     # Determine number of players active in the club during the past 30 days
     one_month_ago = timezone.now().date()
     one_month_ago -= timedelta(days=30)
@@ -228,7 +235,7 @@ def summary(request):
 
     templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
         'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount,
-        'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize
+        'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize, 'topRating': topRating
     }
 
     if len(photoList) >= 1:
