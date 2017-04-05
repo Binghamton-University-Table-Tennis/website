@@ -58,7 +58,7 @@ class TextInputAdmin(admin.ModelAdmin):
 class AttendanceHistoryAdmin(admin.ModelAdmin):
     class Media:
         css = {
-             'all': ('admin/css/attendance.css')
+             'all': ('admin/css/attendance.css',)
         }
 
 class TextareaAdmin(admin.ModelAdmin):
