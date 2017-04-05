@@ -56,10 +56,6 @@ class TextInputAdmin(admin.ModelAdmin):
     }
 
 class AttendanceHistoryAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size':'150'})},
-    }
-
     class Media:
         css = {
              'all': ('admin/css/attendance.css')
