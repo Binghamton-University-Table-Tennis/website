@@ -55,6 +55,11 @@ class TextInputAdmin(admin.ModelAdmin):
         models.CharField: {'widget': TextInput(attrs={'size':'150'})},
     }
 
+    class Media:
+        css = {
+             'all': ('admin/css/attendance.css',)
+        }
+
 class TextareaAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': Textarea(attrs={
@@ -92,8 +97,8 @@ class OrganizationInformationAdmin(admin.ModelAdmin):
         else:
             return True
 
-admin.site.unregister(User)
-admin.site.unregister(Group)
+# admin.site.unregister(User)
+# admin.site.unregister(Group)
 admin.site.register(Players, DownloadEmailAdmin)
 admin.site.register(Matches, TextInputAdmin)
 admin.site.register(Updates, TextareaAdmin)
@@ -101,7 +106,7 @@ admin.site.register(Slides, TextInputAdmin)
 admin.site.register(EBoard)
 admin.site.register(Images, TextInputAdmin)
 admin.site.register(Practices, NoAddPermissionAdmin)
-admin.site.register(AttendanceHistory)
+admin.site.register(AttendanceHistory, TextInputAdmin)
 admin.site.register(OrganizationInformation, OrganizationInformationAdmin)
 admin.site.register(FrontPageContent, TextareaAdmin)
 admin.site.register(SocialMedia, TextareaAdmin)
