@@ -5,6 +5,15 @@
 
 <style>
 
+table, th, td {
+  text-align: left
+}
+
+tr:hover {
+  background: #D3D3D3;
+
+}
+
 {% if photo %}
 .jumbotron {
     background: url({{ photo.URL }});
@@ -26,21 +35,30 @@
   <div class="container">
 
 
+
 <h1><b><u>Summary</u></b></h1><br>
+<center>
 
-
-<ul>
+<table style="width:80%">
 
 {% for visit in visits %}
-<h3>Total Front Page Visits: {{ visit.Count }}</h3>
+  <tr><td><b>Total Front Page Visits</b></td><td>{{ visit.Count }}</td></tr>
 {% endfor %}
-<h3>Total Club Members: {{ numPlayers }}</h3>
-<h3>Total Practices: {{ numPractices }}</h3>
-<h3>Average Members per Practice: {{ average }}</h3>
-<h3>Most Attendances: {{ topAttendance }}</h3>
-</ul>
-<br><br>
 
+  <tr><td><b>Total Club Members</b></td><td>{{ numPlayers }}</td></tr>
+  <tr><td><b>Total Practices</b></td><td>{{ numPractices }}</td></tr>
+  <tr><td><b>Average Members per Practice</b></td><td>{{ average }}</td></tr>
+  <tr><td><b>Active Members in the Last 30 Days</b></td><td>{{ numPlayersActive }}</td></tr>
+  <tr><td><b>Most Attendances</b></td><td>{{ topAttendance }}</td></tr>
+  <tr><td><b>Lowest Members During Practice</b></td><td>{{ leastMembersCount }} members on {{ leastMembersDate|date:"N d, Y" }}</td></tr>
+  <tr><td><b>Most Members During Practice</b></td><td>{{ mostMembersCount }} members on {{ mostMembersDate|date:"N d, Y"  }}</td></tr>
+
+
+</table>
+
+
+<br><br>
+</center>
 </div>
 
 {% endblock %}

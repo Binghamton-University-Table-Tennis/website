@@ -189,10 +189,35 @@ def summary(request):
     else:
         topAttendance = "N/A"
 
+    # Determine number of players active in the club during the past 30 days
+    one_month_ago = timezone.now().date()
+    one_month_ago -= timedelta(days=30)
+    numPlayersActive = len(Players.objects.all().filter(LastSeen__gt = one_month_ago))
+
+    # Get practice with the least players
+    practices = Practices.objects.all().order_by('Count')
+    if len(practices) >= 1:
+        leastMembersDate = practices[0].Date
+        leastMembersCount = practices[0].Count
+    else:
+        leastMembersDate = "N/A"
+        leastMembersCount = 0
+
+    # Get practice with the most players
+    practices = Practices.objects.all().order_by('-Count')
+    if len(practices) >= 1:
+        mostMembersDate = practices[0].Date
+        mostMembersCount = practices[0].Count
+    else:
+        mostMembersDate = "N/A"
+        mostMembersCount = 0
+
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.SUMMARY)
 
-    templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance}
+    templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
+        'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount
+    }
 
     if len(photoList) >= 1:
         templateContext['photo'] = photoList[0]
