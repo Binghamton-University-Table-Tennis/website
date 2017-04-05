@@ -18,7 +18,7 @@ from src.models import Practices
 from src.models import AttendanceHistory
 
 from src.Ratings import *
-
+from src.Standings import *
 
 def checkForMatchUpdates():
 
@@ -131,6 +131,13 @@ def checkForPracticeUpdates():
             player = Players.objects.all().filter(First_Name__iexact = attendance.First_Name, Last_Name__iexact = attendance.Last_Name)
             for p in player:
                 p.Email = attendance.Email
+                p.save()
+
+        # Check if member specified class standing
+        if attendance.Class_Standing != '':
+            player = Players.objects.all().filter(First_Name__iexact = attendance.First_Name, Last_Name__iexact = attendance.Last_Name)
+            for p in player:
+                p.Standing = getIntegerStanding(attendance.Class_Standing)
                 p.save()
 
         # Mark as updated
