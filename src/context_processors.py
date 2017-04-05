@@ -35,6 +35,6 @@ def getColorScheme(request):
     colorList = ColorScheme.objects.all()
 
     if len(colorList) >= 1:
-    	return {'headerColor': colorList[0].HeaderColor, 'headerTextColor': colorList[0].HeaderTextColor, 'bodyTextColor': colorList[0].BodyTextColor}
+    	return {'headerColor': colorList[0].HeaderColor, 'headerTextColor': colorList[0].HeaderTextColor, 'bodyTextColor': colorList[0].BodyTextColor, 'bodyLinkColor': colorList[0].BodyLinkColor}
     else:
     	return {}

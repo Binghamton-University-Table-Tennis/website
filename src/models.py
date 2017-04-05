@@ -524,6 +524,7 @@ class ColorScheme(models.Model):
     HeaderColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
     HeaderTextColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
     BodyTextColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
+    BodyLinkColor = models.CharField(choices=COLOR_CHOICES, max_length=30)
 
     def get_absolute_url(self):
         return "/"

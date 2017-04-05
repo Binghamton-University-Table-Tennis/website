@@ -107,8 +107,8 @@
     }
     /* unvisited link */
     a:link {
-        {% if bodyTextColor %}
-        color: {{ bodyTextColor }};
+        {% if bodyLinkColor %}
+        color: {{ bodyLinkColor }};
         {% else %}
         color: white;
         {% endif %}
@@ -116,8 +116,8 @@
 
     /* visited link */
     a:visited {
-        {% if bodyTextColor %}
-        color: {{ bodyTextColor }};
+        {% if bodyLinkColor %}
+        color: {{ bodyLinkColor }};
         {% else %}
         color: white;
         {% endif %}
