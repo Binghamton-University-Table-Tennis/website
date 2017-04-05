@@ -43,7 +43,7 @@
     }
     .jumbotron {
         background: url('https://i.imgur.com/snTZoOg.jpg');
-        background-position: 0% 25%;
+        background-position: 0% 50%;
         background-size: cover;
         background-repeat: no-repeat;
         padding-top: 80px;
@@ -110,7 +110,7 @@
         {% if bodyLinkColor %}
         color: {{ bodyLinkColor }};
         {% else %}
-        color: white;
+        color: black;
         {% endif %}
     }
 
@@ -119,7 +119,7 @@
         {% if bodyLinkColor %}
         color: {{ bodyLinkColor }};
         {% else %}
-        color: white;
+        color: black
         {% endif %}
     }
 
@@ -142,6 +142,11 @@
       font-family:Comic Sans MS;
       font-size:150%;
     }
+
+    .footer-settings a {
+     color: white;
+    }
+
     .container img {
       top: 0;
       bottom: 0;
