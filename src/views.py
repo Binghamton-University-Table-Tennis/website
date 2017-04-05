@@ -212,11 +212,23 @@ def summary(request):
         mostMembersDate = "N/A"
         mostMembersCount = 0
 
+    # Get class standing of all members
+    freshmen = len(Players.objects.all().filter(Standing = 1))
+    sophomores = len(Players.objects.all().filter(Standing = 2))
+    juniors = len(Players.objects.all().filter(Standing = 3))
+    seniors = len(Players.objects.all().filter(Standing = 4))
+    grads = len(Players.objects.all().filter(Standing = 5))
+    unknowns = len(Players.objects.all().filter(Standing = 6))
+
+    # Get size of mailing list
+    mailingListSize = len(Players.objects.all().exclude(Email = ''))
+
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.SUMMARY)
 
     templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
-        'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount
+        'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount,
+        'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize
     }
 
     if len(photoList) >= 1:
