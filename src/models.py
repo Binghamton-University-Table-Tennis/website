@@ -146,7 +146,7 @@ class EBoard(models.Model):
 
 class Images(models.Model):
     BACKGROUND = 1
-    INDEX = 2
+    HOME = 2
     ATTENDANCE = 3
     SUMMARY = 4
     LADDER = 5
@@ -156,7 +156,7 @@ class Images(models.Model):
 
     PAGE_CHOICES = (
         (BACKGROUND, "background"),
-        (INDEX, "index"),
+        (HOME, "home"),
         (ATTENDANCE, "attendance"),
         (SUMMARY, "summary"),
         (LADDER, "ladder"),

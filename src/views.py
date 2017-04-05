@@ -146,7 +146,7 @@ def index(request):
     frontPageContent = FrontPageContent.objects.all()
 
     # Get jumbotron image for home page
-    photoList = Images.objects.all().filter(Page = Images.INDEX)
+    photoList = Images.objects.all().filter(Page = Images.HOME)
 
     templateContext = {'error': False, 'updates': updates, 'updateCount': updateCount, 'frontPageContent': frontPageContent}
 
