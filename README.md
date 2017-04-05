@@ -69,6 +69,22 @@ Fill in this section completely to have the correct information displayed throug
 ### Players
 You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
 
+##### Downloading Emails for G-Mail
+- On the players admin panel, use the checkboxes to get the email addresses of the selected members. 
+- In the action dropdown menu, select 'Download emails to a .txt file'. 
+- Press 'Go'. 
+- You will then automatically download a .txt file containing a list of emails formatted for pasting into Google Contacts. Only members you selected who provided an email address will be in this file.
+
+##### Creating new contacts for G-Mail
+- Open the .txt file from above and copy the entire content to your clipboard (Ctrl-A then Ctrl-C).
+- Log into your G-Mail account
+- Go to your Contacts page (Click Mail at the top left and select Contacts)
+- If you want to create a new group, select 'New Group...' on the left navigation bar. Otherwise, select the existing group.
+- Click the Add to Group button (Image of person and the + symbol)
+- A blank textbox should appear
+- Paste the contents of your clipboard into this textbox (Ctrl-V) and press enter
+- All the emails you downloaded should now be in the new group. Duplicate entries will not be added.
+
 ### Practices
 This table is automatically populated after the Club Attendance script finishes running. Only modify this table if there are errors or if you want to clear the practice history.
 
