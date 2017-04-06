@@ -127,10 +127,9 @@ First, create a new Python workspace. Then, enter the following commands in bash
     $ sudo apt install libpq-dev python-dev
     $ sudo pip install -r requirements.txt
     $ sudo service postgresql start
-    $ export DATABASE_URL=postgres:///"$(whoami)"
-    $ export DEBUG=True
-    $ export SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
-    $ touch .env
+    $ echo DATABASE_URL=postgres:///"$(whoami)" >> .env
+    $ echo DEBUG=True >> .env
+    $ echo SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)" >> .env
     $ python manage.py migrate
     $ python manage.py collectstatic
     $ python worker.py
