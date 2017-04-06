@@ -100,9 +100,11 @@ This website only supports Google Slides at this time. To add a new slideshow to
 - In your browser, open up the Google Slides you want to share on the photos page
 - Look for the slides ID in the URL.
 
-For example, if the URL is:
+For example, if the URL is either of the following:
 
       https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit#slide=id.g1b0ebe7be8_0_0
+      
+      https://docs.google.com/a/binghamton.edu/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit?usp=sharing
 the Slides ID is:
 
       1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
