@@ -3,7 +3,6 @@ import os
 import time
 from datetime import date
 import datetime
-from dst import is_dst
 from django.utils import timezone
 import pytz
 
