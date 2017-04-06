@@ -9,7 +9,8 @@ This website template provides the following information to all users:
 - Home page with club info, updates, and links to other social media
 - Send an email to the organization email through the contact page
 
-For admins only:
+For superusers:
+- Create new users and admins
 - Track attendances at each practice (including late members)
 - Add new players to the database
 - Add matches to the database
@@ -48,6 +49,8 @@ On the admin panel, you will see several tables available to modify with Add/Cha
 
 ### Club Attendance
 To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name.
+- **Optional Email**: Have members enter their emails so you can easily download all of them and paste the emails into Google Contacts. 
+- **Optional Class Standing**: Have members enter their class standing so you can get statistics about the number of freshmen, sophomores, etc.
 
 ### Color Scheme
 Change the colors for the header/footer and text throughout the site.
@@ -100,9 +103,11 @@ This website only supports Google Slides at this time. To add a new slideshow to
 - In your browser, open up the Google Slides you want to share on the photos page
 - Look for the slides ID in the URL.
 
-For example, if the URL is:
+For example, if the URL is either of the following:
 
       https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit#slide=id.g1b0ebe7be8_0_0
+      
+      https://docs.google.com/a/binghamton.edu/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit?usp=sharing
 the Slides ID is:
 
       1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
@@ -122,16 +127,15 @@ First, create a new Python workspace. Then, enter the following commands in bash
     $ sudo apt install libpq-dev python-dev
     $ sudo pip install -r requirements.txt
     $ sudo service postgresql start
-    $ export DATABASE_URL=postgres:///"$(whoami)"
-    $ export DEBUG=True
-    $ export SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
-    $ touch .env
+    $ echo DATABASE_URL=postgres:///"$(whoami)" >> .env
+    $ echo DEBUG=True >> .env
+    $ echo SECRET_KEY="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)" >> .env
     $ python manage.py migrate
     $ python manage.py collectstatic
     $ python worker.py
     $ heroku local
 
-## To create a local admin
+## To create a local superuser
     $ python manage.py createsuperuser
 
 ## Deploying to Heroku from Cloud9
@@ -176,5 +180,5 @@ Create a daily job to update matches and practices, preferably right after pract
       GOOGLE_RECAPTCHA_SECRET_KEY = your_secret_key
 
 
-## To create an admin on Heroku
+## To create a superuser on Heroku
     $ heroku run python manage.py createsuperuser
