@@ -22,6 +22,7 @@ For admins only:
 - Update the organization information that is displayed throughout the site
 - Change color scheme of navigation bar and footer
 - Five login attempts. After five failed attempts, the user will be locked out for one hour.
+- Download email addresses of players in a format for pasting into Google Contacts
 
 ## Sample Website
 Check out the Binghamton University Table Tennis Club website at https://binghamtontabletennis.herokuapp.com/
@@ -70,9 +71,9 @@ Fill in this section completely to have the correct information displayed throug
 You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
 
 ##### Downloading Emails for G-Mail
-- On the players admin panel, use the checkboxes to get the email addresses of the selected members. 
-- In the action dropdown menu, select 'Download emails to a .txt file'. 
-- Press 'Go'. 
+- On the players admin panel, use the checkboxes to get the email addresses of the selected members.
+- In the action dropdown menu, select 'Download emails to a .txt file'.
+- Press 'Go'.
 - You will then automatically download a .txt file containing a list of emails formatted for pasting into Google Contacts. Only members you selected who provided an email address will be in this file.
 
 ##### Creating new contacts for G-Mail
@@ -105,7 +106,7 @@ For example, if the URL is:
 the Slides ID is:
 
       1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
-      
+
 ### Social Media
 Displayed in the footer on each page. Provide the URL of your other social media's page and a URL containing an image of the social media's logo.
 
@@ -155,22 +156,22 @@ You must setup the following features on your Heroku app's dashboard
 Create a daily job to update matches and practices, preferably right after practice (Note: Timezone for the scheduler is UTC). Use the following command for the job:
 
     $ python worker.py
-    
+
 #### SendGrid
 - Go to Settings -> API Keys -> Create API Key (top right)
 - Provide an API Key Name, allow Full Access, and click Create & View
 - Copy the API Key provided on the screen (Note: This key will not be shown again)
 - Go back to your application dashboard on Heroku and go to Settings -> Reveal Config Vars
 - Add a new key-value pair:
-       
+
       SENDGRID_API_KEY = your_sendgrid_api_key
-     
+
 #### Google reCAPTCHA API Keys
-- Go to https://www.google.com/recaptcha/admin 
+- Go to https://www.google.com/recaptcha/admin
 - Create a new reCAPTCHA V2, providing a label and your Heroku domain. You will be given a site key and a secret key
 - Go to your application dashboard on Heroku and go to Settings -> Reveal Config Vars
 - Add a two new key-value pairs:
-        
+
       GOOGLE_RECAPTCHA_SITE_KEY = your_site_key
       GOOGLE_RECAPTCHA_SECRET_KEY = your_secret_key
 
