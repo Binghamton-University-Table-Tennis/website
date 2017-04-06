@@ -141,7 +141,6 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # django-axes settings
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_LOCK_OUT_AT_FAILURE = True
-AXES_ONLY_USER_FAILURES = True
 AXES_COOLOFF_TIME = 1   # 1 hour
 
 # Google reCAPTCHA
