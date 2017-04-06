@@ -9,7 +9,8 @@ This website template provides the following information to all users:
 - Home page with club info, updates, and links to other social media
 - Send an email to the organization email through the contact page
 
-For admins only:
+For superusers:
+- Create new users and admins
 - Track attendances at each practice (including late members)
 - Add new players to the database
 - Add matches to the database
@@ -133,7 +134,7 @@ First, create a new Python workspace. Then, enter the following commands in bash
     $ python worker.py
     $ heroku local
 
-## To create a local admin
+## To create a local superuser
     $ python manage.py createsuperuser
 
 ## Deploying to Heroku from Cloud9
@@ -178,5 +179,5 @@ Create a daily job to update matches and practices, preferably right after pract
       GOOGLE_RECAPTCHA_SECRET_KEY = your_secret_key
 
 
-## To create an admin on Heroku
+## To create a superuser on Heroku
     $ heroku run python manage.py createsuperuser
