@@ -1,5 +1,6 @@
-# Table Tennis Club Website Template
-This website template provides the following information to all users:
+# [Binghamton University Table Tennis Club Website](https://binghamtontabletennis.herokuapp.com/)
+
+Our website provides the following information to all users:
 - A ladder that organizes users based on the USATT rating system
 - Player information (wins, losses, match history)
 - Club photos at past tournaments
@@ -9,10 +10,9 @@ This website template provides the following information to all users:
 - Home page with club info, updates, and links to other social media
 - Send an email to the organization email through the contact page
 
-For superusers:
+For superusers only:
 - Create new users and admins
 - Track attendances at each practice (including late members)
-- Add new players to the database
 - Add matches to the database
 - View summary statistics (Average players per practice, total front page visits, and more)
 - Display messages/updates/content on the front page
@@ -24,9 +24,6 @@ For superusers:
 - Change color scheme of navigation bar and footer
 - Five login attempts. After five failed attempts, the user will be locked out for one hour.
 - Download email addresses of players in a format for pasting into Google Contacts
-
-## Sample Website
-Check out the Binghamton University Table Tennis Club website at https://binghamtontabletennis.herokuapp.com/
 
 ## To access the admin panel
 Go to /admin and enter admin credentials or click the Log In button in the navigation bar.
