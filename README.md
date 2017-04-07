@@ -154,7 +154,7 @@ You must setup the following features on your Heroku app's dashboard
 - Google reCAPTCHA API Keys
 
 #### Heroku Scheduler
-Create a daily job to update matches and practices, preferably right after practice (Note: Timezone for the scheduler is UTC). Use the following command for the job:
+Create a job to update matches and practices. You may use whatever frequency you desire (Note: Timezone for the scheduler is UTC). Use the following command for the job:
 
     $ python worker.py
 
