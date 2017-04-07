@@ -26,7 +26,7 @@ For superusers only:
 - Download email addresses of players in a format for pasting into Google Contacts
 
 ## To access the admin panel
-Go to /admin and enter admin credentials or click the Log In button in the navigation bar.
+Go to /admin or click the Log In button in the navigation bar. Then, provide your credentials.
 
 ## How to use the admin panel
 On the admin panel, you will see several tables available to modify with Add/Change options:
