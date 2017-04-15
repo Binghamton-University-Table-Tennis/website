@@ -46,7 +46,7 @@ On the admin panel, you will see several tables available to modify with Add/Cha
 
 ### Club Attendance
 To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name.
-- **Optional Email**: Have members enter their emails so you can easily download all of them and paste the emails into Google Contacts. 
+- **Optional Email**: Have members enter their emails so you can easily download all of them and paste the emails into Google Contacts (see Players section below for how to do this). 
 - **Optional Class Standing**: Have members enter their class standing so you can get statistics about the number of freshmen, sophomores, etc.
 
 ### Color Scheme
