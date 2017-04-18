@@ -82,7 +82,10 @@ For example, if the URL is either of the following:
 the YouTube ID is:
 
       0ZBtaEXsaOU
-
+      
+##### How to easily create a slideshow video to upload to YouTube (no audio)
+- Create a PowerPoint with an image on each slide
+- Go to File -> Export -> Create a Video
 
 ### Players
 You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
