@@ -189,17 +189,17 @@ def summary(request):
     else:
         topAttendance = "N/A"
 
-    # Get player with highest club rating
-    players = Players.objects.all().order_by('-Rating')
-    if len(players) >= 1:
-        topRating = players[0].First_Name + " " + players[0].Last_Name
-    else:
-        topRating = "N/A"
-
     # Determine number of players active in the club during the past 30 days
     one_month_ago = timezone.now().date()
     one_month_ago -= timedelta(days=30)
     numPlayersActive = len(Players.objects.all().filter(LastSeen__gt = one_month_ago))
+
+    # Get active player with highest club rating
+    players = Players.objects.all().filter(LastSeen__gt = one_month_ago).order_by('-Rating')
+    if len(players) >= 1:
+        topRating = players[0].First_Name + " " + players[0].Last_Name
+    else:
+        topRating = "N/A"
 
     # Get practice with the least players
     practices = Practices.objects.all().order_by('Count')
