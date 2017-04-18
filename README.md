@@ -113,7 +113,7 @@ Select the page where you want to update the picture and provide the url contain
 Displayed in the footer on each page. Provide the URL of your other social media's page and a URL containing an image of the social media's logo.
 
 ### Updates
-To post an update on the front page, simply enter the date and the message you want to display.
+This information will be shown above the Front Page Content. To post an update on the front page, simply enter the date and the message you want to display.
 
 ## To run locally on Cloud9
 First, create a new Python workspace. Then, enter the following commands in bash:
