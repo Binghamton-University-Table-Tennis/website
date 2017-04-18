@@ -34,19 +34,18 @@ On the admin panel, you will see several tables available to modify with Add/Cha
 - Color Scheme
 - EBoard
 - Front Page Content
-- Images
 - Matches
 - Organization Information
-- Past Attendance
+- Photos
 - Players
 - Practices
-- Slides
+- Site Images
 - Social Media
 - Updates
 
 ### Club Attendance
 To keep track of attendance for a practice, use the Club Attendance table. Simply ask members to enter their first and last name.
-- **Optional Email**: Have members enter their emails so you can easily download all of them and paste the emails into Google Contacts (see Players section below for how to do this). 
+- **Optional Email**: Have members enter their emails so you can easily download all of them and paste the emails into Google Contacts (see Players section below for how to do this).
 - **Optional Class Standing**: Have members enter their class standing so you can get statistics about the number of freshmen, sophomores, etc.
 
 ### Color Scheme
@@ -58,14 +57,32 @@ Here, you can update who the current EBoard members are. You can choose from sev
 ### Front Page Content
 This contains stable information that you want to display to users who visit your home page. This is different than news/updates (see Updates)
 
-### Images
-Select the page where you want to update the picture and provide the url containing the image to display.
-
 ### Matches
 To record ranked matches, enter the winner and loser names and the score (best of 3 match). The same script for the Club Attendance will collect the match results and update the ladder page as well as individual match history pages.
 
 ### Organization Information
 Fill in this section completely to have the correct information displayed throughout the site.
+
+### Photos
+This website only supports YouTube videos at this time. To add new content to the photos page, upload your video to YouTube. Then, fill in the following fields:
+
+- Date: Needed to organize slides to ascending order
+- Title: Used to label a slideshow
+- YouTube ID: The ID of the YouTube video (see below)
+
+##### How to get the YouTube ID
+- Look for the ID in the URL of the YouTube video
+
+For example, if the URL is either of the following:
+
+      https://www.youtube.com/watch?v=0ZBtaEXsaOU
+
+      https://www.youtube.com/edit?o=U&video_id=0ZBtaEXsaOU
+
+the YouTube ID is:
+
+      0ZBtaEXsaOU
+
 
 ### Players
 You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
@@ -89,25 +106,8 @@ You can only modify or delete an existing player. A new Player entry will automa
 ### Practices
 This table is automatically populated after the Club Attendance script finishes running. Only modify this table if there are errors or if you want to clear the practice history.
 
-### Slides
-This website only supports Google Slides at this time. To add a new slideshow to the photos page, first make sure the Google Slides is published (File -> Publish to the web -> Publish). Then, fill in the following fields:
-
-- Date: Needed to organize slides to ascending order
-- Title: Used to label a slideshow
-- Slides ID: The ID of the slideshow (see below)
-
-##### How to get the Slides ID
-- In your browser, open up the Google Slides you want to share on the photos page
-- Look for the slides ID in the URL.
-
-For example, if the URL is either of the following:
-
-      https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit#slide=id.g1b0ebe7be8_0_0
-      
-      https://docs.google.com/a/binghamton.edu/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit?usp=sharing
-the Slides ID is:
-
-      1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
+### Site Images
+Select the page where you want to update the picture and provide the url containing the image to display.
 
 ### Social Media
 Displayed in the footer on each page. Provide the URL of your other social media's page and a URL containing an image of the social media's logo.
