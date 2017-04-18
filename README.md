@@ -66,7 +66,7 @@ Fill in this section completely to have the correct information displayed throug
 ### Photos
 This website only supports YouTube videos at this time. To add new content to the photos page, upload your video to YouTube. Then, fill in the following fields:
 
-- Date: Needed to organize slides to ascending order
+- Date: Needed to organize slides in ascending order
 - Title: Used to label a slideshow
 - YouTube ID: The ID of the YouTube video (see below)
 
