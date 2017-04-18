@@ -114,18 +114,14 @@ class Updates(models.Model):
 class Slides(models.Model):
     Date = models.DateField()
     Title = models.CharField(max_length=100)
-
-    ########## How to get the SlidesID ##########
-    # Full URL = https://docs.google.com/presentation/d/1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800/edit#slide=id.g1b0ebe7be8_0_0
-    # SlidesID = 1152Jzvxr-hDXlGE1zaT4_NuZf8sl-GAIvCUhhzMA800
-    SlidesID = models.CharField(max_length=100)
+    YouTube_ID = models.CharField(max_length=100)
 
     def get_absolute_url(self):
         return "/photos"
 
     class Meta:
         db_table = "slides"
-        verbose_name_plural = "Slides"
+        verbose_name_plural = "Photos"
 
     def __unicode__(self):
        return str(self.Title)
@@ -173,7 +169,7 @@ class Images(models.Model):
 
     class Meta:
         db_table = "images"
-        verbose_name_plural = "Images"
+        verbose_name_plural = "Site Images"
 
     def __unicode__(self):
        return str(self.get_Page_display())
