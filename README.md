@@ -82,7 +82,10 @@ For example, if the URL is either of the following:
 the YouTube ID is:
 
       0ZBtaEXsaOU
-
+      
+##### How to create a slideshow video for YouTube
+- Go to https://www.youtube.com/editor
+- Add images, video, and audio
 
 ### Players
 You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
