@@ -193,6 +193,7 @@ def summary(request):
     one_month_ago = timezone.now().date()
     one_month_ago -= timedelta(days=30)
     numPlayersActive = len(Players.objects.all().filter(LastSeen__gt = one_month_ago))
+    allPlayers = Players.objects.all()
 
     # Get active player with highest club rating
     players = Players.objects.all().filter(LastSeen__gt = one_month_ago).order_by('-Rating')
@@ -233,7 +234,7 @@ def summary(request):
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.SUMMARY)
 
-    templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(players), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
+    templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(allPlayers), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
         'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount,
         'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize, 'topRating': topRating
     }
