@@ -16,9 +16,9 @@ For superusers only:
 - Add matches to the database
 - View summary statistics (Average players per practice, total front page visits, and more)
 - Display messages/updates/content on the front page
-- Add new Google Slides to the photos page
+- Add YouTube videos to the photos page
 - Customize images throughout the site
-- Change E-Board members and club email displayed on the contact us page
+- Change E-Board members
 - Add social media links in footer
 - Update the organization information that is displayed throughout the site
 - Change color scheme of navigation bar and footer
