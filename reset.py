@@ -1,10 +1,5 @@
 import django
 import os
-import time
-from datetime import date
-import datetime
-from django.utils import timezone
-import pytz
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
