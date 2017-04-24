@@ -128,7 +128,7 @@ class Slides(models.Model):
 
 class EBoard(models.Model):
     Name = models.CharField(max_length=50)
-    Position = models.IntegerField(choices=[(1, "President"), (2, "Co-President"), (3, "Treasurer"), (4, "Secretary"), (5, "Webmaster"), (6, "Treasurer/Secretary")])
+    Position = models.CharField(max_length=50)
 
     def get_absolute_url(self):
         return "/contact"
