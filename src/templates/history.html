@@ -32,7 +32,7 @@
 {% for entry in history %}
 
   <tr>
-    <td><a href="/stats/{{entry.First_Name}} {{entry.Last_Name}}">{{ entry.First_Name }} {{ entry.Last_Name }}</a></td>
+    <td><a href="/stats/{{entry.First_Name|title}} {{entry.Last_Name|title}}">{{ entry.First_Name|title }} {{ entry.Last_Name|title }}</a></td>
     <td>{{ entry.Time }}</td>
   </tr>
 
