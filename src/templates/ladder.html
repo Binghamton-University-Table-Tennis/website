@@ -30,7 +30,7 @@
 <div class="text-center">
   <h1><b><u>Ladder</u></b></h1>
   <p>Ratings do not represent official NCTTA or USATT ratings</p>
-  <p>Only active members will be shown here</p>
+  <p>Only active members who played at least one match will be shown here</p>
 </div>
 <br>
 <div class="container">
@@ -50,16 +50,6 @@
           <th> {{player.Matches_Won }} </th>
           <th> {{player.Matches_Lost }}  </th>
           <th>{{ player.Rating }}</th>
-        </tr>
-    {% endfor %}
-
-    {% for player in playersUnranked %}
-        <tr class="text-center">
-          <th>-</th>
-          <th><a href="/stats/{{player.First_Name}} {{player.Last_Name}}">{{ player.First_Name }} {{ player.Last_Name }}</a></th>
-          <th> {{player.Matches_Won }} </th>
-          <th> {{player.Matches_Lost }}  </th>
-          <th>Not ranked</th>
         </tr>
     {% endfor %}
 

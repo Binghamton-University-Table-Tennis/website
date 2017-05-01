@@ -87,11 +87,10 @@ def ladder(request):
 
     # Grab all players in database
     playersRanked = Players.objects.all().filter(Matches_Played__gt = 0).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
-    playersUnranked = Players.objects.all().filter(Matches_Played = 0, ).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
 
     photoList = Images.objects.all().filter(Page = Images.LADDER)
 
-    templateContext = {'playersRanked': playersRanked, 'playersUnranked': playersUnranked}
+    templateContext = {'playersRanked': playersRanked}
 
     if len(photoList) >= 1:
         templateContext['photo'] = photoList[0]
