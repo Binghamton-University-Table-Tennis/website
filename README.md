@@ -96,7 +96,7 @@ You can only modify or delete an existing player. A new Player entry will automa
 - Press 'Go'.
 - You will then automatically download a .txt file containing a list of emails formatted for pasting into Google Contacts. Only members you selected who provided an email address will be in this file.
 
-##### Creating new contacts for G-Mail
+##### Creating new contacts for G-Mail (Only works for old version of contacts: https://www.google.com/contacts/. To get to the old version from the new version, just click "Go to the old version" in the navigation bar.)
 - Open the .txt file from above and copy the entire content to your clipboard (Ctrl-A then Ctrl-C).
 - Log into your G-Mail account
 - Go to your Contacts page (Click Mail at the top left and select Contacts)
