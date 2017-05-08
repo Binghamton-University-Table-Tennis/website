@@ -230,12 +230,16 @@ def summary(request):
     # Get size of mailing list
     mailingListSize = len(Players.objects.all().exclude(Email = ''))
 
+    # Get total number of ranked matches played
+    numMatches = len(Matches.objects.all())
+
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.SUMMARY)
 
     templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(allPlayers), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
         'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount,
-        'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize, 'topRating': topRating
+        'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize, 'topRating': topRating,
+        'numMatches': numMatches
     }
 
     if len(photoList) >= 1:
