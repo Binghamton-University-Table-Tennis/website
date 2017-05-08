@@ -167,6 +167,7 @@ def summary(request):
 
     # Grab all visits to front page
     visits = Greeting.objects.all()
+    visitCount = visits[0].Count if len(visits) >= 1 else 0
 
     # Grab other summary data
     players = Players.objects.all().order_by('-Attendance')
@@ -236,7 +237,7 @@ def summary(request):
     # Get image URL for this page's banner
     photoList = Images.objects.all().filter(Page = Images.SUMMARY)
 
-    templateContext = {'visits': visits, 'admin': True, 'numPlayers': len(allPlayers), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
+    templateContext = {'visitCount': visitCount, 'admin': True, 'numPlayers': len(allPlayers), 'numPractices': len(practices), 'average': average, 'topAttendance': topAttendance,
         'numPlayersActive': numPlayersActive, 'leastMembersDate': leastMembersDate, 'leastMembersCount': leastMembersCount, 'mostMembersDate': mostMembersDate, 'mostMembersCount': mostMembersCount,
         'freshmen': freshmen, 'sophomores': sophomores, 'juniors': juniors, 'seniors': seniors, 'grads': grads, 'unknowns': unknowns, 'mailingListSize': mailingListSize, 'topRating': topRating,
         'numMatches': numMatches
