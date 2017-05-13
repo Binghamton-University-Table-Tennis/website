@@ -10,6 +10,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 django.setup()
 
+from django.contrib.admin.models import LogEntry
+
 from src.models import Greeting
 from src.models import Players
 from src.models import Matches
@@ -150,7 +152,6 @@ def checkForPracticeUpdates():
 
 
 
-
 def createPageVisitsTable():
     # Make sure the page count tracker exists
     visits = Greeting.objects.all()
@@ -160,9 +161,15 @@ def createPageVisitsTable():
 
 
 
+def deleteLogEntries():
+    LogEntry.objects.all().delete()
+
+
 
 ########## MAIN ##########
 
 checkForMatchUpdates()
 checkForPracticeUpdates()
 createPageVisitsTable()
+deleteLogEntries()
+
