@@ -52,13 +52,13 @@ To keep track of attendance for a practice, use the Club Attendance table. Simpl
 Change the colors for the header/footer and text throughout the site.
 
 ### EBoard
-Here, you can update who the current EBoard members are. You can choose from several positions and assign them to specific people. This information will be displayed on the contact page.
+Here, you can update who the current EBoard members are and their roles. This information will be displayed on the contact page.
 
 ### Front Page Content
 This contains stable information that you want to display to users who visit your home page. This is different than news/updates (see Updates)
 
 ### Matches
-To record ranked matches, enter the winner and loser names and the score (best of 3 match). The same script for the Club Attendance will collect the match results and update the ladder page as well as individual match history pages.
+To record ranked matches, enter the winner and loser names and the score (up to best of 7). The same script for the Club Attendance will collect the match results and update the ladder page as well as individual match history pages.
 
 ### Organization Information
 Fill in this section completely to have the correct information displayed throughout the site.
