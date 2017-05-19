@@ -13,6 +13,6 @@ if __name__ == '__main__':
 		if month != datetime.date.today().month:
 			deleteLogEntries()
 
-		time.sleep(5)
+		time.sleep(60)
 
 
