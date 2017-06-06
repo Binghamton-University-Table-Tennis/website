@@ -88,10 +88,10 @@ the YouTube ID is:
 - Add images, video, and audio
 
 ### Players
-You can only modify or delete an existing player. A new Player entry will automatically be added after signing into Club Attendance.
+You can only modify or delete an existing player. A new Players entry will automatically be added after signing into Club Attendance.
 
 ##### Downloading Emails for G-Mail
-- On the players admin panel, use the checkboxes to get the email addresses of the selected members.
+- On the Players admin panel, use the checkboxes to get the email addresses of the selected members.
 - In the action dropdown menu, select 'Download emails to a .txt file'.
 - Press 'Go'.
 - You will then automatically download a .txt file containing a list of emails formatted for pasting into Google Contacts. Only members you selected who provided an email address will be in this file.
