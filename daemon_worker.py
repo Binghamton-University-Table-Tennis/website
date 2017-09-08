@@ -6,4 +6,4 @@ if __name__ == '__main__':
         checkForMatchUpdates()
         checkForPracticeUpdates()
         deleteLogEntries()
-        time.sleep(5)
+        time.sleep(1)
