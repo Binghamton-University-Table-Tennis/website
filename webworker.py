@@ -1,4 +1,3 @@
-from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 from apscheduler.schedulers.background import BackgroundScheduler
 from work import *
 import os
