@@ -196,7 +196,7 @@ def summary(request):
     allPlayers = Players.objects.all()
 
     # Get active player with highest club rating
-    players = Players.objects.all().filter(LastSeen__gt = one_month_ago).order_by('-Rating')
+    players = Players.objects.all().filter(Matches_Played__gt = 0).filter(LastSeen__gt = one_month_ago).order_by('-Rating')
     if len(players) >= 1:
         topRating = players[0].First_Name + " " + players[0].Last_Name
     else:
