@@ -28,6 +28,9 @@ For superusers only:
 ## To access the admin panel
 Go to /admin or click the Log In button in the navigation bar. Then, provide your credentials.
 
+## Automatic database reset
+Since the university is not in session during the month of July, the database will automatically be clearing its entries during this month, which means adding attendances and matches will not function properly. However, for all other months, the website will function as usual.
+
 ## How to use the admin panel
 On the admin panel, you will see several tables available to modify with Add/Change options:
 - Club Attendance
