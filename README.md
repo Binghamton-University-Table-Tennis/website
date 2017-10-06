@@ -94,7 +94,7 @@ the YouTube ID is:
 You can only modify or delete an existing player. A new Players entry will automatically be added after signing into Club Attendance.
 
 ##### Downloading Emails for G-Mail
-- On the Players admin panel, use the checkboxes to get the email addresses of the selected members.
+- On the Players admin panel, scroll to the bottom and click Show all to show all the players on this page. Then, click the checkbox next to the PLAYERS header at the top to automatically select all the players.
 - In the action dropdown menu, select 'Download emails to a .txt file'.
 - Press 'Go'.
 - You will then automatically download a .txt file containing a list of emails formatted for pasting into Google Contacts. Only members you selected who provided an email address will be in this file.
